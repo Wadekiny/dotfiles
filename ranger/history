@@ -1,0 +1,50 @@
+open_with vim
+search 
+rename .sudo_as_admin_successful_back
+w
+rename .selected_editor_back
+search xiaoshu
+q!
+quitall
+rename 159Z_2107.w026.n002.628B.p1.628.jpg
+rename bg4.png
+search find *.deb
+search faf
+search image
+search fzf
+search post
+shell 
+search polybar
+search bert
+search chinese
+open_with 
+rename q1_7_15_1410_run_total
+search 1600
+rename q1_7_16_1930
+shell mkdir data
+search bar
+shell wps qdata_716_2040.xlsx &
+shell wps qdata_716_2040.xlsx qdata_716_2040.xlsx 
+shell wps suggestion.xlsx &
+shell mkdir pretrained_model
+open_with j
+rename re_suggestions.xlsx
+rename re_suggestions_noclass.xlsx
+open_with wps
+rename th_text.xls
+rename split_suggestions_noclass.xlsx
+search re
+rename re_suggestions_classes.xlsx
+shell mkdir html
+rename predict70.html
+rename predict80.html
+rename predict90.html
+rename kmeans.html
+rename line-simple(5).html
+rename train_loss.html
+rename train_acc.html
+rename stack.html
+rename seqlength.html
+find jj
+search backup
+delete
