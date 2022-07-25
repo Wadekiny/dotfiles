@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=xmodmap /home/wadekiny/.Xmodmap
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=esc2caps
+Name=esc2caps
+Comment[en_US]=esc2caps
+Comment=esc2caps
