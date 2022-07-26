@@ -231,7 +231,7 @@ exec_always --no-startup-id ~/.config/i3/xborders.sh &
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec_always --no-startup-id ~/.config/i3/tap2click.sh &
 exec_always --no-startup-id ~/.config/i3/inverse-scroll.sh &
-exec_always --no-startup-id ~/.config/i3/esc2capslock.sh &
+#exec_always --no-startup-id ~/.config/i3/esc2capslock.sh &
 exec_always --no-startup-id ~/.config/i3/autotiling.sh &
 exec_always --no-startup-id ~/.config/i3/picom.sh &
 
