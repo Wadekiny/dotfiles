@@ -24,6 +24,8 @@ new_float none
 hide_edge_borders both
 gaps inner 8
 gaps outer -2
+
+
 #default_border pixel 4
 #for_window [class=.*] border pixel 2
 #for_window [class="^.*"] border pixel 2
@@ -197,7 +199,9 @@ for_window [class="netease-cloud-music"] floating enable
 for_window [class="qv2ray"] floating enable
 for_window [class="EasyConnect"] floating enable
 for_window [class="conky"] floating enable
-for_window [class="icalingua"] floating enable
+#for_window [class="icalingua"] floating enable
+#for_window [class="WeChat"] floating enable
+#for_window [class="WeChatApp"] floating enable
 
 
 bindsym $mod+b exec --no-startup-id firefox
@@ -213,6 +217,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set  Master 1dB-
 
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master toggle 
 
+# Shift_R
+bindsym $mod+apostrophe exec --no-startup-id ~/.config/i3/xmodmap/asd2123.sh
+bindsym $mod+Escape exec --no-startup-id ~/.config/i3/xmodmap/asd2asd.sh
+
 exec_always --no-startup-id ~/.config/i3/screensaver.sh
 #exec_always --no-startup-id xset s 1800 &
 #exec_always --no-startup-id xset dpms 65000 65000 65000 &
@@ -226,6 +234,7 @@ exec_always --no-startup-id xrandr --output DP-0 --left-of HDMI-0
 #exec_always --no-startup-id feh --bg-scale ~/Pictures/background.png
 #exec_always --no-startup-id feh --bg-fill ~/Pictures/background/*
 exec --no-startup-id python3 ~/.config/i3/wallpic.py &
+exec --no-startup-id python3 ~/.config/i3/xmodmap/asd2num.py &
 
 exec_always --no-startup-id ~/.config/i3/xborders.sh &
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
@@ -234,6 +243,9 @@ exec_always --no-startup-id ~/.config/i3/inverse-scroll.sh &
 #exec_always --no-startup-id ~/.config/i3/esc2capslock.sh &
 exec_always --no-startup-id ~/.config/i3/autotiling.sh &
 exec_always --no-startup-id ~/.config/i3/picom.sh &
+exec_always --no-startup-id ~/.config/i3/fcitx.sh &
+exec_always --no-startup-id ~/.config/i3/xmodmap/ &
+
 
 #exec --no-startup-id picom -b
 #exec --no-startup-id ibus-daemon -d -x -r

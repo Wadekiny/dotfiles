@@ -1,6 +1,7 @@
-killall -q polybar
-while pgrep -x >/dev/null; do sleep 1; done
-
+#killall -q polybar
+#while pgrep -x >/dev/null; do sleep 1; done
+pkill polybar
+sleep 1
 polybar bar_laptop &
 polybar bar_dp0 &
 polybar bar_hdmi &

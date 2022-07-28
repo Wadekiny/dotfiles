@@ -111,6 +111,9 @@ Plug 'joshdick/onedark.vim'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'KabbAmine/yowish.vim'
+"Plug 'sheerun/vim-polyglot' "???
+Plug 'sainnhe/sonokai'
+Plug 'Mofiqul/vscode.nvim'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-highlightedyank'
@@ -148,34 +151,38 @@ let g:coc_global_extensions = [
     \'coc-clangd',
     \'coc-vimlsp',
     \'coc-actions',
+    \'coc-explorer',
     \'coc-pyright',
     \]
 "\'coc-git',
-"\'coc-pyright',
 "\'coc-jedi',
+"\'coc-pyright',
 
- "vim-highlightedyank
+ "vim-highlightedyank 复制时高亮
 let g:highlightedyank_highlight_duration = 400
 
-" colod-theme
-"
-set background=dark
+" color-theme
 
-"colorscheme yowish 
-"let g:yowish = {}
-"let g:yowish.option1 = 'foo'
-"let g:yowish.option2 = 0
+"set background=dark
 
-"
+colorscheme yowish 
+let g:yowish = {}
+let g:yowish.option1 = 'foo'
+let g:yowish.option2 = 0
+
 "let g:onedark_termcolors=256
 "colorscheme onedark 
-"
-colorscheme molokai 
-let g:rehash256 = 1
-let g:molokai_original = 1
-"
+
+"colorscheme vscode
+
+"colorscheme sonokai
+
+"colorscheme molokai 
+"let g:rehash256 = 1
+"let g:molokai_original = 1
+
 "colorscheme desert
-"
+
 "let g:solarized_termcolors=256
 "colorscheme solarized 
 
@@ -215,6 +222,7 @@ let g:molokai_original = 1
 "
 "
 let g:lightline = {
+      \ 'colorscheme': 'sonokai',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'percent' ],
@@ -472,6 +480,8 @@ nnoremap <leader>r :source $MYVIMRC<cr>
 
 " nerdtree
 nnoremap  ff :NERDTreeToggle<CR>
+" coc-explorer
+"nmap ff <Cmd>CocCommand explorer<CR>
 
 "easymotion f是vim自带当前行找字母
 map <leader>w <Plug>(easymotion-bd-w)
