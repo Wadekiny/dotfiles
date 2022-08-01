@@ -14,7 +14,7 @@ set laststatus=2         " 总是显示状态栏
 set number               " 开启行号显示
 set relativenumber       " 特殊行号
 set cursorline           " 高亮显示当前行
-set whichwrap+=<,>,h,l   " 设置光标键跨行
+"set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=100        " 设置<ESC>键响应时间
 "set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 set mouse=a
@@ -104,6 +104,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-startify'
 
 
 "themes
@@ -111,11 +112,12 @@ Plug 'joshdick/onedark.vim'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'KabbAmine/yowish.vim'
-"Plug 'sheerun/vim-polyglot' "???
+Plug 'sheerun/vim-polyglot' 
 Plug 'sainnhe/sonokai'
-Plug 'Mofiqul/vscode.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 Plug 'ryanoasis/vim-devicons'
+
 Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/tagbar'
 Plug 'jszakmeister/markdown2ctags' "(use pip to install, it's not a vim plugin)
@@ -163,28 +165,40 @@ let g:highlightedyank_highlight_duration = 400
 
 " color-theme
 
-"set background=dark
+set background=dark
 
-colorscheme yowish 
-let g:yowish = {}
-let g:yowish.option1 = 'foo'
-let g:yowish.option2 = 0
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+" The configuration options should be placed before `colorscheme sonokai`.
+let g:sonokai_style = 'shusia'
+let g:sonokai_better_performance = 1
+"let g:sonokai_colors_override = {'bg0': ['#1e222a', '235'], 'bg2': ['#282c34', '236']}
+let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#222222', '236']}
+colorscheme sonokai
+
+" highlightedyank
+highlight HighlightedyankRegion cterm=reverse gui=reverse
+
+
+"colorscheme yowish 
+"let g:yowish = {}
+"let g:yowish.option1 = 'foo'
+"let g:yowish.option2 = 0
 
 "let g:onedark_termcolors=256
 "colorscheme onedark 
 
-"colorscheme vscode
-
-"colorscheme sonokai
+"colorscheme tokyonight
 
 "colorscheme molokai 
 "let g:rehash256 = 1
 "let g:molokai_original = 1
 
-"colorscheme desert
 
-"let g:solarized_termcolors=256
-"colorscheme solarized 
+
+
 
 """ airline
 ""let g:airline_theme="onedark"
@@ -193,22 +207,18 @@ let g:yowish.option2 = 0
 "if !exists('g:airline_symbols')
 "    let g:airline_symbols = {}
 "endif
-"""insert mode, press <c-v>u + 4-digit code
-"""in alacritty, size = 15, offset: y=5, icons work fine
-""let g:airline_left_sep = ''
-""let g:airline_left_alt_sep = ''
-""let g:airline_right_sep = ''
-""let g:airline_right_alt_sep = ''
-""
-""let g:airline_left_sep = ''
-""let g:airline_right_alt_sep = '|'
-""
-"let g:airline_left_sep = ''
-""let g:airline_left_sep = ''
-""let g:airline_left_alt_sep = ''
-""let g:airline_right_sep = ''
-""let g:airline_right_sep = ''
-""let g:airline_right_alt_sep = ''
+"
+""insert mode, press <c-v>u + 4-digit code
+""in alacritty, size = 15, offset: y=5, icons work fine
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+
+"let g:airline_left_sep = '' "
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
 
 
 
@@ -222,7 +232,7 @@ let g:yowish.option2 = 0
 "
 "
 let g:lightline = {
-      \ 'colorscheme': 'sonokai',
+	  \ 'colorscheme': 'sonokai',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'percent' ],
