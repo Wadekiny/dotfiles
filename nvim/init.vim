@@ -1,5 +1,21 @@
+"
+" __      __                __           __      
+"/\ \  __/\ \              /\ \         /\ \  __    __    
+"\ \ \/\ \ \ \    _____    \_\ \    ____\ \ \/\ \  /\_\   _____   __  __
+" \ \ \ \ \ \ \  / ___ \  / ___ \  /  __ \ \ \_\ \_\/\ \/\  __  \/\ \/\ \
+"  \ \ \_\ \_\ \/\ \__\ \/\ \__\ \/\  ____\ \  ____ \ \ \ \ \_/\ \ \ \_\ \
+"   \ \ ________\ \__ /\_\ \__/ \_\ \_____\\ \_\ \ \_\ \_\ \_\\ \_\ \____ \
+"    \/_________/\/__/\/_/\/__/\/_/\/_____/ \/_/  \/_/\/_/\/_/ \/_/\/___/> \
+"                                                                     /\___/
+"                                                                     \/__/
+"
+"
+"
+
+
 let mapleader = ";"      " 定义<leader>键
 set nocompatible         " 设置不兼容原始vi模式
+set nomodeline         " 设置不兼容原始vi模式
 filetype on              " 设置开启文件类型侦测
 filetype plugin on       " 设置加载对应文件类型的插件
 set noeb                 " 关闭错误的提示
@@ -37,7 +53,9 @@ filetype indent on       " 自适应不同语言的智能缩进
 set expandtab            " 将制表符扩展为空格
 set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
-set softtabstop=4        " 设置4个空格为制表符 set smarttab             " 在行和段开始处使用制表符 set wrap                 " 折行
+set softtabstop=4        " 设置4个空格为制表符 
+set smarttab             " 在行和段开始处使用制表符 
+set wrap                 " 折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码
@@ -178,8 +196,6 @@ let g:sonokai_better_performance = 1
 let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#222222', '236']}
 colorscheme sonokai
 
-" highlightedyank
-highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 
 "colorscheme yowish 
@@ -241,7 +257,7 @@ let g:lightline = {
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
-      \   'right': [ [''] ]
+      \   'right': [ ['filepath'] ]
       \ },
       \ 'component_expand': {
       \   'buffers': 'lightline#bufferline#buffers'
@@ -489,9 +505,9 @@ nnoremap <c-s> :w<cr>
 nnoremap <leader>r :source $MYVIMRC<cr>
 
 " nerdtree
-nnoremap  ff :NERDTreeToggle<CR>
+"nnoremap  ff :NERDTreeToggle<CR>
 " coc-explorer
-"nmap ff <Cmd>CocCommand explorer<CR>
+nmap ff <Cmd>CocCommand explorer<CR>
 
 "easymotion f是vim自带当前行找字母
 map <leader>w <Plug>(easymotion-bd-w)
@@ -569,6 +585,15 @@ endfunction
 autocmd FileType markdown nmap <buffer><silent> <leader>p :call MdPasteImage()<CR>
 
 
+function! CommentItalic(num)
+	let g:sonokai_disable_italic_comment = a:num
+	colorscheme sonokai
+	highlight HighlightedyankRegion cterm=reverse gui=reverse
+endfunction
+
+
+autocmd BufEnter * :call CommentItalic(1)
+autocmd BufEnter *.cpp,*.py,*.c :call CommentItalic(0)
 
 
 
@@ -584,3 +609,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 "au BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 "    tagbar
 "au BufEnter *.py :TagbarToggle
+
+" highlightedyank
+highlight HighlightedyankRegion cterm=reverse gui=reverse
