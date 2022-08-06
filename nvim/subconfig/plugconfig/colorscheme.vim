@@ -10,7 +10,8 @@ endif
 let g:sonokai_style = 'shusia'
 let g:sonokai_better_performance = 1
 "let g:sonokai_colors_override = {'bg0': ['#1e222a', '235'], 'bg2': ['#282c34', '236']}
-let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#2d2a2e', '236']}
+"let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#2d2a2e', '236']}
+let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#222222', '236']}
 colorscheme sonokai
 
 

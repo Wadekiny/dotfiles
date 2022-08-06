@@ -1,5 +1,13 @@
 {
     "coc.preferences.extensionUpdateCheck": "weekly",
+    "suggest.floatConfig.border" : true,
+    //"suggest.floatConfig.rounded" : true,
+    "diagnostic.floatConfig.border" : true,
+    "signature.floatConfig.border" : true,
+
+
+
+
 	"explorer.width": 30,
 	//"explorer.quitOnOpen": true,
     "explorer.file.column.indent.indentLine": true,
@@ -9,7 +17,6 @@
 	//"explorer.keyMappingMode": "none",
 	"explorer.buffer.showHiddenBuffers": false,
 	//"explorer.file.git.showUntrackedFiles": false
-	"explorer.git.enable" : false
-
+	"explorer.git.enable" : false ,
 
 }

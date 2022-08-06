@@ -13,5 +13,5 @@ let g:coc_global_extensions = [
 "\'coc-pyright',
 
 " autocmd
-"    coc 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
