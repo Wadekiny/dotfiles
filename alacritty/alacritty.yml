@@ -158,7 +158,7 @@ font:
 
   # Point size
   # 16 -- 5
-  size: 15.5
+  size: 14.5
   #size: 12.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
@@ -166,7 +166,7 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 3
+    y: 5
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the

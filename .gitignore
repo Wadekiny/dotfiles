@@ -22,6 +22,10 @@ neofetch/*.un~
 
 !nvim/
 !nvim/init.vim
+!nvim/coc-settings.json
+!nvim/subconfig/
+!nvim/subconfig/**
+nvim/subconfig/*.un~
 nvim/*.un~
 
 !picom/
