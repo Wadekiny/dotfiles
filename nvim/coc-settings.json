@@ -1,0 +1,15 @@
+{
+    "coc.preferences.extensionUpdateCheck": "weekly",
+	"explorer.width": 30,
+	//"explorer.quitOnOpen": true,
+    "explorer.file.column.indent.indentLine": true,
+	//"explorer.file.showHiddenFiles": true,
+	"explorer.icon.enableNerdfont": true,
+	//"explorer.file.column.git.showIgnored": true,
+	//"explorer.keyMappingMode": "none",
+	"explorer.buffer.showHiddenBuffers": false,
+	//"explorer.file.git.showUntrackedFiles": false
+	"explorer.git.enable" : false
+
+
+}
