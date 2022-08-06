@@ -2,9 +2,9 @@
 " __      __                __           __      
 "/\ \  __/\ \              /\ \         /\ \  __    __    
 "\ \ \/\ \ \ \    _____    \_\ \    ____\ \ \/\ \  /\_\   _____   __  __
-" \ \ \ \ \ \ \  / ___ \  / ___ \  /  __ \ \ \_\ \_\/\ \/\  __  \/\ \/\ \
+" \ \ \ \ \ \ \  / ___ \  / ___ \  /  __ \ \ \/ /__\/\ \/\  __  \/\ \/\ \
 "  \ \ \_\ \_\ \/\ \__\ \/\ \__\ \/\  ____\ \  ____ \ \ \ \ \_/\ \ \ \_\ \
-"   \ \ ________\ \__ /\_\ \__/ \_\ \_____\\ \_\ \ \_\ \_\ \_\\ \_\ \____ \
+"   \ \ ________\ \__ /\_\ \__/ \_\ \_____\\ \_\__/\_\ \_\ \_\\ \_\ \____ \
 "    \/_________/\/__/\/_/\/__/\/_/\/_____/ \/_/  \/_/\/_/\/_/ \/_/\/___/> \
 "                                                                     /\___/
 "                                                                     \/__/
@@ -14,8 +14,9 @@
 
 
 let mapleader = ";"      " 定义<leader>键
+set termguicolors
 set nocompatible         " 设置不兼容原始vi模式
-set nomodeline         " 设置不兼容原始vi模式
+set nomodeline            
 filetype on              " 设置开启文件类型侦测
 filetype plugin on       " 设置加载对应文件类型的插件
 set noeb                 " 关闭错误的提示
@@ -23,7 +24,7 @@ syntax enable            " 开启语法高亮功能
 set t_Co=256             " 开启256色支持
 set cmdheight=1          " 设置命令行的高度
 "set cmdheight=2          " 设置命令行的高度
-set showtabline=2
+set showtabline=1
 set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏
@@ -37,7 +38,7 @@ set mouse=a
 set hidden
 set updatetime=100
 set shortmess+=c
-set numberwidth=1
+set numberwidth=5
 set fdm=marker
 set scrolloff=5
 filetype plugin on
@@ -55,7 +56,7 @@ set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
 set softtabstop=4        " 设置4个空格为制表符 
 set smarttab             " 在行和段开始处使用制表符 
-set wrap                 " 折行
+"set wrap                 " 折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码
@@ -105,45 +106,50 @@ endif
 "pluginstall
 call plug#begin('~/.config/nvim/plugged')
 "input-------------------------------
-Plug 'vim-scripts/fcitx.vim'
-"Plug 'kevinhwang91/vim-ibus-sw'
-Plug 'easymotion/vim-easymotion'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-peekaboo'
+Plug 'vim-scripts/fcitx.vim'		"普通模式和插入模式输入法记忆
+"Plug 'kevinhwang91/vim-ibus-sw' 
+Plug 'easymotion/vim-easymotion'	"快速跳转
+Plug 'jiangmiao/auto-pairs'			"自动括号	
+Plug 'junegunn/vim-peekaboo'		"复制缓存区
 Plug 'mg979/vim-visual-multi'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
-"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } "python高亮
 
 "display-------------------------------
 Plug 'scrooloose/nerdtree'
 "Plug 'vim-airline/vim-airline'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+"Plug 'mengelbrecht/lightline-bufferline' 
+Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
+" Plug 'ryanoasis/vim-devicons' Icons without colours
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'nvim-lualine/lualine.nvim'
+"Plug 'itchyny/lightline.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 
-"themes
+    "themes
 Plug 'joshdick/onedark.vim'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'KabbAmine/yowish.vim'
-Plug 'sheerun/vim-polyglot' 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sainnhe/sonokai'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/tagbar'
 Plug 'jszakmeister/markdown2ctags' "(use pip to install, it's not a vim plugin)
 
 " problem
-Plug 'lvht/tagbar-markdown'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+"Plug 'lvht/tagbar-markdown'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-easytags'
 
 "complete---------------------------
 "Plug 'Valloric/YouCompleteMe'
@@ -161,8 +167,548 @@ Plug 'ferrine/md-img-paste.vim'
 "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 "Plug 'iamcco/mathjax-support-for-mkdp'
 
+" debug ------------------
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+
+
+" lua plugins
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' " -- enhance texetobject selection
+Plug 'romgrk/nvim-treesitter-context'   "show class/function at the top
+Plug 'ethanholz/nvim-lastplace' " auto return back to the last modified positon when open a file
+Plug 'akinsho/toggleterm.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'folke/which-key.nvim'
+Plug 'phaazon/hop.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+"Plug 'folke/trouble.nvim'
+"Plug 'Pocco81/HighStr.nvim'
+"Plug 'rhysd/accelerated-jk'
+
+
+
+
 
 call plug#end()
+
+lua << EOF
+local status_ok, lualine = pcall(require, "lualine")
+if not status_ok then
+  vim.notify("lualine not found!")
+  return
+end
+
+local hide_in_width = function()
+  return vim.fn.winwidth(0) > 80
+end
+
+local diagnostics = {
+  "diagnostics",
+  sources = { "nvim_diagnostic" },
+  sections = { "error", "warn" },
+  symbols = { error = " ", warn = " " },
+  colored = false,
+  update_in_insert = false,
+  always_visible = true,
+}
+
+local diff = {
+  "diff",
+  colored = true,
+  symbols = { added = "  ", modified = " ", removed = " " },
+  diff_color = {
+    added = { fg = "#98be65" },
+    modified = { fg = "#ecbe7b" },
+    removed = { fg = "#ec5f67" },
+  },
+  cond = hide_in_width
+}
+
+local mode = {
+  "mode",
+  fmt = function(str)
+    return "-- " .. str .. " --"
+  end,
+}
+
+
+local file_name = {
+  'filename',
+  file_status = true, -- Displays file status (readonly status, modified status)
+  path = 1, -- 0: Just the filename
+  -- 1: Relative path
+  -- 2: Absolute path
+
+  shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+  -- for other components. (terrible name, any suggestions?)
+  symbols = {
+    modified = '[+]', -- Text to show when the file is modified.
+    readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+  },
+}
+
+local filetype = {
+  "filetype",
+  icons_enabled = false,
+  icon = nil,
+}
+
+local branch = {
+  "branch",
+  icons_enabled = true,
+  icon = "",
+}
+
+local location = {
+  "location",
+  padding = 0,
+}
+
+-- cool function for progress
+local progress = function()
+  local current_line = vim.fn.line(".")
+  local total_lines = vim.fn.line("$")
+  -- local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+  local chars = { "██", "▇▇", "▆▆", "▅▅", "▄▄", "▃▃", "▂▂", "▁▁", " ", }
+  local line_ratio = current_line / total_lines
+  local index = math.ceil(line_ratio * #chars)
+  return chars[index]
+end
+
+
+local spaces = function()
+  return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+end
+
+-- add gps module to get the position information
+-- local gps = require("nvim-gps")
+
+lualine.setup({
+  options = {
+    icons_enabled = true,
+    theme = "auto",
+
+
+    -- 
+    --  
+    component_separators = { left = "\\", right = "|" },
+    section_separators = { left = "", right = "" },
+    -- component_separators = { left = "", right = "" },
+    -- section_separators = { left = "", right = "" },
+    disabled_filetypes = { "alpha", "startify", "dashboard", "NvimTree", "Outline" ,"coc-explorer"},
+    always_divide_middle = true,
+  },
+
+
+
+
+  sections = {
+    --lualine_a = { branch, diagnostics },
+    --lualine_b = { mode },
+    --lualine_c = { file_rame },
+    lualine_a = {mode},
+    lualine_b = {file_name},
+    lualine_c = {},
+    lualine_x = {diff, "encoding"},
+    lualine_y = {filetype,},
+    lualine_z = {location},
+    --lualine_x = { diff, spaces, "encoding", filetype, "fileformat" },
+    --lualine_y = { location },
+    --lualine_z = { progress },
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = { file_name },
+    lualine_c = {},
+    lualine_x = { },
+    lualine_y = {filetype, location },
+    lualine_z = {},
+  },
+  tabline = {},
+  extensions = {},
+})
+EOF
+
+
+
+lua << EOF
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
+  vim.notify("bufferline not found!")
+  return
+end
+
+bufferline.setup ({
+    options = {
+    mode = "buffers", -- set to "tabs" to only show tabpages instead
+    numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    --- @deprecated, please specify numbers as a function to customize the styling
+    -- number_style = "superscript", --| "subscript" | "" | { "none", "subscript" }, -- buffer_id at index 1, ordinal at index 2
+    close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
+    right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+    left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+    middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+    -- NOTE: this plugin is designed with this icon in mind,
+    -- and so changing this is NOT recommended, this is intended
+    -- as an escape hatch for people who cannot bear it for whatever reason
+    indicator_icon = '▎',
+    buffer_close_icon = '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    --- name_formatter can be used to change the buffer's label in the bufferline.
+    --- Please note some names can/will break the
+    --- bufferline so use this at your discretion knowing that it has
+    --- some limitations that will *NOT* be fixed.
+    name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+      -- remove extension from markdown files for example
+      if buf.name:match('%.md') then
+        return vim.fn.fnamemodify(buf.name, ':t:r')
+      end
+    end,
+    max_name_length = 18,
+    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+    tab_size = 18,
+    diagnostics = false, --| "nvim_lsp" | "coc",
+    diagnostics_update_in_insert = false,
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      return "("..count..")"
+    end,
+    -- NOTE: this will be called a lot so don't do any heavy processing here
+    custom_filter = function(buf_number, buf_numbers)
+      -- filter out filetypes you don't want to see
+      if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+        return true
+      end
+      -- filter out by buffer name
+      if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+        return true
+      end
+      -- filter out based on arbitrary rules
+      -- e.g. filter out vim wiki buffer from tabline in your work repo
+      if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+        return true
+      end
+      -- filter out by it's index number in list (don't show first buffer)
+      if buf_numbers[1] ~= buf_number then
+        return true
+      end
+    end,
+    offsets = {{filetype = "NvimTree", text = "File Explorer", text_align="center"}}, -- | function , text_align = "left" | "center" | "right"}},
+    show_buffer_icons = true, --| false, -- disable filetype icons for buffers
+    show_buffer_close_icons = true, --| false,
+    show_close_icon = true, --| false,
+    show_tab_indicators = true, -- | false,
+    persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+    -- can also be a table containing 2 custom separators
+    -- [focused and unfocused]. eg: { '|', '|' }
+    separator_style = "thin", --| "slant" | "thick" | "thin" | { 'any', 'any' },
+    enforce_regular_tabs = false, --| true,
+    always_show_bufferline = true, -- | false,
+    sort_by =  'directory',  -- ,'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+    --   -- add custom logic
+    --   return buffer_a.modified > buffer_b.modified
+    -- end
+  }
+})
+EOF
+
+
+lua require'colorizer'.setup()
+lua require'hop'.setup()
+lua require("toggleterm").setup()
+
+
+
+lua << EOF
+local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  vim.notify("treesitter not found!")
+  return
+end
+
+configs.setup {
+  ensure_installed = { "cpp", "c", "python", "go", "markdown", "json", "yaml", "html",  }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = { "" }, -- list of language that will be disabled
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = false, disable = { "yaml" } },
+  context_commentstring = {
+    enable = true,
+    config = {
+      -- Languages that have a single comment style
+      typescript = "// %s",
+      css = "/* %s */",
+      scss = "/* %s */",
+      html = "<!-- %s -->",
+      svelte = "<!-- %s -->",
+      vue = "<!-- %s -->",
+      json = "",
+    },
+  },
+  -- textobjects extension settings
+  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  textobjects = {
+    swap = {
+      enable = false,
+    },
+    select = {
+      enable = true,
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = false, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]]"] = "@function.outer",
+        -- ["]["] = "@function.outer",
+      },
+      goto_next_end = {
+        ["]["] = "@function.outer",
+        -- ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[["] = "@function.outer",
+        -- ["[]"] = "@function.outer",
+      },
+      goto_previous_end = {
+        ["[]"] = "@function.outer",
+        -- ["[]"] = "@class.outer",
+      },
+    },
+    lsp_interop = {
+      enable = false,
+      border = 'none',
+      peek_definition_code = {
+        ["<leader>pf"] = "@function.outer",
+        ["<leader>pF"] = "@class.outer",
+      },
+    },
+  },
+  textsubjects = {
+    enable = false,
+    keymaps = { ["."] = "textsubjects-smart", [";"] = "textsubjects-big" },
+  },
+  playground = {
+    enable = false,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = "o",
+      toggle_hl_groups = "i",
+      toggle_injected_languages = "t",
+      toggle_anonymous_nodes = "a",
+      toggle_language_display = "I",
+      focus_language = "f",
+      unfocus_language = "F",
+      update = "R",
+      goto_node = "<cr>",
+      show_help = "?",
+    },
+  },
+  rainbow = {
+    enable = false,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+  },
+  autotag = { enable = false },
+  -- matchup plugin
+  -- https://github.com/andymass/vim-matchup
+  matchup = {
+    enable = false, -- mandatory, false will disable the whole extension
+    -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+    -- [options]
+  },
+  -- autopairs plugin
+  autopairs = {
+    enable = false,
+  },
+}
+EOF
+
+
+
+
+
+lua require'treesitter-context'.setup{
+            \    TreesitterContex = 'white',
+            \    enable = true, 
+            \    throttle = true,
+            \    max_lines = 0, 
+            \    trim_scope = 'outer', 
+            \    patterns = { 
+            \        default = {
+            \        'class',
+            \        'function',
+            \        'method',
+            \        },
+            \    },
+            \    exact_patterns = {
+            \    },
+            \    zindex = 20, 
+            \    mode = 'cursor'
+            \
+            \}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" set
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+
+noremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
+noremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
+
+lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
+lua vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>HopLine<cr>", {})
+lua vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>HopLine<cr>", {})
+lua vim.api.nvim_set_keymap('n', '<leader>f', "<cmd>HopChar1<cr>", {})
+
+lua vim.api.nvim_set_keymap('v', '<leader>w', "<cmd>HopWord<cr>", {})
+lua vim.api.nvim_set_keymap('v', '<leader>j', "<cmd>HopLine<cr>", {})
+lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
+lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
+
+lua << EOF
+local dap = require('dap')
+dap.adapters.python = {
+  type = 'executable';
+  --command = 'python';
+  --command = os.getenv('HOME') .. '/.virtualenvs/tools/bin/python';
+  command = 'python3';
+
+  args = { '-m', 'debugpy.adapter' };
+}
+EOF
+
+
+lua << EOF
+local dap = require('dap')
+dap.configurations.python = {
+  {
+	type = 'python';
+	request = 'launch';
+    justMyCode = false;
+	name = "Launch file";
+	program = "${file}";
+	pythonPath = function()
+	  return 'python3'
+	end;
+  },
+}
+EOF
+
+lua << EOF
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+EOF
+
+"lua require('dapui').setup()
+lua require("dapui").setup({
+            \  icons = { expanded = "", collapsed = "" },
+            \  mappings = {
+            \    expand = { "<CR>", "<2-LeftMouse>" },
+            \    open = "o",
+            \    remove = "d",
+            \    edit = "e",
+            \    repl = "r",
+            \    toggle = "t",
+            \  },
+            \  expand_lines = vim.fn.has("nvim-0.7"),
+            \  layouts = {
+            \    {
+            \      elements = {
+            \        { id = "scopes", size = 0.25 },
+            \        "breakpoints",
+            \        "stacks",
+            \        "watches",
+            \      },
+            \      size = 40, 
+            \      position = "left",
+            \    },
+            \    {
+            \      elements = {
+            \        "repl",
+            \      },
+            \      size = 0.3, 
+            \      position = "bottom",
+            \    },
+            \  },
+            \  floating = {
+            \    max_height = nil, 
+            \    max_width = nil, 
+            \    border = "single",
+            \    mappings = {
+            \      close = { "q", "<Esc>" },
+            \    },
+            \  },
+            \  windows = { indent = 1 },
+            \  render = {
+            \    max_type_length = nil, 
+            \  }
+            \})
+
+"\        "console",
+"
+"
+nnoremap <leader>c <cmd>lua require'dap'.continue()<cr>
+nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr>
+nnoremap <leader>s <cmd>lua require'dap'.step_into()<cr>
+nnoremap <leader>n <cmd>lua require'dap'.step_over()<cr>
+nnoremap <leader>o <cmd>lua require'dap'.step_out()<cr>
+nnoremap <leader>b <cmd>lua require'dap'.toggle_breakpoint()<cr>
+
+"nnoremap <leader>d <cmd>lua require'dapui'.toggle()<cr>
+
+
 
 "coc install
 let g:coc_global_extensions = [
@@ -246,46 +792,46 @@ colorscheme sonokai
 "      \              [ 'filetype' ],
 "      \              [ 'fileformat', 'fileencoding', 'charvaluehex' ] ]
 "
+"      \ 'tabline': {
+"      \   'left': [ ['buffers'] ],
+"      \   'right': [ ['filepath'] ]
+"      \ },
+"      \ 'component_expand': {
+"      \   'buffers': 'lightline#bufferline#buffers'
+"      \ },
+"      \ 'component_type': {
+"      \   'buffers': 'tabsel'
+"      \ },
 "
-let g:lightline = {
-	  \ 'colorscheme': 'sonokai',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'percent' ],
-      \              [ 'filetype' ],
-      \              [ 'fileformat', 'fileencoding', 'charvaluehex' ] ]
-      \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['filepath'] ]
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ },
-      \ 'separator': {'left': '', 'right': ''},
-      \ 'subseparator': {'left': ' ', 'right': '|'}
-      \ }
+"let g:lightline = {
+"	  \ 'colorscheme': 'sonokai',
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
+"      \   'right': [ [ 'percent' ],
+"      \              [ 'filetype' ],
+"      \              [ 'fileformat', 'fileencoding', 'charvaluehex' ] ]
+"      \ },
+"      \ 'separator': {'left': '', 'right': ''},
+"      \ 'subseparator': {'left': ' ', 'right': '|'}
+"      \ }
 
 " bufferline
 
 
 "
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#enable_nerdfont = 1
-let g:lightline#bufferline#icon_position = 'left'
-let g:lightline#bufferline#show_number = 1
-
-let g:lightline#bufferline#number_map = {
-\ 0: '⁰', 1: '¹ ', 2: '² ', 3: '³ ', 4: '⁴ ',
-\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
-
-"function LightlineBufferlineFilter(buffer)
-"  return getbufvar(a:buffer, '&buftype') !=# 'terminal'
-"endfunction
-"let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
+"let g:lightline#bufferline#enable_devicons = 1
+"let g:lightline#bufferline#enable_nerdfont = 1
+"let g:lightline#bufferline#icon_position = 'left'
+"let g:lightline#bufferline#show_number = 1
+"
+"let g:lightline#bufferline#number_map = {
+"\ 0: '⁰', 1: '¹ ', 2: '² ', 3: '³ ', 4: '⁴ ',
+"\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+"
+""function LightlineBufferlineFilter(buffer)
+""  return getbufvar(a:buffer, '&buftype') !=# 'terminal'
+""endfunction
+""let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
 
 
 
@@ -307,7 +853,7 @@ if (empty($TMUX))
 endif
 
 " easymotion
-let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_smartcase = 1
 
 
 " markdown preview===================================
@@ -469,6 +1015,8 @@ vnoremap Y "+y
 "termnal模式下 退出插入模式
 tnoremap <Esc> <C-\><C-n>
 
+"复制缓存区
+"nnoremap ' "
 
 " 缩进文本
 nnoremap <tab> V>
@@ -502,18 +1050,18 @@ tnoremap <c-l> <C-\><C-n><c-w>l
 nnoremap <leader>e :edit $MYVIMRC<cr>                               
 nnoremap <c-s> :w<cr>
 " 重新加载vimrc文件
-nnoremap <leader>r :source $MYVIMRC<cr>
+nnoremap <leader>rr :source $MYVIMRC<cr>
 
 " nerdtree
 "nnoremap  ff :NERDTreeToggle<CR>
 " coc-explorer
-nmap ff <Cmd>CocCommand explorer<CR>
+nmap tt <Cmd>CocCommand explorer<CR>
 
 "easymotion f是vim自带当前行找字母
-map <leader>w <Plug>(easymotion-bd-w)
+"map <leader>w <Plug>(easymotion-bd-w)
 
 " ranger in vim (rnvimr)
-nnoremap  <leader>f :RnvimrToggle<CR>
+nnoremap  <leader>ra :RnvimrToggle<CR>
 
 
 
@@ -598,7 +1146,7 @@ autocmd BufEnter *.cpp,*.py,*.c :call CommentItalic(0)
 
 
 "  ctags==========================
-nmap F :TagbarToggle<CR>
+"nmap F :TagbarToggle<CR>
 
 " autocmd
 "    coc 
