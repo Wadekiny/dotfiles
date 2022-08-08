@@ -19,18 +19,22 @@ source ~/.config/nvim/subconfig/settings.vim
 source ~/.config/nvim/subconfig/pluginstall.vim
 " 快捷键
 source ~/.config/nvim/subconfig/keymap.vim
+" 根据不同文件类型重设主题和颜色（注释斜体）
+"source ~/.config/nvim/subconfig/rewritecolor.vim
 
 " 插件配置
+source ~/.config/nvim/subconfig/plugconfig/colorscheme.vim  "先调用这个，防止颜色覆盖
 source ~/.config/nvim/subconfig/plugconfig/lualine.lua
 source ~/.config/nvim/subconfig/plugconfig/bufferline.lua
 source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
 source ~/.config/nvim/subconfig/plugconfig/dap.lua
 source ~/.config/nvim/subconfig/plugconfig/coc.vim
-source ~/.config/nvim/subconfig/plugconfig/colorscheme.vim
 source ~/.config/nvim/subconfig/plugconfig/markdown.vim
-source ~/.config/nvim/subconfig/plugconfig/git.vim
+source ~/.config/nvim/subconfig/plugconfig/gitgutter.vim
+source ~/.config/nvim/subconfig/plugconfig/telescope.lua
+source ~/.config/nvim/subconfig/plugconfig/indent-blankline.lua
+"source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 lua require'colorizer'.setup()
 lua require'hop'.setup()
 lua require("toggleterm").setup()
-
 

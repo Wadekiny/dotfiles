@@ -22,7 +22,6 @@
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
-
 window:
   # Window dimensions (changes require restart)
   #
@@ -113,9 +112,13 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     #   tips: mono is useful for airline.vim
-    family: CodeNewRoman Nerd Font Mono
+    #family: DejaVuSansMono Nerd Font Mono
+    #family: DroidSansMono Nerd Font
+    family: CodeNewRoman Nerd Font  Mono
+    #family: Mononoki Nerd Font  Mono
+    #family: Hack Nerd Font  Mono
+    #family: Bitstream Vera Sans Mono Nerd Font
     #family: Consolas Nerd Font
-    #family: Consolas Nerd Font book
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -158,7 +161,7 @@ font:
 
   # Point size
   # 16 -- 5
-  size: 14.5
+  size: 12
   #size: 12.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
@@ -166,7 +169,7 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 4
+    y: 3
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -419,7 +422,8 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.99
+#background_opacity: 0.99
+window_opacity: 0.99
 
 #selection:
   # This string contains all characters that are used as separators for

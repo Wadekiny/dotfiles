@@ -1,5 +1,4 @@
 
-let mapleader = ";"      " 定义<leader>键
 set termguicolors
 set nocompatible         " 设置不兼容原始vi模式
 set nomodeline            
@@ -9,8 +8,7 @@ set noeb                 " 关闭错误的提示
 syntax enable            " 开启语法高亮功能
 set t_Co=256             " 开启256色支持
 set cmdheight=1          " 设置命令行的高度
-"set cmdheight=2          " 设置命令行的高度
-set showtabline=1
+set showtabline=2
 set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏

@@ -8,11 +8,13 @@ if has('termguicolors')
 endif
 " The configuration options should be placed before `colorscheme sonokai`.
 let g:sonokai_style = 'shusia'
+"let g:sonokai_style = 'default'
 let g:sonokai_better_performance = 1
 "let g:sonokai_colors_override = {'bg0': ['#1e222a', '235'], 'bg2': ['#282c34', '236']}
-"let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#2d2a2e', '236']}
-let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#222222', '236']}
+"let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#222222', '236']}
+let g:sonokai_colors_override = {'bg0': ['#222222', '235'] }
 colorscheme sonokai
+
 
 
 
@@ -24,15 +26,6 @@ let g:highlightedyank_highlight_duration = 400
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 
-function! CommentItalic(num)
-	let g:sonokai_disable_italic_comment = a:num
-	colorscheme sonokai
-	highlight HighlightedyankRegion cterm=reverse gui=reverse
-endfunction
-
-
-autocmd BufEnter * :call CommentItalic(1)
-autocmd BufEnter *.cpp,*.py,*.c :call CommentItalic(0)
 
 
 

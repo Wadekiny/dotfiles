@@ -64,6 +64,7 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 
 
 " lua plugins
+Plug 'lewis6991/impatient.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " -- enhance texetobject selection
@@ -75,6 +76,7 @@ Plug 'folke/which-key.nvim'
 Plug 'phaazon/hop.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'kyazdani42/nvim-tree.lua'
 "Plug 'folke/trouble.nvim'
 "Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'

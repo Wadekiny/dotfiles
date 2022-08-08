@@ -1,3 +1,9 @@
+" leader 
+let mapleader = ";"      " 定义<leader>键
+"
+"
+"
+"
 ""---------- toggleterm ----------""
 ""---------- toggleterm ----------""
 "autocmd TermEnter term://*toggleterm#*
@@ -43,6 +49,8 @@ nnoremap <leader>d <cmd>lua require'dapui'.toggle()<cr>
 ""---------- vim ----------""
 ""---------- vim ----------""
 
+nnoremap <leader>h :noh<cr>
+
 ""---------- 按键映射 ----------""
 nnoremap H 0
 nnoremap J L
@@ -56,7 +64,6 @@ inoremap 【 [
 inoremap 】 ]
 
 ""---------- buffer ----------""
-nnoremap <leader>h :noh<cr>
 nnoremap <space>h :bp<cr>
 nnoremap <space>l :bn<cr>
 nnoremap <space>d :bd<cr>
@@ -183,4 +190,19 @@ autocmd FileType markdown nmap <buffer><silent> <leader>p :call MdPasteImage()<C
 
 
 
+""---------- telescope ----------""
+nnoremap <space>f <cmd>Telescope find_files<cr>
+nnoremap <space>g <cmd>Telescope live_grep<cr>
+nnoremap <space>b <cmd>Telescope buffers<cr>
+nnoremap <space>H <cmd>Telescope help_tags<cr>
 
+
+
+""---------- 切换工作目录 ----------""
+
+function! ChangePwd() 
+    cd %:p:h
+    pwd
+endfunction
+"nnoremap <space>c <cmd>cd %:p:h<cr>
+nnoremap <space>c <cmd>call ChangePwd()<cr>

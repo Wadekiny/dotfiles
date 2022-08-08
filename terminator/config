@@ -55,7 +55,7 @@
     background_darkness = 0.96
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = Consolas Nerd Font Mono 17
+    font = CodeNewRoman Nerd Font Mono 16
     foreground_color = "#eeeeec"
     palette = "#000000:#cd0000:#00cd00:#cdcd00:#5c5cff:#cd00cd:#00cdcd:#e5e5e5:#888a85:#ff0000:#00ff00:#ffff00:#bd93f9:#ff00ff:#00ffff:#ffffff"
     rewrap_on_resize = False
