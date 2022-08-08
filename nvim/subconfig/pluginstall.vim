@@ -76,6 +76,7 @@ Plug 'folke/which-key.nvim'
 Plug 'phaazon/hop.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'folke/todo-comments.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 "Plug 'folke/trouble.nvim'
 "Plug 'Pocco81/HighStr.nvim'

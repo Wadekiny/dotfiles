@@ -36,5 +36,9 @@ source ~/.config/nvim/subconfig/plugconfig/indent-blankline.lua
 "source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 lua require'colorizer'.setup()
 lua require'hop'.setup()
-lua require("toggleterm").setup()
+lua require'toggleterm'.setup()
+lua require('todo-comments').setup{}
+
+
+
 

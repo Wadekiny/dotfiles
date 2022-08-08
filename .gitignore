@@ -26,6 +26,7 @@ neofetch/*.un~
 !nvim/subconfig/
 !nvim/subconfig/**
 nvim/subconfig/*.un~
+nvim/subconfig/plugconfig/*.un~
 nvim/*.un~
 
 !picom/
