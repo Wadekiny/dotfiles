@@ -1,4 +1,13 @@
 {
+    //"coc.source.vimtex.filetypes": [
+    //  "tex",
+    //  "plaintex",
+    //  "latex",
+    //  "markdown"
+    //],
+    //"coc.source.vimtex.enable": true,
+
+
     "coc.preferences.extensionUpdateCheck": "weekly",
     //"coc.preferences.messageLevel": "error",
     "suggest.floatConfig.border" : true,

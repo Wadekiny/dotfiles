@@ -16,7 +16,7 @@ Plug 'tpope/vim-surround'
 "Plug 'vim-airline/vim-airline'
 "Plug 'itchyny/lightline.vim'
 "Plug 'mengelbrecht/lightline-bufferline' 
-" Plug 'ryanoasis/vim-devicons' Icons without colours
+" Plug 'ryanoasis/vim-devicons' Icons without colors
 Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-lualine/lualine.nvim'
@@ -25,9 +25,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'liuchengxu/vista.vim'
 
 
-    "themes
+"themes
 Plug 'joshdick/onedark.vim'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
@@ -90,4 +91,14 @@ Plug 'kyazdani42/nvim-tree.lua'
 "Plug 'xolox/vim-easytags'
 
 
+
+"Plug 'hrsh7th/nvim-cmp'
+"Plug 'kdheepak/cmp-latex-symbols'
+"Plug 'GoldsteinE/compe-latex-symbols'
+"Plug 'jbyuki/nabla.nvim'
+"Plug 'lervag/vimtex'
 call plug#end()
+
+
+
+

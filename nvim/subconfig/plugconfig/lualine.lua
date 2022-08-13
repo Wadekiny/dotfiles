@@ -97,7 +97,7 @@ lualine.setup({
     --      
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    disabled_filetypes = { "alpha", "startify", "dashboard", "NvimTree", "Outline" ,"coc-explorer"},
+    disabled_filetypes = { "alpha", "startify", "dashboard", "NvimTree", "Outline" ,"coc-explorer","vista"},
     always_divide_middle = true,
     globalstatus = false,
     refresh = {

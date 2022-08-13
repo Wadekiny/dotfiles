@@ -8,10 +8,13 @@ let g:coc_global_extensions = [
     \'coc-explorer',
     \'coc-pyright',
     \'coc-sumneko-lua',
+    \'coc-sh',
     \]
 "\'coc-git',
 "\'coc-jedi',
 "\'coc-pyright',
+"\'coc-markdownlint',
+"\'coc-vimtex',
 
 " autocmd
 autocmd CursorHold * silent call CocActionAsync('highlight')

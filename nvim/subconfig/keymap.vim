@@ -7,9 +7,13 @@ let mapleader = ";"      " 定义<leader>键
 noremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
 noremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
 
+
+""---------- vista ----------""
+nnoremap T <cmd>Vista!!<cr>
+"
+
 ""---------- global copy(vim-peekaboo) ----------""
 vnoremap Y "+y
-
 ""---------- termnal模式下 退出插入模式 ----------""
 tnoremap <Esc> <C-\><C-n>
 
@@ -24,6 +28,11 @@ vnoremap K H
 vnoremap L $
 inoremap 【 [
 inoremap 】 ]
+inoremap ￥ $
+inoremap （ (
+inoremap ） )
+inoremap “ "
+inoremap ” "
 
 ""---------- 缩进文本 ----------""
 nnoremap <tab> V>
