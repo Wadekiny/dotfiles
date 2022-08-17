@@ -9,6 +9,7 @@ let g:coc_global_extensions = [
     \'coc-pyright',
     \'coc-sumneko-lua',
     \'coc-sh',
+    \'coc-tsserver',
     \]
 "\'coc-git',
 "\'coc-jedi',

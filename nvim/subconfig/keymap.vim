@@ -214,9 +214,10 @@ nmap tt <Cmd>CocCommand explorer<CR>
 nmap mm <Plug>MarkdownPreviewToggle
 
 ""---------- markdown image paste ----------""
+"for more details, see `:h %:t`"
 function! MdPasteImage() 
-    let g:mdip_imgdir_intext = './' . expand('%:r')
-    let g:mdip_imgdir = './' . expand('%:r')
+    let g:mdip_imgdir_intext = './' . expand('%:t:r')
+    let g:mdip_imgdir = './' . expand('%:t:r')
     "echo g:mdip_imgdir
     "echo g:mdip_imgdir_intext
     call mdip#MarkdownClipboardImage()
