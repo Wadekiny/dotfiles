@@ -26,20 +26,21 @@ source ~/.config/nvim/subconfig/keymap.vim
 source ~/.config/nvim/subconfig/plugconfig/colorscheme.vim  "先调用这个，防止颜色覆盖
 source ~/.config/nvim/subconfig/plugconfig/lualine.lua
 source ~/.config/nvim/subconfig/plugconfig/bufferline.lua
-source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
+"source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
 source ~/.config/nvim/subconfig/plugconfig/dap.lua
 source ~/.config/nvim/subconfig/plugconfig/coc.vim
 source ~/.config/nvim/subconfig/plugconfig/markdown.vim
 source ~/.config/nvim/subconfig/plugconfig/gitgutter.vim
 source ~/.config/nvim/subconfig/plugconfig/telescope.lua
-source ~/.config/nvim/subconfig/plugconfig/indent-blankline.lua
+source ~/.config/nvim/subconfig/plugconfig/indent-blankline.lua 
 source ~/.config/nvim/subconfig/plugconfig/vista.vim
-"source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
+source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
 lua require'colorizer'.setup()
 lua require'hop'.setup()
-lua require'toggleterm'.setup()
-"lua require('todo-comments').setup()
+lua require('todo-comments').setup()
+
+"lua require("noice").setup()
+source ~/.config/nvim/subconfig/plugconfig/noice.lua
+source ~/.config/nvim/subconfig/plugconfig/notify.lua
 
 "nmap <leader>p <cmd>lua require("nabla").popup({border='rounded'})<CR> 
-
-"set runtimepath^=/home/wadekiny/workspace/nvim-tools/coc-texsymbol

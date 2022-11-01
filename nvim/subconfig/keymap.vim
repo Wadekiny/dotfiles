@@ -40,12 +40,20 @@ nnoremap <s-tab> V<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 "}}}
+"
+"
+
+""---------- 保存 ----------""
+nnoremap <c-s> <cmd>:w<cr>
+inoremap <c-s> <cmd>:w<cr>
+vnoremap <c-s> <cmd>:w<cr>
+
 
 "  NOTE: ctrl group -----------------------------------------------------
 "{{{
 ""---------- toggleterm ----------""
-"autocmd TermEnter term://*toggleterm#*
-tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " By applying the mappings this way you can pass a count to your
 " mapping to open a specific window.
@@ -125,6 +133,8 @@ nnoremap <leader>H <cmd>Telescope help_tags<cr>
 
 "---------- 取消搜索高亮 ----------""
 nnoremap <leader>h :noh<cr>
+
+"---------- 运行python代码 ----------""
 "}}}
 
 "  NOTE: space group -----------------------------------------------------

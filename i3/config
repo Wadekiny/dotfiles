@@ -222,14 +222,12 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master toggle
 #bindsym $mod+Escape exec --no-startup-id ~/.config/i3/xmodmap/asd2asd.sh
 
 exec_always --no-startup-id ~/.config/i3/screensaver.sh
-#exec_always --no-startup-id xset s 1800 &
-#exec_always --no-startup-id xset dpms 65000 65000 65000 &
-#exec_always --no-startup-id xset -dpms 
-#exec_always --no-startup-id xss-lock -- betterlockscreen -l dim &
 
-#exec_always --no-startup-id xrandr --output DP-0 --primary 
-exec_always --no-startup-id xrandr --output DP-2 --left-of DP-0
-exec_always --no-startup-id xrandr --output DP-0 --left-of HDMI-0
+
+##exec_always --no-startup-id xrandr --output DP-0 --primary 
+#exec_always --no-startup-id xrandr --output DP-2 --left-of DP-0
+#exec_always --no-startup-id xrandr --output DP-0 --left-of HDMI-0
+exec_always --no-startup-id xrandr --output DP-2 --left-of HDMI-0
 
 #exec_always --no-startup-id feh --bg-scale ~/Pictures/background.png
 #exec_always --no-startup-id feh --bg-fill ~/Pictures/background/*

@@ -7,7 +7,7 @@ filetype plugin on       " 设置加载对应文件类型的插件
 set noeb                 " 关闭错误的提示
 syntax enable            " 开启语法高亮功能
 set t_Co=256             " 开启256色支持
-set cmdheight=1          " 设置命令行的高度
+set cmdheight=0          " 设置命令行的高度
 set showtabline=2
 set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
@@ -40,7 +40,7 @@ set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
 set softtabstop=4        " 设置4个空格为制表符 
 set smarttab             " 在行和段开始处使用制表符 
-"set wrap                 " 折行
+set nowrap                 " 折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码

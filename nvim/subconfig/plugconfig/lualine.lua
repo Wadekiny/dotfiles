@@ -55,6 +55,23 @@ local file_name = {
   },
 }
 
+
+local only_file_name = {
+  'filename',
+  file_status = true, -- Displays file status (readonly status, modified status)
+  path = 0, -- 0: Just the filename
+  -- 1: Relative path
+  -- 2: Absolute path
+
+  shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+  -- for other components. (terrible name, any suggestions?)
+  symbols = {
+    modified = '[+]', -- Text to show when the file is modified.
+    readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+  },
+}
+
 local filetype = {
   "filetype",
   icons_enabled = false,
@@ -97,9 +114,9 @@ lualine.setup({
     --      
     component_separators = { left = '|', right = '|'},
     section_separators = { left = ' ', right = ' '},
-    disabled_filetypes = { "alpha", "startify", "dashboard", "NvimTree", "Outline" ,"coc-explorer","vista"},
+    disabled_filetypes = { "alpha", "startify", "dashboard", "NvimTree", "Outline" ,"coc-explorer","vista","[dap-repl]"},
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 10,
       tabline = 10,
@@ -127,10 +144,12 @@ lualine.setup({
 
   inactive_sections = {
     lualine_a = {},
-    lualine_b = { file_name },
+    --lualine_b = { file_name },
+    lualine_b = { only_file_name },
     lualine_c = {},
     lualine_x = { },
-    lualine_y = {filetype, location },
+    --lualine_y = {filetype, location },
+    lualine_y = {},
     lualine_z = {},
   },
   tabline = {},

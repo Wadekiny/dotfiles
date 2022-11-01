@@ -52,7 +52,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown' 
-Plug 'dhruvasagar/vim-table-mode'
+"Plug 'dhruvasagar/vim-table-mode'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'ferrine/md-img-paste.vim'
 "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
@@ -79,6 +79,13 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'folke/todo-comments.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
+
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'rcarriga/nvim-notify'
+
+
+
 "Plug 'folke/trouble.nvim'
 "Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'
@@ -86,6 +93,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 " problem
 "Plug 'preservim/tagbar'
 "Plug 'jszakmeister/markdown2ctags' "(use pip to install, it's not a vim plugin)
+"
 "Plug 'lvht/tagbar-markdown'
 "Plug 'xolox/vim-misc'
 "Plug 'xolox/vim-easytags'
@@ -97,6 +105,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 "Plug 'GoldsteinE/compe-latex-symbols'
 "Plug 'jbyuki/nabla.nvim'
 "Plug 'lervag/vimtex'
+"
 call plug#end()
 
 

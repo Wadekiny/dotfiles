@@ -47,23 +47,26 @@ require("dapui").setup({
               },
               expand_lines = vim.fn.has("nvim-0.7"),
               layouts = {
-                {
-                  elements = {
-                    { id = "scopes", size = 0.25 },
-                    "breakpoints",
-                    "stacks",
-                    "watches",
-                  },
-                  size = 40, 
-                  position = "left",
-                },
+                --{
+                --  elements = {
+                --    { id = "scopes", size = 0.25 },
+                --    "breakpoints",
+                --    "stacks",
+                --    "watches",
+                --  },
+                --  --size = 20, 
+                --  size = 0.3, 
+                --  --position = "left",
+                --  position = "right",
+                --},
                 {
                   elements = {
 --       "console",
                     "repl",
                   },
                   size = 0.3, 
-                  position = "bottom",
+                  -- position = "bottom",
+                  position = "right",
                 },
               },
               floating = {
