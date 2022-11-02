@@ -6,6 +6,7 @@ function! CommentItalic(num)
     highlight IndentBlanklineContextChar guifg=#00FF00 
     hi CocMenuSel  guibg=#13354A 
     hi CocFloating guibg=#222222
+    " may be something others, like indent_line
 endfunction
 
 

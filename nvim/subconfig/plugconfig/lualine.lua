@@ -142,7 +142,7 @@ lualine.setup({
   --},
 
 
-  inactive_sections = {
+ inactive_sections = {
     lualine_a = {},
     --lualine_b = { file_name },
     lualine_b = { only_file_name },

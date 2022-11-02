@@ -24,7 +24,8 @@ source ~/.config/nvim/subconfig/keymap.vim
 
 " 插件配置
 source ~/.config/nvim/subconfig/plugconfig/colorscheme.vim  "先调用这个，防止颜色覆盖
-source ~/.config/nvim/subconfig/plugconfig/lualine.lua
+"source ~/.config/nvim/subconfig/plugconfig/lualine.lua
+source ~/.config/nvim/subconfig/plugconfig/evil_lualine.lua
 source ~/.config/nvim/subconfig/plugconfig/bufferline.lua
 "source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
 source ~/.config/nvim/subconfig/plugconfig/dap.lua
