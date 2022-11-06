@@ -95,19 +95,21 @@ let g:mkdp_filetypes = ['markdown']
 let g:vim_markdown_math = 1
 
 
+" DEPRECATED
+"
 " markdown2ctags
 " !!!remember to set the ctagsbin
-let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : '~/.config/nvim/plugged/markdown2ctags/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '»',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
+"let g:tagbar_type_markdown = {
+"    \ 'ctagstype': 'markdown',
+"    \ 'ctagsbin' : '~/.config/nvim/plugged/markdown2ctags/markdown2ctags.py',
+"    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+"    \ 'kinds' : [
+"        \ 's:sections',
+"        \ 'i:images'
+"    \ ],
+"    \ 'sro' : '»',
+"    \ 'kind2scope' : {
+"        \ 's' : 'section',
+"    \ },
+"    \ 'sort': 0,
+"\ }

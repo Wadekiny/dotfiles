@@ -138,11 +138,14 @@ nnoremap <leader>h :noh<cr>
 "}}}
 
 "  NOTE: space group -----------------------------------------------------
+"
 "{{{
 ""---------- change buffer ----------""
 nnoremap <space>h :bp<cr>
 nnoremap <space>l :bn<cr>
-nnoremap <space>d :bd<cr>
+"nnoremap <space>d :bd<cr>
+" need bufdelete.nvim
+nnoremap <space>d :lua require('bufdelete').bufdelete(0,true)<cr>
 
 ""---------- vimrc ----------""
 nnoremap <space>e :edit $MYVIMRC<cr>                               

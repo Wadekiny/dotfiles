@@ -85,6 +85,10 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'
 
 
+Plug 'jbyuki/one-small-step-for-vimkind'
+Plug 'fgheng/winbar.nvim'
+
+Plug 'famiu/bufdelete.nvim'
 
 "Plug 'folke/trouble.nvim'
 "Plug 'Pocco81/HighStr.nvim'

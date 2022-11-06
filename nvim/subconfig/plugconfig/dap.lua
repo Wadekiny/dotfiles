@@ -24,6 +24,20 @@ dap.configurations.python = {
   },
 }
 
+--dap.configurations.lua = {
+--  {
+--    type = 'nlua',
+--    request = 'attach',
+--    name = "Attach to running Neovim instance",
+--  }
+--}
+--
+--dap.adapters.nlua = function(callback, config)
+--  callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+--end
+
+
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -53,6 +67,8 @@ require("dapui").setup({
                 --    "breakpoints",
                 --    "stacks",
                 --    "watches",
+                --    "repl"
+                --    "console",
                 --  },
                 --  --size = 20, 
                 --  size = 0.3, 
@@ -61,17 +77,15 @@ require("dapui").setup({
                 --},
                 {
                   elements = {
---       "console",
                     "repl",
                   },
-                  size = 0.3, 
-                  -- position = "bottom",
+                  size = 0.3,
                   position = "right",
                 },
               },
               floating = {
-                max_height = nil, 
-                max_width = nil, 
+                max_height = nil,
+                max_width = nil,
                 border = "single",
                 mappings = {
                   close = { "q", "<Esc>" },
@@ -79,7 +93,7 @@ require("dapui").setup({
               },
               windows = { indent = 1 },
               render = {
-                max_type_length = nil, 
+                max_type_length = nil,
               }
             })
 

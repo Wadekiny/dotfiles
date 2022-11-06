@@ -23,25 +23,60 @@ source ~/.config/nvim/subconfig/keymap.vim
 "source ~/.config/nvim/subconfig/rewritecolor.vim
 
 " 插件配置
+"
+" 有关高亮的设置 (scheme, highlightedyank)
 source ~/.config/nvim/subconfig/plugconfig/colorscheme.vim  "先调用这个，防止颜色覆盖
+
+" 下面的状态栏
 "source ~/.config/nvim/subconfig/plugconfig/lualine.lua
 source ~/.config/nvim/subconfig/plugconfig/evil_lualine.lua
-source ~/.config/nvim/subconfig/plugconfig/bufferline.lua
-"source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
-source ~/.config/nvim/subconfig/plugconfig/dap.lua
-source ~/.config/nvim/subconfig/plugconfig/coc.vim
-source ~/.config/nvim/subconfig/plugconfig/markdown.vim
-source ~/.config/nvim/subconfig/plugconfig/gitgutter.vim
-source ~/.config/nvim/subconfig/plugconfig/telescope.lua
-source ~/.config/nvim/subconfig/plugconfig/indent-blankline.lua 
-source ~/.config/nvim/subconfig/plugconfig/vista.vim
-source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
-lua require'colorizer'.setup()
-lua require'hop'.setup()
-lua require('todo-comments').setup()
 
-"lua require("noice").setup()
+" 上面的缓冲区栏"
+source ~/.config/nvim/subconfig/plugconfig/bufferline.lua
+
+" 代码高亮 python bug
+"source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
+
+" 调试 (dap, dapui, nvim-dap-virtual-text)
+source ~/.config/nvim/subconfig/plugconfig/dap.lua
+
+
+" coc补全，coc插件列表，coc窗口颜色配置
+source ~/.config/nvim/subconfig/plugconfig/coc.vim
+
+" markdown预览
+source ~/.config/nvim/subconfig/plugconfig/markdown.vim
+
+" 显示git修改记录
+source ~/.config/nvim/subconfig/plugconfig/gitgutter.vim
+
+" 搜索插件telescope，设置边框
+source ~/.config/nvim/subconfig/plugconfig/telescope.lua
+
+" 显示缩紧对齐竖线，设置颜色
+source ~/.config/nvim/subconfig/plugconfig/indent-blankline.lua 
+
+" 右侧的类、函数、变量列表
+source ~/.config/nvim/subconfig/plugconfig/vista.vim
+
+" 终端
+source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
+
+" 命令输入改为浮动窗口
 source ~/.config/nvim/subconfig/plugconfig/noice.lua
+
+" 输出改为浮动窗口
 source ~/.config/nvim/subconfig/plugconfig/notify.lua
 
-"nmap <leader>p <cmd>lua require("nabla").popup({border='rounded'})<CR> 
+" bufferline下面的winbar
+source ~/.config/nvim/subconfig/plugconfig/winbar.lua
+
+" 颜色变量可视化
+lua require'colorizer'.setup()
+
+" 强化easy-motion
+lua require'hop'.setup()
+
+" todo高亮
+lua require('todo-comments').setup()
+

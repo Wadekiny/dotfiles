@@ -36,33 +36,32 @@ local conditions = {
         return gitdir and #gitdir > 0 and #gitdir < #filepath
     end,
 
-    path_style = function()
-        local path = 0
-        -- 0: Just the filename
-        -- 1: Relative path
-        -- 2: Absolute path
-        -- 3: home path
-        local offset = 50
-        local full_path_len = string.len(vim.fn.expand('%:p'))+offset
-        local home_path_len = string.len(vim.fn.expand('%:~'))+offset
-        local relative_path_len = string.len(vim.fn.expand('%:.'))+offset
-        local win_width = vim.fn.winwidth(0)
+    path_style = function(style)
+        local path = style
+            -- 0: Just the filename
+            -- 1: Relative path
+            -- 2: Absolute path
+            -- 3: home path
+        if style == 'auto' then
+            local offset = 50
+            local full_path_len = string.len(vim.fn.expand('%:p'))+offset
+            local home_path_len = string.len(vim.fn.expand('%:~'))+offset
+            local relative_path_len = string.len(vim.fn.expand('%:.'))+offset
+            local win_width = vim.fn.winwidth(0)
 
-        if (full_path_len > win_width)
-        then
-            if (home_path_len > win_width)
-            then
-                if (relative_path_len > win_width)
-                then
-                    path = 0
+            if (full_path_len > win_width) then
+                if (home_path_len > win_width) then
+                    if (relative_path_len > win_width) then
+                        path = 0
+                    else
+                        path = 1
+                    end
                 else
-                    path = 1
+                    path = 3
                 end
             else
-                path = 3
+                path = 2
             end
-        else
-            path = 2
         end
         return path
     end,
@@ -121,6 +120,8 @@ local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
 
+-- print(lualine.winbar)
+
 ins_left {
   function()
     return '▊'
@@ -174,7 +175,8 @@ ins_left {
 
 ins_left {
     'filename',
-    path=conditions.path_style(),
+    --path=conditions.path_style('auto'),
+    path=conditions.path_style(0),
     cond = conditions.buffer_not_empty,
     color = { fg = colors.magenta, gui = 'bold' },
 }
@@ -194,6 +196,9 @@ ins_left {
   },
 }
 
+ins_left{
+    'diagnostics',
+}
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
 ins_left {
@@ -201,6 +206,8 @@ ins_left {
     return '%='
   end,
 }
+
+
 
 --ins_left {
 --  -- Lsp server name .

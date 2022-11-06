@@ -21,7 +21,7 @@ colorscheme sonokai
 
 
 " highlightedyank
- "vim-highlightedyank 复制时高亮
+"vim-highlightedyank 复制时高亮
 let g:highlightedyank_highlight_duration = 400
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
