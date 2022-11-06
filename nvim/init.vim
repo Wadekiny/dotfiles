@@ -72,11 +72,13 @@ source ~/.config/nvim/subconfig/plugconfig/notify.lua
 source ~/.config/nvim/subconfig/plugconfig/winbar.lua
 
 " 颜色变量可视化
-lua require'colorizer'.setup()
+lua require('colorizer').setup()
 
 " 强化easy-motion
-lua require'hop'.setup()
+lua require('hop').setup()
 
 " todo高亮
 lua require('todo-comments').setup()
 
+" 快捷键提示
+lua require("which-key").setup()

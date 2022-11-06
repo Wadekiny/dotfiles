@@ -2,6 +2,7 @@
 let mapleader = ";"      " 定义<leader>键
 
 "  NOTE: one key -----------------------------------------------------
+"
 "{{{
 ""---------- enhance finding (hop,like easymotion) ----------""
 noremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
@@ -50,6 +51,7 @@ vnoremap <c-s> <cmd>:w<cr>
 
 
 "  NOTE: ctrl group -----------------------------------------------------
+"
 "{{{
 ""---------- toggleterm ----------""
 autocmd TermEnter term://*toggleterm#*
@@ -87,6 +89,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "}}}
 
 "  NOTE: alt group -----------------------------------------------------
+"
 "{{{
 ""---------- 分屏调整,切换; m是alt ----------""
 nnoremap <m-l> <c-w>5>
@@ -96,6 +99,7 @@ nnoremap <m-j> <c-w>5-
 "}}}
 
 "  NOTE: leader group -----------------------------------------------------
+"
 "{{{
 ""---------- hop(like easymotion) ----------""
 
@@ -182,8 +186,9 @@ nnoremap <space>f <cmd>call ChangePwd()<cr>
 "}}}
 
 "  NOTE: other group
+"
 "{{{
-"ga -> get ascii
+"nvim 自带，ga -> get ascii
 
 ""---------- coc ----------""
 inoremap <silent><expr> <TAB>
