@@ -226,7 +226,8 @@ nmap <silent> gr <Plug>(coc-references)
 nmap rn <Plug>(coc-rename)
 
 ""---------- coc-explorer ----------""
-nmap tt <Cmd>CocCommand explorer<CR>
+"nmap tt <Cmd>CocCommand explorer<CR>
+nmap tt <Cmd>NvimTreeToggle<CR>
 
 ""---------- markdown preview ----------""
 nmap mm <Plug>MarkdownPreviewToggle
@@ -242,3 +243,11 @@ function! MdPasteImage()
 endfunction
 autocmd FileType markdown nmap <buffer><silent> mp :call MdPasteImage()<CR>
 "}}}
+"
+"
+""---------- notify ----------""
+nnoremap <silent> <leader><space> :lua require('notify').dismiss()<cr>
+
+
+
+

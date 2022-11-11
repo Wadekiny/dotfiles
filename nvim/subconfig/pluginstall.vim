@@ -67,7 +67,7 @@ Plug 'phaazon/hop.nvim'                             "升级版 easymotion
 Plug 'norcalli/nvim-colorizer.lua'                  "颜色变量可视化
 
 Plug 'folke/todo-comments.nvim'                     "todo高亮
-Plug 'kyazdani42/nvim-tree.lua'                     "左侧tree，没用，用的是coc-explorer
+Plug 'kyazdani42/nvim-tree.lua'                     "左侧tree，启动比coc-explorer快，修改了notify的输出规则，否则进入git没有track的目录会弹很多框框
 
 Plug 'folke/noice.nvim'                             "命令输入改为浮动窗口
 Plug 'MunifTanjim/nui.nvim'
@@ -78,6 +78,10 @@ Plug 'fgheng/winbar.nvim'                           "winbar 显示路径(做了�
 
 Plug 'famiu/bufdelete.nvim'                         "删除buffer不改变分屏结构
 
+Plug 'edluffy/hologram.nvim'                        "nvim内显示图片
+Plug 'mbpowers/nvimager'
+
+Plug 'sunjon/shade.nvim'                            "使非活动窗口变暗
 "Plug 'folke/trouble.nvim'
 "Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'

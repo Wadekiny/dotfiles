@@ -21,7 +21,7 @@ winbar.setup({
     },
 
     exclude_filetype = {
-        'help',
+        --'help',
         'startify',
         'dashboard',
         'packer',
@@ -37,7 +37,9 @@ winbar.setup({
         'coc-explorer',
         'vista',
         '[dap-repl]',
-        'noice'   -- must add it !!!! otherwise noice will collapse
-
+        'noice',   -- must add it !!!! otherwise noice will collapse
+        'vista_markdown',
+        'ranger',
+        'rnvimr',
     }
 })

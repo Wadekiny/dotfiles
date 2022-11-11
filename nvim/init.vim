@@ -81,4 +81,17 @@ lua require('hop').setup()
 lua require('todo-comments').setup()
 
 " 快捷键提示
-lua require("which-key").setup()
+source ~/.config/nvim/subconfig/plugconfig/whichkey.lua
+
+" 文件树
+source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
+
+" nvim内显示图片
+"lua require('hologram').setup({auto_display = true})
+
+"使非活动窗口变暗
+source ~/.config/nvim/subconfig/plugconfig/shade.lua
+
+
+
+" 查看所有快捷键的插件
