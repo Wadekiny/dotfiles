@@ -1,5 +1,9 @@
 *
 
+!dunst/
+!dunst/**
+dunst/*.un~
+
 !alacritty/
 !alacritty/**
 alacritty/*.un~
@@ -58,4 +62,5 @@ xborders/*.un~
 !.gitignore
 
 !betterlockscreenrc
+
 
