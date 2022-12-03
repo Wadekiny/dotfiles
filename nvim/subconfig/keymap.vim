@@ -145,11 +145,11 @@ nnoremap <leader>h :noh<cr>
 "
 "{{{
 ""---------- change buffer ----------""
-nnoremap <space>h :bp<cr>
-nnoremap <space>l :bn<cr>
+"nnoremap <space>h :bp<cr>
+"nnoremap <space>l :bn<cr>
 "nnoremap <space>d :bd<cr>
 " need bufdelete.nvim
-nnoremap <space>d :lua require('bufdelete').bufdelete(0,true)<cr>
+nnoremap <silent><space>d :lua require('bufdelete').bufdelete(0,true)<cr>
 
 ""---------- vimrc ----------""
 nnoremap <space>e :edit $MYVIMRC<cr>                               
@@ -247,6 +247,27 @@ autocmd FileType markdown nmap <buffer><silent> mp :call MdPasteImage()<CR>
 "
 ""---------- notify ----------""
 nnoremap <silent> <leader><space> :lua require('notify').dismiss()<cr>
+
+"nnoremap <silent> <space><s-h> :BufferLine
+
+nnoremap <silent><space>1 <cmd>lua require("bufferline").go_to_buffer(1, true)<cr>
+nnoremap <silent><space>2 <cmd>lua require("bufferline").go_to_buffer(2, true)<cr>
+nnoremap <silent><space>3 <cmd>lua require("bufferline").go_to_buffer(3, true)<cr>
+nnoremap <silent><space>4 <cmd>lua require("bufferline").go_to_buffer(4, true)<cr>
+nnoremap <silent><space>5 <cmd>lua require("bufferline").go_to_buffer(5, true)<cr>
+nnoremap <silent><space>6 <cmd>lua require("bufferline").go_to_buffer(6, true)<cr>
+nnoremap <silent><space>7 <cmd>lua require("bufferline").go_to_buffer(7, true)<cr>
+nnoremap <silent><space>8 <cmd>lua require("bufferline").go_to_buffer(8, true)<cr>
+nnoremap <silent><space>9 <cmd>lua require("bufferline").go_to_buffer(9, true)<cr>
+nnoremap <silent><space>0 <cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>
+
+
+nnoremap <silent><space><s-l> :BufferLineMoveNext<CR>
+nnoremap <silent><space><s-h> :BufferLineMovePrev<CR>
+
+nnoremap <silent><space>l :BufferLineCycleNext<cr>
+nnoremap <silent><space>h :BufferLineCyclePrev<cr>
+
 
 
 

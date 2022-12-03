@@ -11,7 +11,7 @@
 "
 "
 "
-
+"========================================================================================================================================
 
 " nvim 设置
 source ~/.config/nvim/subconfig/settings.vim
@@ -86,12 +86,15 @@ source ~/.config/nvim/subconfig/plugconfig/whichkey.lua
 " 文件树
 source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 
+"source ~/.config/nvim/subconfig/plugconfig/trouble.lua "lsp?
 " nvim内显示图片
 "lua require('hologram').setup({auto_display = true})
 
 "使非活动窗口变暗
-source ~/.config/nvim/subconfig/plugconfig/shade.lua
+"source ~/.config/nvim/subconfig/plugconfig/shade.lua
 
 
 
 " 查看所有快捷键的插件
+"
+lua require("scrollbar").setup()

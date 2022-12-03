@@ -162,7 +162,9 @@ font:
   # Point size
   # 16 -- 5
   #size: 15
-  size: 12.5
+  #size: 12.5
+  #size: 10
+  size: 10
   #size: 12.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
@@ -424,7 +426,8 @@ colors:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 #background_opacity: 0.99
-window_opacity: 0.99
+#window_opacity: 0.99
+window_opacity: 0.8
 
 #selection:
   # This string contains all characters that are used as separators for

@@ -40,7 +40,8 @@ set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
 set softtabstop=4        " 设置4个空格为制表符 
 set smarttab             " 在行和段开始处使用制表符 
-set nowrap                 " 折行
+"set nowrap                 " 折行
+set wrap                 " 折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码

@@ -68,7 +68,7 @@ term.setup({
   persist_size = true,
   persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
   --direction = 'vertical' | 'horizontal' | 'tab' | 'float',
-  direction = 'vertical',
+  direction = 'horizontal',
   close_on_exit = true, -- close the terminal window when the process exits
   auto_scroll = true, -- automatically scroll to the bottom on terminal output
     highlights = {

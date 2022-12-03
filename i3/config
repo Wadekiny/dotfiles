@@ -24,6 +24,7 @@ new_float none
 hide_edge_borders both
 gaps inner 8
 gaps outer -2
+#smart_gaps on
 
 
 #default_border pixel 4
@@ -61,7 +62,8 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
-bindsym $mod+Shift+q kill
+#bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run

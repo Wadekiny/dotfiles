@@ -19,10 +19,13 @@ bufferline.setup ({
     -- as an escape hatch for people who cannot bear it for whatever reason
     -- indicator_icon = '▎', -- 更新后，即将弃用indicator_icon
     indicator = {
+        --icon = '▊',
         icon = '▎',
+        --sytle = 'icon'
         sytle = 'icon'
     },
-    buffer_close_icon = '',
+    --buffer_close_icon = '',
+    buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
     left_trunc_marker = '',
@@ -65,9 +68,9 @@ bufferline.setup ({
         return true
       end
     end,
-    offsets = {{filetype = "coc-explorer", text = "coc-explorer", text_align="center"}}, -- | function , text_align = "left" | "center" | "right"}},
+    offsets = {{filetype = "coc-explorer", text = "coc-explorer", text_align="center"},{filetype = "NvimTree", text = "NvimTree", text_align="center"}}, -- | function , text_align = "left" | "center" | "right"}},
     show_buffer_icons = true, --| false, -- disable filetype icons for buffers
-    show_buffer_close_icons = true, --| false,
+    show_buffer_close_icons = false, --| false,
     show_close_icon = true, --| false,
     show_tab_indicators = true, -- | false,
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist

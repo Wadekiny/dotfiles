@@ -82,9 +82,10 @@ Plug 'edluffy/hologram.nvim'                        "nvim内显示图片
 Plug 'mbpowers/nvimager'
 
 Plug 'sunjon/shade.nvim'                            "使非活动窗口变暗
-"Plug 'folke/trouble.nvim'
+Plug 'folke/trouble.nvim'
 "Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'
+Plug 'petertriho/nvim-scrollbar'
 
 call plug#end()
 

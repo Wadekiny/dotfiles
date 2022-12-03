@@ -37,9 +37,11 @@ winbar.setup({
         'coc-explorer',
         'vista',
         '[dap-repl]',
+        'dap-repl',
         'noice',   -- must add it !!!! otherwise noice will collapse
         'vista_markdown',
         'ranger',
         'rnvimr',
+        'coc'
     }
 })

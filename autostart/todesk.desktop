@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=4.3.1.0
+Encoding=UTF-8
+Name=ToDesk
+Comment=ToDesk Remote Control Software
+Comment[zh_CN]=ToDesk远程控制软件
+Exec=env LIBVA_DRIVER_NAME=iHD LIBVA_DRIVERS_PATH=/opt/todesk/bin /opt/todesk/bin/ToDesk
+Icon=todesk
+GenericName=ToDesk Remote Control Software
+GenericName[zh_CN]=ToDesk远程控制软件
+Keywords=todesk
+Categories=Network;
+Type=Application
+Terminal=false
