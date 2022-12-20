@@ -1,1 +1,6 @@
 .*.un~
+config.backup/nvim.backup/plugged
+config.backup/nvim.backup/vim-plug
+nvim/plugged
+lazygit/state.yml
+ohmyzsh
