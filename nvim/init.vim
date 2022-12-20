@@ -93,7 +93,7 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 " 右上角stateline
 "lua require('incline').setup()
 
-"使非活动窗口变暗
+"使非活动窗口变暗 主题也许能做到，但是边界变丑
 "source ~/.config/nvim/subconfig/plugconfig/shade.lua
 
 "lua require("mason").setup()
@@ -102,9 +102,5 @@ source ~/.config/nvim/subconfig/plugconfig/lsp.lua
 source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
 lua require('nvim-surround').setup{}
 
-"highlight  LspSagaFinderSelection guifg=#ff0000 guibg=#00ff00 gui=bold
-"highlight  LspSagaWinbarField guifg=#ff0000 guibg=#00ff00 gui=bold
-"highlight  LspFloatWinNormal guibg=#00ff00 
 
-"highlight HighlightedyankRegion cterm=reverse gui=reverse
 
