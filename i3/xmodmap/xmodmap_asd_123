@@ -1,0 +1,10 @@
+keycode 38 =1 exclam 1 exclam
+keycode 39 =2 at 2 at
+keycode 40 =3 numbersign 3 numbersign
+keycode 41 =4 dollar 4 dollar
+keycode 42 =5 percent 5 percent
+keycode 43 =6 asciicircum 6 asciicircum
+keycode 44 =7 ampersand 7 ampersand
+keycode 45 =8 asterisk 8 asterisk
+keycode 46 =9 parenleft 9 parenleft
+keycode 47 =0 parenright 0 parenright

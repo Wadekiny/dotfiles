@@ -1,0 +1,85 @@
+Updated. Elapsed time: 7.088409 sec.
+[===============================xx=================xxxxx]
+
+- Finishing ... Done!
+- Post-update hook for nvim-treesitter ... OK
+- Latest tag for * -> v2.2.1 (toggleterm.nvim)
+x nvim-tree.lua:
+    error: Your local changes to the following files would be overwritten by merge:
+    	lua/nvim-tree/notify.lua
+    Please commit your changes or stash them before you merge.
+    Aborting
+    Updating e204a7d..e14c289
+x vim-markdown:
+    error: Your local changes to the following files would be overwritten by merge:
+    	indent/markdown.vim
+    Please commit your changes or stash them before you merge.
+    Aborting
+    Updating 8e5d86f..df4be86
+x tokyonight.nvim:
+    fatal: Not possible to fast-forward, aborting.
+- Latest tag for v2.* -> v2.12.0 (bufferline.nvim)
+x vim-visual-multi:
+    error: Your local changes to the following files would be overwritten by merge:
+    	test/test.py
+    Please commit your changes or stash them before you merge.
+    Aborting
+    Updating 88f934f..724bd53
+x vim-surround:
+    error: Your local changes to the following files would be overwritten by merge:
+    	plugin/surround.vim
+    Please commit your changes or stash them before you merge.
+    Aborting
+    Updating f51a26d..3d188ed
+- nvim-treesitter-textobjects:  7 files changed, 29 insertions(+), 14 deletions(-)
+- cmp-buffer: Already up to date.
+- cmp-path: Already up to date.
+- markdown-preview.nvim: Already up to date.
+- telescope.nvim: OK
+- noice.nvim:  create mode 100644 vim.toml
+- vim-colors-solarized: Already up to date.
+- nvim-treesitter-context:  2 files changed, 3 insertions(+), 17 deletions(-)
+- nvim-cmp:  5 files changed, 49 insertions(+), 32 deletions(-)
+x onedark.vim:
+    fatal: unable to access 'https://github.com/joshdick/onedark.vim.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+x nvim-lspconfig:
+    fatal: unable to access 'https://github.com/neovim/nvim-lspconfig.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+- sonokai:  4 files changed, 35 insertions(+), 5 deletions(-)
+- plenary.nvim: Already up to date.
+- toggleterm.nvim: OK
+- vim-markdown-toc: Already up to date.
+- md-img-paste.vim: Already up to date.
+- hop.nvim: Already up to date.
+- lspsaga.nvim:  3 files changed, 10 insertions(+), 18 deletions(-)
+- rnvimr: Already up to date.
+- impatient.nvim:  create mode 100644 .github/FUNDING.yml
+- vim-highlightedyank: Already up to date.
+- nui.nvim:  4 files changed, 96 insertions(+), 18 deletions(-)
+- nvim-treesitter:  21 files changed, 262 insertions(+), 111 deletions(-)
+- nvim-web-devicons: Already up to date.
+- popup.nvim: Already up to date.
+- wildfire.vim: Already up to date.
+- nvim-dap-ui: Already up to date.
+- winbar.nvim: Already up to date.
+- todo-comments.nvim:  2 files changed, 3 insertions(+), 3 deletions(-)
+- vim-gitgutter: Already up to date.
+- mason.nvim:  create mode 100644 tests/mason-core/purl_spec.lua
+- vista.vim: Already up to date.
+- indent-blankline.nvim: Already up to date.
+- yowish.vim: Already up to date.
+- molokai: Already up to date.
+- tabular: Already up to date.
+- nvim-colorizer.lua: Already up to date.
+- cmp-nvim-lsp: Already up to date.
+- bufferline.nvim: OK
+- cmp-cmdline: Already up to date.
+- which-key.nvim: Already up to date.
+- vim-startify: Already up to date.
+- lualine.nvim: Already up to date.
+- vim-peekaboo: Already up to date.
+- nvim-dap-virtual-text: Already up to date.
+- vim-table-mode: Already up to date.
+- nvim-lastplace: Already up to date.
+- nvim-notify: Already up to date.
+- auto-pairs: Already up to date.
+- nvim-dap:  2 files changed, 6 insertions(+), 4 deletions(-)

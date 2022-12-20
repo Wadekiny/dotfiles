@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "coc-json": ">=1.7.0",
+    "coc-marketplace": ">=1.9.0",
+    "coc-vimlsp": ">=0.12.8",
+    "coc-sumneko-lua": ">=0.0.35",
+    "coc-clangd": ">=0.26.2",
+    "coc-actions": ">=1.5.0",
+    "coc-tsserver": ">=2.0.2",
+    "coc-sh": ">=0.7.0",
+    "coc-pyright": ">=1.1.275"
+  },
+  "lastUpdate": 1670228631637
+}
