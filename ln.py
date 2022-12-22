@@ -18,7 +18,7 @@ if not os.path.exists(target_dir):
     raise RuntimeError('target_dir not found')
 
 
-exclude_name_list = ['ln.py', '\.git', '.*un~', '.gitignore','config.backup'] # re正则匹配
+exclude_name_list = ['ln.py', '\.git', '.*un~', '.gitignore','config.backup','my2.zsh-theme'] # re正则匹配
 source_path_list = glob.glob(os.path.join(source_dir,'*')) + glob.glob(os.path.join(source_dir,'.*'))
 
 for source_file_path in source_path_list:
