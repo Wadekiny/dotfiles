@@ -80,6 +80,7 @@ lua require('hop').setup()
 " todo高亮
 lua require('todo-comments').setup()
 
+
 " 快捷键提示
 source ~/.config/nvim/subconfig/plugconfig/whichkey.lua
 

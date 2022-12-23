@@ -48,23 +48,30 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = "off",
-      }
-    }
-  },
-}
+--lspconfig.pyright.setup {
+--  on_attach = on_attach,
+--  flags = lsp_flags,
+--  capabilities = capabilities,
+--  settings = {
+--    python = {
+--      analysis = {
+--        autoSearchPaths = true,
+--        diagnosticMode = "workspace",
+--        useLibraryCodeForTypes = true,
+--        typeCheckingMode = "off",
+--      }
+--    }
+--  },
+--}
 
+lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
+lspconfig.texlab.setup{}
+lspconfig.vimls.setup{}
+lspconfig.bashls.setup{}
+--lspconfig.marksman.setup{}
+lspconfig.remark_ls.setup{}
+
 
 -- Setup lspconfig.
 
