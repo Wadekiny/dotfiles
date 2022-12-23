@@ -63,10 +63,10 @@ source ~/.config/nvim/subconfig/plugconfig/vista.vim
 source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
 
 " 命令输入改为浮动窗口
-source ~/.config/nvim/subconfig/plugconfig/noice.lua
+"source ~/.config/nvim/subconfig/plugconfig/noice.lua
 
 " 输出改为浮动窗口
-source ~/.config/nvim/subconfig/plugconfig/notify.lua
+"source ~/.config/nvim/subconfig/plugconfig/notify.lua
 
 " bufferline下面的winbar
 "source ~/.config/nvim/subconfig/plugconfig/winbar.lua
