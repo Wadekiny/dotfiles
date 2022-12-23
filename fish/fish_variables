@@ -7,6 +7,7 @@ SETUVAR _fish_abbr_lg:lazygit
 SETUVAR _fish_abbr_nv:nvim
 SETUVAR _fish_abbr_pr:echo\x20f
 SETUVAR _fish_abbr_ra:ranger
+SETUVAR _fish_abbr_todo:nvim\x20/home/wadekiny/Blog/source/_posts/TODO\x2emd
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
