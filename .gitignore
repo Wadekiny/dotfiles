@@ -4,3 +4,4 @@ config.backup/nvim.backup/vim-plug
 nvim/plugged
 lazygit/state.yml
 ohmyzsh
+ranger/__pycache__
