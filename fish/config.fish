@@ -22,3 +22,6 @@ abbr ra ranger
 abbr lg lazygit
 abbr nv nvim
 abbr todo nvim /home/wadekiny/Blog/source/_posts/TODO.md
+abbr fishrc nvim /home/wadekiny/dotfiles/fish/config.fish
+abbr post cd /home/wadekiny/Blog/source/_posts/
+abbr blog cd /home/wadekiny/Blog/
