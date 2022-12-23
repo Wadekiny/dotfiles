@@ -3,8 +3,10 @@
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_aconda:eval\x20/home/wadekiny/anaconda3/bin/conda\x20\x22shell\x2efish\x22\x20\x22hook\x22\x20\x24argv\x20\x7c\x20source
 SETUVAR _fish_abbr_anaconda:eval\x20/home/wadekiny/anaconda3/bin/conda\x20\x22shell\x2efish\x22\x20\x22hook\x22\x20\x24argv\x20\x7c\x20source
+SETUVAR _fish_abbr_fishrc:nvim\x20/home/wadekiny/dotfiles/fish/config\x2efish
 SETUVAR _fish_abbr_lg:lazygit
 SETUVAR _fish_abbr_nv:nvim
+SETUVAR _fish_abbr_post:cd\x20/home/wadekiny/Blog/source/_posts/
 SETUVAR _fish_abbr_pr:echo\x20f
 SETUVAR _fish_abbr_ra:ranger
 SETUVAR _fish_abbr_todo:nvim\x20/home/wadekiny/Blog/source/_posts/TODO\x2emd
