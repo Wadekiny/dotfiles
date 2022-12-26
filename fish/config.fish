@@ -7,6 +7,8 @@
 # WSL2
 set -x hostip (cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
 set -x all_proxy "socks5://$hostip:7890"
+git config --global http.https://github.com.proxy http://$hostip:7890
+git config --global https.https://github.com.proxy http://$hostip:7890
 
 #set -x http_proxy "http://$hostip:7890"
 #set -x https_proxy "http://$hostip:7890"
