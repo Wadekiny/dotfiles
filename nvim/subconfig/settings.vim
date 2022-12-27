@@ -15,6 +15,7 @@ set laststatus=2         " 总是显示状态栏
 set number               " 开启行号显示
 set relativenumber       " 特殊行号
 set cursorline           " 高亮显示当前行
+
 "set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=100        " 设置<ESC>键响应时间
 "set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
