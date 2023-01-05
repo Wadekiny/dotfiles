@@ -100,10 +100,11 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
-Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
-Plug 'windwp/nvim-ts-autotag'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } "用于显示winbar
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'} "代码片段运行
+Plug 'windwp/nvim-ts-autotag'  "html标签补全
 
+Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 

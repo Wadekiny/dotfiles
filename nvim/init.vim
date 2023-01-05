@@ -101,6 +101,8 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 source ~/.config/nvim/subconfig/plugconfig/lsp.lua
 source ~/.config/nvim/subconfig/plugconfig/cmp.lua
 source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
+source ~/.config/nvim/subconfig/plugconfig/comment.lua
+
 lua require('nvim-surround').setup{}
 
 lua << EOF
@@ -109,6 +111,7 @@ require('sniprun').setup({
 })
 require('nvim-ts-autotag').setup()
 EOF
+
 
 
 
