@@ -101,6 +101,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+Plug 'windwp/nvim-ts-autotag'
+
 
 call plug#end()
 

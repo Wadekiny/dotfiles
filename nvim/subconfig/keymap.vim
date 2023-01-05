@@ -1,6 +1,7 @@
 " leader 
 let mapleader = ";"      " 定义<leader>键
 
+
 "  NOTE: one key -----------------------------------------------------
 "
 "{{{
@@ -112,6 +113,15 @@ nnoremap <m-j> <c-w>5-
 "  NOTE: leader group -----------------------------------------------------
 "
 "{{{
+"
+"
+"
+""---------- snipperrun ----------""
+nnoremap <leader>R <cmd>SnipRun<cr>
+nnoremap <leader>C <cmd>SnipClose<cr>
+
+vnoremap <leader>R :'<,'>SnipRun<cr>
+vnoremap <leader>C <cmd>SnipClose<cr>
 ""---------- hop(like easymotion) ----------""
 
 lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})

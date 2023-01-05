@@ -99,8 +99,16 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 "lua require("mason").setup()
 
 source ~/.config/nvim/subconfig/plugconfig/lsp.lua
+source ~/.config/nvim/subconfig/plugconfig/cmp.lua
 source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
 lua require('nvim-surround').setup{}
+
+lua << EOF
+require('sniprun').setup({
+    --display={"VirtualTextOk","VirtualTextErr"},
+})
+require('nvim-ts-autotag').setup()
+EOF
 
 
 
