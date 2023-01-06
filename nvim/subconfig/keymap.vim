@@ -169,7 +169,7 @@ nnoremap <leader>h :noh<cr>
 "nnoremap <space>h :bp<cr>
 "nnoremap <space>l :bn<cr>
 nnoremap <space>d :bd<cr>
-nnoremap <space>q :Q<cr>
+nnoremap <space>q :q<cr>
 " need bufdelete.nvim
 "nnoremap <space>d :lua require('bufdelete').bufdelete(0,false)<cr>
 
