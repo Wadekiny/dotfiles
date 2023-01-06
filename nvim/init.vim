@@ -35,7 +35,7 @@ source ~/.config/nvim/subconfig/plugconfig/evil_lualine.lua
 source ~/.config/nvim/subconfig/plugconfig/bufferline.lua
 
 " 代码高亮 python bug
-"source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
+source ~/.config/nvim/subconfig/plugconfig/treesitter.lua
 
 " 调试 (dap, dapui, nvim-dap-virtual-text)
 source ~/.config/nvim/subconfig/plugconfig/dap.lua
@@ -111,6 +111,8 @@ require('sniprun').setup({
 })
 require('nvim-ts-autotag').setup()
 EOF
+
+
 
 
 
