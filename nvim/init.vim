@@ -106,9 +106,9 @@ source ~/.config/nvim/subconfig/plugconfig/comment.lua
 lua require('nvim-surround').setup{}
 
 lua << EOF
-require('sniprun').setup({
-    --display={"VirtualTextOk","VirtualTextErr"},
-})
+--require('sniprun').setup({
+--    --display={"VirtualTextOk","VirtualTextErr"},
+--})
 require('nvim-ts-autotag').setup()
 EOF
 

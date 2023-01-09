@@ -101,11 +101,11 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } "用于显示winbar
-Plug 'michaelb/sniprun', {'do': 'bash install.sh'} "代码片段运行
+"Plug 'michaelb/sniprun', {'do': 'bash install.sh'} "代码片段运行
 Plug 'windwp/nvim-ts-autotag'  "html标签补全
 
 Plug 'numToStr/Comment.nvim'
-
+Plug 'dccsillag/magma-nvim',{'do':':UpdateRemotePlugins'}
 call plug#end()
 
 
