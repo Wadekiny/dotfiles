@@ -4,3 +4,6 @@ config.backup/nvim.backup/vim-plug
 nvim/plugged
 lazygit/state.yml
 ohmyzsh
+fish/fish_variables
+fish/fish_variables
+fish/fish_variables
