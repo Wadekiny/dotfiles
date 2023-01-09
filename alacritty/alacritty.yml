@@ -115,7 +115,11 @@ font:
     #   tips: mono is useful for airline.vim
     #family: DejaVuSansMono Nerd Font Mono
     #family: DroidSansMono Nerd Font
-    family: CodeNewRoman Nerd Font  Mono
+    #family: CodeNewRoman Nerd Font Mono
+    #family: CodeNewRoman Nerd Font Mono
+    family: CodeNewRomanMaiYuanNerdFontMono
+    #family: wadekiny
+      #family: Kingnam MaiYuan 
     #family: Mononoki Nerd Font  Mono
     #family: Hack Nerd Font  Mono
     #family: Bitstream Vera Sans Mono Nerd Font
