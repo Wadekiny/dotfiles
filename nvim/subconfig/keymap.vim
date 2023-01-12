@@ -155,7 +155,7 @@ nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>B <cmd>Telescope buffers<cr>
 nnoremap <leader>H <cmd>Telescope help_tags<cr>
-
+nnoremap <leader>p <cmd>Telescope projects<cr>
 "---------- 取消搜索高亮 ----------""
 nnoremap <leader>h :noh<cr>
 
@@ -289,4 +289,7 @@ nnoremap <silent><space><s-h> <Cmd>BufferLineMovePrev<CR>
 
 nnoremap <silent><space>l <Cmd>BufferLineCycleNext<CR>
 nnoremap <silent><space>h <Cmd>BufferLineCyclePrev<CR>
+
+
+
 

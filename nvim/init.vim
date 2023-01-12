@@ -11,7 +11,8 @@
 "
 "
 "
-"修改的插件 winbar nvim-tree vim-surround
+
+"修ff改的插件 winbar nvim-tree vim-surround
 "
 " nvim 设置
 source ~/.config/nvim/subconfig/settings.vim
@@ -63,7 +64,7 @@ source ~/.config/nvim/subconfig/plugconfig/vista.vim
 source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
 
 " 命令输入改为浮动窗口
-"source ~/.config/nvim/subconfig/plugconfig/noice.lua
+source ~/.config/nvim/subconfig/plugconfig/noice.lua
 
 " 输出改为浮动窗口
 source ~/.config/nvim/subconfig/plugconfig/notify.lua
@@ -115,5 +116,48 @@ EOF
 
 
 
+lua << EOF
+require("project_nvim").setup{
+
+}
+
+EOF
+
+lua require("telescope").load_extension('projects')
 
 
+
+"Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
+let g:XkbSwitchLib = '/home/wadekiny/ProgramFiles/xkb-switch/build/libxkbswitch.so'
+
+
+" let g:XkbSwitchEnabled     = 1
+" let g:XkbSwitchIMappings   = ['cn']
+" let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
+
+" let g:XkbSwitchEnable=1
+"
+" let g:XkbSwitchNLayout = 'us'
+" set imsearch=0
+" set iminsert=0
+
+
+if exists("g:neovide")
+    set guifont=JetBrainsMaiYuanNerdFontMono
+    "set guifont=Kingnam_Maiyuan,Code_New_Roman_NerdFont_Mono
+    "set guifont=CodeNewRoman_Nerd_Font_Mono:h14
+    "set guifont=Code_New_Roman:h14
+    "set guifont=JetBrainsMono_Nerd_Font,Kingnam_Maiyuan:h13
+    "let g:neovide_transparency = 0
+    let g:neovide_scroll_animation_length = 0.3
+    let g:neovide_hide_mouse_when_typing = v:false
+    let g:neovide_profiler = v:false
+    "let g:neovide_confirm_quit = v:true 
+    let g:neovide_padding_top=10
+    let g:neovide_padding_left=10
+    let g:neovide_padding_right=10
+    let g:neovide_padding_bottom=10
+end
+
+
+ 

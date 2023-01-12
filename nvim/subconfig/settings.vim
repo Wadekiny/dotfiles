@@ -1,4 +1,3 @@
-
 set termguicolors
 set nocompatible         " 设置不兼容原始vi模式
 set nomodeline            

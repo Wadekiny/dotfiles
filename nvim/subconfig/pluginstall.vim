@@ -2,6 +2,7 @@
 call plug#begin('~/.config/nvim/plugged')
 "input-------------------------------
 "Plug 'vim-scripts/fcitx.vim'		"普通模式和插入模式输入法记忆
+Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
 Plug 'jiangmiao/auto-pairs'			"自动括号	
 Plug 'junegunn/vim-peekaboo'		"复制缓存区
 Plug 'mg979/vim-visual-multi'       "多光标
@@ -104,7 +105,9 @@ Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } "用于显示winbar
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'} "代码片段运行
 Plug 'windwp/nvim-ts-autotag'  "html标签补全
 
-Plug 'numToStr/Comment.nvim'
+Plug 'numToStr/Comment.nvim' "quick // # -- comment
+Plug 'dccsillag/magma-nvim', {'do': ':UpdateRemotePlugins'} " jupyter-like
+Plug 'ahmedkhalf/project.nvim'  "Project mananger
 
 call plug#end()
 

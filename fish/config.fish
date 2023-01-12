@@ -8,3 +8,5 @@ abbr aconda 'eval /home/wadekiny/anaconda3/bin/conda "shell.fish" "hook" $argv |
 abbr ra ranger
 abbr lg lazygit
 abbr nv nvim
+abbr blog cd ~/Blog
+abbr post cd ~/Blog/source/_posts
