@@ -81,8 +81,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "撤销记忆
 if has('persistent_undo')
+	set undodir=$HOME/.config/nvim/tmp/undo
 	set undofile
-	set undodir=~/.config/nvim/tmp/undo,.
 endif
 
 "非聚焦窗口不显示光标
