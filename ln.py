@@ -2,7 +2,7 @@ import os
 import glob
 import re
 
-source_dir = '/home/wadekiny/dotfiles/'
+source_dir = '/home/wadekiny/Dotfiles/'
 target_dir = '/home/wadekiny/.config/'
 
 inp = input('source_dir: {}\ntarget_dir: {}\nconfirm dir info[y/n]:'.format(source_dir,target_dir))
