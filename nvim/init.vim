@@ -110,10 +110,11 @@ lua << EOF
 require('sniprun').setup({
     --display={"VirtualTextOk","VirtualTextErr"},
 })
-require('nvim-ts-autotag').setup()
 EOF
 
-
+lua << EOF
+require('nvim-ts-autotag').setup()
+EOF
 
 
 lua << EOF
