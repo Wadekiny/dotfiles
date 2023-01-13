@@ -127,20 +127,6 @@ lua require("telescope").load_extension('projects')
 
 
 
-"Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
-let g:XkbSwitchLib = '/home/wadekiny/ProgramFiles/xkb-switch/build/libxkbswitch.so'
-
-
-" let g:XkbSwitchEnabled     = 1
-" let g:XkbSwitchIMappings   = ['cn']
-" let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
-
-" let g:XkbSwitchEnable=1
-"
-" let g:XkbSwitchNLayout = 'us'
-" set imsearch=0
-" set iminsert=0
-
 
 if exists("g:neovide")
     set guifont=JetBrainsMaiYuanNerdFontMono
@@ -158,6 +144,5 @@ if exists("g:neovide")
     let g:neovide_padding_right=10
     let g:neovide_padding_bottom=10
 end
-
-
  
+

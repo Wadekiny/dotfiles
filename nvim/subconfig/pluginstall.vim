@@ -2,6 +2,9 @@
 call plug#begin('~/.config/nvim/plugged')
 "input-------------------------------
 "Plug 'vim-scripts/fcitx.vim'		"普通模式和插入模式输入法记忆
+"Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
+Plug 'inkch/vim-fcitx5-auto-toggle'
+
 Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
 Plug 'jiangmiao/auto-pairs'			"自动括号	
 Plug 'junegunn/vim-peekaboo'		"复制缓存区
@@ -108,43 +111,8 @@ Plug 'windwp/nvim-ts-autotag'  "html标签补全
 Plug 'numToStr/Comment.nvim' "quick // # -- comment
 Plug 'dccsillag/magma-nvim', {'do': ':UpdateRemotePlugins'} " jupyter-like
 Plug 'ahmedkhalf/project.nvim'  "Project mananger
-
 call plug#end()
 
-
-
-
-
-" DEPRECATED
-
-" problem
-"Plug 'preservim/tagbar'
-"Plug 'jszakmeister/markdown2ctags' "(use pip to install, it's not a vim plugin)
-"
-"Plug 'lvht/tagbar-markdown'
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-easytags'
-
-
-
-"Plug 'hrsh7th/nvim-cmp'
-"Plug 'kdheepak/cmp-latex-symbols'
-"Plug 'GoldsteinE/compe-latex-symbols'
-"Plug 'jbyuki/nabla.nvim'
-"Plug 'lervag/vimtex'
-"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-"Plug 'iamcco/mathjax-support-for-mkdp'
-"
-"
-"
-"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } "python高亮
-"Plug 'kevinhwang91/vim-ibus-sw' 
-"Plug 'easymotion/vim-easymotion'	"快速跳转
-"Plug 'scrooloose/nerdtree'
-"Plug 'vim-airline/vim-airline'
-"Plug 'mengelbrecht/lightline-bufferline' 
-" Plug 'ryanoasis/vim-devicons' Icons without colors
-"Plug 'Valloric/YouCompleteMe'
 
 
 

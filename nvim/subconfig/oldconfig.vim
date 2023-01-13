@@ -105,3 +105,43 @@
 "
 "
 "map <leader>w <Plug>(easymotion-bd-w)
+"
+"
+"
+"
+"
+"
+" DEPRECATED
+
+" problem
+"Plug 'preservim/tagbar'
+"Plug 'jszakmeister/markdown2ctags' "(use pip to install, it's not a vim plugin)
+"
+"Plug 'lvht/tagbar-markdown'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-easytags'
+
+
+
+"Plug 'hrsh7th/nvim-cmp'
+"Plug 'kdheepak/cmp-latex-symbols'
+"Plug 'GoldsteinE/compe-latex-symbols'
+"Plug 'jbyuki/nabla.nvim'
+"Plug 'lervag/vimtex'
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+"Plug 'iamcco/mathjax-support-for-mkdp'
+"
+"
+"
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' } "python高亮
+"Plug 'kevinhwang91/vim-ibus-sw' 
+"Plug 'easymotion/vim-easymotion'	"快速跳转
+"Plug 'scrooloose/nerdtree'
+"Plug 'vim-airline/vim-airline'
+"Plug 'mengelbrecht/lightline-bufferline' 
+" Plug 'ryanoasis/vim-devicons' Icons without colors
+"Plug 'Valloric/YouCompleteMe'
+
+
+
+
