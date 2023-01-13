@@ -10,8 +10,8 @@ Plug 'jiangmiao/auto-pairs'			"自动括号
 Plug 'junegunn/vim-peekaboo'		"复制缓存区
 Plug 'mg979/vim-visual-multi'       "多光标
 Plug 'gcmt/wildfire.vim'            "快速块选
-"Plug 'tpope/vim-surround'           "包围符号(做过修改，现在可以输入数字确定添加的符号数量)
-Plug 'kylechui/nvim-surround'
+"Plug 'tpope/vim-surround'           "包围符号(做过修改，现在可以输入数字确定添加的符号数量wadekiny/surround)
+Plug 'kylechui/nvim-surround'       
 
 "display-------------------------------
 Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons) 
@@ -62,7 +62,7 @@ Plug 'theHamsta/nvim-dap-virtual-text' "调试虚拟文字
 Plug 'lewis6991/impatient.nvim'     "启动加速
 Plug 'nvim-lua/plenary.nvim'        "neovim的一个库，很多其他插件需要这个
 Plug 'nvim-lua/popup.nvim'          "提供弹窗api
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "  WARN:  代码高亮 some bug in neovim0.8
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "需要等待其自动安装对应的语言高亮，挺耗时间，设置了优先使用git
 
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " -- enhance texetobject selection
 Plug 'romgrk/nvim-treesitter-context'               "在最上面显示当前的类、 show class/function at the top

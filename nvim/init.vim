@@ -11,7 +11,11 @@
 "
 "
 "
-
+"很多问题可能是依赖的版本问题，多用:checkhealth,
+"边框问题和alacritty，nerdfont都有关。
+"lsp和node版本有关
+"c-a数字+1
+"
 "修ff改的插件 winbar nvim-tree vim-surround
 "
 " nvim 设置

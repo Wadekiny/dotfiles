@@ -205,6 +205,9 @@ function! ChangePwd()
 endfunction
 
 nnoremap <space>f <cmd>call ChangePwd()<cr>
+" more details : `:h expand`
+
+
 "}}}
 
 "  NOTE: other group
