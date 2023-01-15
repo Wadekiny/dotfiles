@@ -15,7 +15,9 @@
 "边框问题和alacritty，nerdfont都有关。
 "lsp和node版本有关
 "c-a数字+1
-"
+"<leader>grep不好用？
+"lspsaga
+"packer
 "修ff改的插件 winbar nvim-tree vim-surround
 "
 " nvim 设置
@@ -105,7 +107,7 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 
 source ~/.config/nvim/subconfig/plugconfig/lsp.lua
 source ~/.config/nvim/subconfig/plugconfig/cmp.lua
-source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
+"source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
 source ~/.config/nvim/subconfig/plugconfig/comment.lua
 
 lua require('nvim-surround').setup{}
@@ -150,4 +152,42 @@ if exists("g:neovide")
     let g:neovide_padding_bottom=10
 end
  
+
+
+lua << EOF
+
+require('lspsaga').setup({ 
+ -- outline = {
+ --    win_position = 'right',
+ --    win_with = '',
+ --    win_width = 30,
+ --    show_detail = true,
+ --    auto_preview = true,
+ --    auto_refresh = true,
+ --    auto_close = true,
+ --    custom_sort = nil,
+ --    keys = {
+ --      jump = 'o',
+ --      expand_collapse = 'u',
+ --      quit = 'q',
+ --    },
+ --  },
+symbol_in_winbar = {
+    --in_custom = true,
+    enable = true,
+    hide_keyword = false,
+    separator = '  ',
+    show_file = true,
+    folder_level = 10,
+    respect_root = false,
+    ---- define how to customize filename, eg: %:., %
+    ---- if not set, use default value `%:t`
+    ---- more information see `vim.fn.expand` or `expand`
+    ----  only valid after set `show_file = true`
+    --file_formatter = "%:p",
+    --click_support = false,
+},
+})
+
+EOF
 

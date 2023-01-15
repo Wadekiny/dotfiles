@@ -1,5 +1,6 @@
 
-require('lspsaga').init_lsp_saga({ 
+--require('lspsaga').init_lsp_saga({ 
+require('lspsaga').setup({ 
 
 --border_style = "double",
 --the range of 0 for fully opaque window (disabled) to 100 for fully
@@ -90,8 +91,8 @@ vim.api.nvim_create_autocmd('User', {
     callback = function() config_winbar_or_statusline() end,
 })
 
---vim.cmd("highlight WinBar guibg='#112255'")
---vim.cmd("highlight LspSagaWinBar guibg='#112255'")
+vim.cmd("highlight WinBar guibg='#112255'")
+vim.cmd("highlight LspSagaWinBar guibg='#112255'")
 
-vim.cmd("highlight WinBar guibg='#07090c'")
-vim.cmd("highlight LspSagaWinBar guibg='#07090c'")
+--vim.cmd("highlight WinBar guibg='#07090c'")
+--vim.cmd("highlight LspSagaWinBar guibg='#07090c'")
