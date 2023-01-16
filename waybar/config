@@ -4,25 +4,45 @@
     "position": "top",
 
     // If height property would be not present, it'd be calculated dynamically
-    "height": 25,
+    "height": 20,
 
     "modules-left": [
-        "sway/workspaces",
+        /* "sway/workspaces", */
+        "custom/spaceleft",
         "wlr/workspaces",
+        "custom/spaceright",
         "hyprland/window",
     ],
     "modules-center": [
     ],
     "modules-right": [
+        "disk",
         "network",
         "cpu",
         "memory",
-        "temperature",
+        //"temperature",
+        "pulseaudio",
         "battery",
         "clock#date",
         "clock#time",
         "tray",
     ],
+
+    "custom/spaceleft":{
+        "format": "",
+    },
+
+    "custom/spaceright":{
+        "format": "",
+        "on-click": "rofi -theme slate.rasi -show combi -show-icons",
+        
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": " {free}",
+        "path": "/"
+    },
 
     "battery": {
         "interval": 60,
@@ -31,34 +51,42 @@
             "critical": 15
         },
         // Connected to AC
-        "format": "  {icon}  {capacity}%", // Icon: bolt
+        /* "format": "  {icon}  {capacity}%", // Icon: bolt */
+        "format": " {capacity}%", // Icon: bolt
+
         // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
+        "format-discharging": "{icon} {capacity}%",
         "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
+            /* "", // Icon: battery-full */
+            /* "", // Icon: battery-three-quarters */
+            /* "", // Icon: battery-half */
+            /* "", // Icon: battery-quarter */
+            /* ""  // Icon: battery-empty */
+            "",
+            "",
+            "",
+            "",
+            "",
         ],
         "tooltip": false
     },
 
     "clock#time": {
         "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "format": " {:%H:%M:%S}",
         "tooltip": false
     },
 
     "clock#date": {
       "interval": 60,
-      "format": "  {:%e %b %Y}", // Icon: calendar-alt
+      "format": " {:%e.%b.%Y}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}"
     },
 
     "cpu": {
         "interval": 5,
-        "format": " {usage}% ({load})", // Icon: microchip
+        /* "format": " {usage}% ({load})", // Icon: microchip */
+        "format": " {usage}%", // Icon: microchip
         "states": {
           "warning": 70,
           "critical": 90
@@ -76,7 +104,8 @@
 
     "network": {
         "interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+        //"format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+        "format-wifi": "直 {essid}", // Icon: wifi
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}"
@@ -86,6 +115,16 @@
         "format":"{icon}",
         "on-click": "activate",
         "format-icons":{
+            /* "1":"1", */
+            /* "2":"2", */
+            /* "3":"3", */
+            /* "4":"4", */
+            /* "5":"5", */
+            /* "6":"6", */
+            /* "7":"7", */
+            /* "8":"8", */
+            /* "9":"9", */
+            /* "10":"0", */
             "1":"",
             "2":"",
             "3":"",
@@ -104,6 +143,19 @@
             "default": "workspace",
         },
         "sort-by-number":true
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}",
+        "format-alt": "{icon} {volume}",
+        "format-alt-click": "click-right",
+        "format-muted": "婢",
+        "format-icons": {
+            "phone": ["", "", "", ""],
+            "default": ["", "", "", ""]
+        },
+        "scroll-step": 10,
+        "on-click": "pavucontrol",
+        "tooltip": false
     },
 
     "temperature": {

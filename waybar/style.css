@@ -40,6 +40,7 @@
 /* Reset all styles */
 * {
     /* background:rgba(10,10,10,0.4); */
+    /* background:rgba(200,200,200,0.4); */
     border: none;
     border-radius: 0;
     min-height: 0;
@@ -51,15 +52,24 @@
 /* The whole bar */
 #waybar {
     color: white;
-    /* background: #282c34; */
-    background: rgba(28,29,34,0);
+    /* background: #002c34; */
+    /* background: #aaaaee; */
+    background:rgba(0,0,0,0);
+    /* background: rgba(28,29,34,0); */
     /* font-family: FiraCode Nerd Font, Cantarell, Noto Sans, sans-serif; */
     /* font-family: JetBrainsMono Nerd Font, Kingnam Maiyuan, Noto Sans, sans-serif; */
     font-family: JetBrainsMono Nerd Font, Kingnam Maiyuan;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+window#waybar > box {
+    border-radius: 20px;
+    margin: 5px 5px 6px 5px;
+    box-shadow: 0px 0px 3px #101010;
 }
 
 /* Each module */
+#disk,
 #battery,
 #clock,
 #cpu,
@@ -68,13 +78,22 @@
 #mode,
 #network,
 #pulseaudio,
-#temperature,
-#tray {
+/* #tray , */
+#temperature
+{
     /* background: #141834; */
+    background:#aaaade;
+    color:black;
+    font-weight:bold;
     /* background: rgba(14,18,34,0.2); */
-    background: rgba(0,0,0,0.1);
+    /* background: rgba(0,0,0,0.1); */
     padding-left: 10px;
     padding-right: 10px;
+    /* margin-top:5px; */
+}
+
+#disk{
+    border-radius: 5px 0px 0px 5px;
 }
 
 
@@ -175,53 +194,100 @@
 
 #tray {
     /* No styles */
-    background: rgba(0,0,0,0.5);
+    /* background: rgba(0,0,0,0.5); */
+    background:#141834;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0px 5px 5px 0px;
+    /* margin-top:5px; */
+    /* margin-right:5; */
+    /* background: blue; */
 }
 
 #window {
     padding-left:10;
     padding-right:10;
-    background: rgba(28,20,44,0.5)
+    /* margin-top:5px; */
+    font-weight:bold;
+    /* background: rgba(28,20,44,0.5) */
 
     
     /* font-weight: bold; */
 }
 
 
-button {
-    color: white;
-}
+/* button { */
+/*     color: white; */
+/**/
+/* } */
 
 label {
     all: unset;
 }
 
+
+
+#custom-spaceright{
+    background: #141834;
+    color:#bbbbbb;
+    padding-left:6;
+    padding-right:6;
+    border-radius: 0px 5px 5px 0px;
+    /* margin-top:5px; */
+}
+
+#custom-spaceleft{
+    background: #141834;
+    color:#bbbbbb;
+    padding-left:6;
+    padding-right:12;
+    border-radius: 5px 0px 0px 5px;
+    /* margin-top:5px; */
+    /* margin-left:5px; */
+}
+
+#workspaces{
+    /* margin-top:5px; */
+    /* margin-left:5px; */
+}
 #workspaces button {
     /* To compensate for the top border and still have vertical centering */
     
-    /* padding-bottom: 2px; */
-    /* opacity:0.5; */
-    padding-left: 5;
-    padding-right: 5;
+    font-size:20;
+    padding-left: 6;
+    padding-right: 9;
+    /* margin-bottom:-5; */
+    /* margin-top:-5; */
     background: #141834;
-    font-weight:bold;
-    color: #aaaaaa;
+    /* font-weight:bold; */
+    color: #bbbbbb;
+    border-bottom:2px solid rgba(0,0,0,0);
+    border-top:2px solid rgba(0,0,0,0);
+    /* border-bottom:10px solid white; */
 }
 
 #workspaces button.active {
-    color: #eeeeee;
-    background: #141834;
-    font-weight:bold;
+    color: #ffffff;
+    /* background: #141834; */
     /* background-color: #282c34; */
-    border-top: 2px solid white; 
+    background: #444874;
+    color:white;
+    font-weight:bold;
+    border-bottom: 2px solid white; 
+    /* border-bottom: 8px solid white;  */
 }
 
-#workspaces button.focused {
-    color: #eeeeee;
-    /* background-color: #282c34; */
-    background: #141834;
-    font-weight:bold;
-    border-top: 2px solid white; 
+/* #workspaces button.focused { */
+/*     color: #ffffff; */
+/*     background-color: #282c34; */
+/*     background: #343864; */
+/*     font-weight:bold; */
+/*     border-top: 2px solid white;  */
+/* } */
+#workspaces button.hidden{
+    background:green;
+    color:black;
 }
 
 #workspaces button.urgent {
