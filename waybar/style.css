@@ -195,7 +195,8 @@ window#waybar > box {
 #tray {
     /* No styles */
     /* background: rgba(0,0,0,0.5); */
-    background:#141834;
+    /* background:#141834; */
+    background: #9999ee;
 
     padding-left: 10px;
     padding-right: 10px;
@@ -271,11 +272,11 @@ label {
     color: #ffffff;
     /* background: #141834; */
     /* background-color: #282c34; */
+    /* background:#aaaade; */
     background: #444874;
     color:white;
     font-weight:bold;
     border-bottom: 2px solid white; 
-    /* border-bottom: 8px solid white;  */
 }
 
 /* #workspaces button.focused { */
