@@ -46,7 +46,8 @@ Plug 'godlygeek/tabular'    "对齐代码 (没在用)
 
 
 "markdown---------------------------
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} "markdown预览
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} "markdown预览
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'plasticboy/vim-markdown'      "markdown高亮，匹配
 Plug 'dhruvasagar/vim-table-mode'   "表格模式
 Plug 'mzlogin/vim-markdown-toc'     "生成markdown目录
@@ -74,7 +75,9 @@ Plug 'phaazon/hop.nvim'                             "升级版 easymotion
 Plug 'norcalli/nvim-colorizer.lua'                  "颜色变量可视化
 
 Plug 'folke/todo-comments.nvim'                     "todo高亮
-Plug 'kyazdani42/nvim-tree.lua'                     "左侧tree，启动比coc-explorer快，修改了notify的输出规则，否则进入git没有track的目录会弹很多框框
+"Plug 'kyazdani42/nvim-tree.lua'                     "左侧tree，启动比coc-explorer快，修改了notify的输出规则，否则进入git没有track的目录会弹很多框框
+
+Plug 'nvim-tree/nvim-tree.lua'
 
 Plug 'folke/noice.nvim'                             "命令输入改为浮动窗口
 Plug 'MunifTanjim/nui.nvim'

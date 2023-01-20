@@ -2,10 +2,13 @@
     "layer": "top",
 
     "position": "top",
-
     // If height property would be not present, it'd be calculated dynamically
     "height": 20,
-
+    /* "margin-left":5, */
+    /* "margin-right":5, */
+    /* "margin-top":5, */
+    /* "margin-bottom":6, */
+    
     "modules-left": [
         /* "sway/workspaces", */
         "custom/spaceleft",
@@ -140,7 +143,7 @@
             "13":"",
             "14":"ﬄ",
             "15":"﬐",
-            "default": "workspace",
+            "default": "",
         },
         "sort-by-number":true
     },
