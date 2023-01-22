@@ -50,7 +50,7 @@
 }
 
 /* The whole bar */
-#waybar {
+    #waybar {
     color: white;
     /* background: #002c34; */
     /* background: #aaaaee; */
@@ -59,6 +59,7 @@
     /* font-family: FiraCode Nerd Font, Cantarell, Noto Sans, sans-serif; */
     /* font-family: JetBrainsMono Nerd Font, Kingnam Maiyuan, Noto Sans, sans-serif; */
     font-family: JetBrainsMono Nerd Font, Kingnam Maiyuan;
+
     font-size: 18px;
 }
 
@@ -211,6 +212,7 @@ window#waybar > box {
 }
 
 #window {
+    /* text-align:center; */
     padding-left:10;
     padding-right:10;
     /* margin-top:5px; */
