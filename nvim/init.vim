@@ -11,6 +11,14 @@
 "
 "
 "
+"很多问题可能是依赖的版本问题，多用:checkhealth,
+"边框问题和alacritty，nerdfont都有关。
+"lsp和node版本有关
+"c-a数字+1
+"<leader>grep不好用？
+"lspsaga
+"packer
+"修ff改的插件 winbar nvim-tree vim-surround
 "
 " nvim 设置
 source ~/.config/nvim/subconfig/settings.vim
@@ -171,7 +179,7 @@ symbol_in_winbar = {
     separator = '  ',
     show_file = true,
     folder_level = 10,
-    -- respect_root = true,
+    respect_root = false,
     ---- define how to customize filename, eg: %:., %
     ---- if not set, use default value `%:t`
     ---- more information see `vim.fn.expand` or `expand`
@@ -183,12 +191,3 @@ symbol_in_winbar = {
 
 EOF
 
-
-"很多问题可能是依赖的版本问题，多用:checkhealth,
-"边框问题和alacritty，nerdfont都有关。
-"lsp和node版本有关
-"c-a数字+1
-"<leader>grep不好用？
-"lspsaga
-"packer
-"修ff改的插件 winbar nvim-tree vim-surround

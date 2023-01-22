@@ -10,6 +10,11 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' };
 }
 
+dap.adapters.cppdbg = {
+    id = 'cppdbg',
+    type = 'executable',
+    command = '/home/wadekiny/ProgramFiles/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7'
+}
 
 dap.configurations.python = {
   {
@@ -24,6 +29,30 @@ dap.configurations.python = {
   },
 }
 
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopAtEntry = true,
+  },
+  {
+    name = 'Attach to gdbserver :1234',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+  },
+}
 
 
 
@@ -49,29 +78,45 @@ require("dapui").setup({
                 toggle = "t",
               },
               expand_lines = vim.fn.has("nvim-0.7"),
-              layouts = {
-                --{
-                --  elements = {
-                --    { id = "scopes", size = 0.25 },
-                --    "breakpoints",
-                --    "stacks",
-                --    "watches",
-                --    "repl"
-                --    "console",
-                --  },
-                --  --size = 20, 
-                --  size = 0.3, 
-                --  --position = "left",
-                --  position = "right",
-                --},
-                {
-                  elements = {
-                    "repl",
+              console = "integratedTerminal",
+                layouts = {
+                    {
+                      elements = {
+                      -- Elements can be strings or table with id and size keys.
+                        { id = "scopes", size = 0.25 },
+                        "breakpoints",
+                        "stacks",
+                        "watches",
+                      },
+                      size = 40, -- 40 columns
+                      position = "left",
+                    },
+                    {
+                      elements = {
+                        "repl",
+                        "console",
+                      },
+                      size = 0.25, -- 25% of total lines
+                      position = "bottom",
+                    },
                   },
-                  size = 0.3,
-                  position = "bottom",
-                },
-              },
+                  controls = {
+                    -- Requires Neovim nightly (or 0.8 when released)
+                    enabled = true,
+                    -- Display controls in this element
+                    element = "repl",
+                    icons = {
+                      pause = "",
+                      play = "",
+                      step_into = "",
+                      step_over = "",
+                      step_out = "",
+                      step_back = "",
+                      run_last = "",
+                      terminate = "",
+                    },
+                  },
+
               floating = {
                 max_height = nil,
                 max_width = nil,
