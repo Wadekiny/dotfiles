@@ -18,7 +18,7 @@
 "<leader>grep不好用？
 "lspsaga
 "packer
-"修ff改的插件 winbar nvim-tree vim-surround
+"修改的插件 winbar nvim-tree vim-surround
 "
 " nvim 设置
 source ~/.config/nvim/subconfig/settings.vim
@@ -28,6 +28,7 @@ source ~/.config/nvim/subconfig/pluginstall.vim
 source ~/.config/nvim/subconfig/keymap.vim
 " 根据不同文件类型重设主题和颜色（注释斜体）
 "source ~/.config/nvim/subconfig/rewritecolor.vim
+
 
 " 插件配置
 "
@@ -49,7 +50,7 @@ source ~/.config/nvim/subconfig/plugconfig/dap.lua
 
 
 " coc补全，coc插件列表，coc窗口颜色配置
-"source ~/.config/nvim/subconfig/plugconfig/coc.vim
+source ~/.config/nvim/subconfig/plugconfig/coc.vim
 
 " markdown预览
 source ~/.config/nvim/subconfig/plugconfig/markdown.vim
@@ -70,13 +71,13 @@ source ~/.config/nvim/subconfig/plugconfig/vista.vim
 source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
 
 " 命令输入改为浮动窗口
-source ~/.config/nvim/subconfig/plugconfig/noice.lua
+" source ~/.config/nvim/subconfig/plugconfig/noice.lua
 
 " 输出改为浮动窗口
-source ~/.config/nvim/subconfig/plugconfig/notify.lua
+" source ~/.config/nvim/subconfig/plugconfig/notify.lua
 
 " bufferline下面的winbar
-"source ~/.config/nvim/subconfig/plugconfig/winbar.lua
+" source ~/.config/nvim/subconfig/plugconfig/winbar.lua
 
 " 颜色变量可视化
 lua require('colorizer').setup()
@@ -103,35 +104,21 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 "使非活动窗口变暗 主题也许能做到，但是边界变丑
 "source ~/.config/nvim/subconfig/plugconfig/shade.lua
 
-"lua require("mason").setup()
-
-source ~/.config/nvim/subconfig/plugconfig/lsp.lua
-source ~/.config/nvim/subconfig/plugconfig/cmp.lua
-"source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
+" 剪切板管理工具
+" source ~/.config/nvim/subconfig/plugconfig/nvim-neoclip.lua
+" source ~/.config/nvim/subconfig/plugconfig/lsp.lua
+" source ~/.config/nvim/subconfig/plugconfig/cmp.lua
+" source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
 source ~/.config/nvim/subconfig/plugconfig/comment.lua
+source ~/.config/nvim/subconfig/plugconfig/neoformat.vim
 
+
+lua require("mason").setup()
 lua require('nvim-surround').setup{}
-
-lua << EOF
-require('sniprun').setup({
-    --display={"VirtualTextOk","VirtualTextErr"},
-})
-EOF
-
-lua << EOF
-require('nvim-ts-autotag').setup()
-EOF
-
-
-lua << EOF
-require("project_nvim").setup{
-
-}
-
-EOF
-
+lua require('sniprun').setup({})
+lua require('nvim-ts-autotag').setup()
+lua require("project_nvim").setup{}
 lua require("telescope").load_extension('projects')
-
 
 
 
@@ -154,40 +141,6 @@ end
  
 
 
-lua << EOF
 
-require('lspsaga').setup({ 
- -- outline = {
- --    win_position = 'right',
- --    win_with = '',
- --    win_width = 30,
- --    show_detail = true,
- --    auto_preview = true,
- --    auto_refresh = true,
- --    auto_close = true,
- --    custom_sort = nil,
- --    keys = {
- --      jump = 'o',
- --      expand_collapse = 'u',
- --      quit = 'q',
- --    },
- --  },
-symbol_in_winbar = {
-    --in_custom = true,
-    enable = true,
-    hide_keyword = false,
-    separator = '  ',
-    show_file = true,
-    folder_level = 10,
-    respect_root = false,
-    ---- define how to customize filename, eg: %:., %
-    ---- if not set, use default value `%:t`
-    ---- more information see `vim.fn.expand` or `expand`
-    ----  only valid after set `show_file = true`
-    --file_formatter = "%:p",
-    --click_support = false,
-},
-})
 
-EOF
 
