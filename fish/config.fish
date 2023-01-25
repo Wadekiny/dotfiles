@@ -13,3 +13,4 @@ abbr blog cd ~/Blog
 abbr post cd ~/Blog/source/_posts
 abbr todo nvim ~/Blog/source/_posts/TODO.md
 abbr code cd ~/Code
+abbr dot cd ~/Dotfiles
