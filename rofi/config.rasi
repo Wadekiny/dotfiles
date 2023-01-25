@@ -1,9 +1,9 @@
 configuration {
-	modi: "window,run,ssh,combi";
+	modi: "window,run,ssh,drun,combi";
 	width: 60;
 	lines: 10;
 /*	columns: 1;*/
-	font: "mono 12";
+	font: "JetBrainsMono Nerd Font 12";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/

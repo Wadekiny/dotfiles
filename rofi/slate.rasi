@@ -1,9 +1,43 @@
+configuration {
+  drun {
+    display-name: "";
+  }
+
+  combi {
+    display-name: "";
+  }
+
+  run {
+      display-name: " "; 
+/* "" */
+  }
+  window {
+    display-name: "";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
+
+
 * {
-  background-color: #282C33;
-  border-color: #2e343f;
-  text-color: #8ca0aa;
   spacing: 0;
   width: 512px;
+
+  bg: #1a1b26;
+  bg-alt: #333443;
+  /* fg: #6a6f87; */
+  fg: #aabbdd;
+  fg-alt: #a9b1d6;
+
+  /* border-color: #2e343f; */
+  /* background-color: #282C33; */
+  /* text-color: #8ca0aa; */
+  background-color: @bg;
+  text-color: @fg;
 }
 
 inputbar {
@@ -31,13 +65,15 @@ listview {
   cycle: false;
   margin: 0 0 -1px 0;
   scrollbar: false;
+
 }
 
 element {
   border: 0 0 1px 0;
   padding: 16px;
+
 }
 
 element selected {
-  background-color: #2e343f;
+  background-color: @bg-alt;
 }
