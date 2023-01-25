@@ -106,14 +106,16 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 
 " 剪切板管理工具
 " source ~/.config/nvim/subconfig/plugconfig/nvim-neoclip.lua
+"
+" LSP CMP
 " source ~/.config/nvim/subconfig/plugconfig/lsp.lua
 " source ~/.config/nvim/subconfig/plugconfig/cmp.lua
 " source ~/.config/nvim/subconfig/plugconfig/lspsaga.lua
+" lua require("mason").setup()
 source ~/.config/nvim/subconfig/plugconfig/comment.lua
 source ~/.config/nvim/subconfig/plugconfig/neoformat.vim
 
 
-lua require("mason").setup()
 lua require('nvim-surround').setup{}
 lua require('sniprun').setup({})
 lua require('nvim-ts-autotag').setup()
