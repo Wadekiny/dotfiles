@@ -1,0 +1,651 @@
+[18:28:19.786][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:65]: Lua Lsp startup, root: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:66]: ROOT:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:67]: LOGPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
+[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:68]: METAPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
+[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:69]: VERSION:	3.6.3
+[18:28:19.825][info] [#0:script/service/service.lua:141]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 1.987 MB
+        # 00 : 1.987 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[18:28:19.834][info] [#0:script/language.lua:137]: VSC language: en-us
+[18:28:19.834][info] [#0:script/language.lua:138]: LS  language: en-us
+[18:28:19.834][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/wadekiny/Dotfiles
+[18:28:19.834][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_home_wadekiny_Dotfiles.log
+[18:28:19.835][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///home/wadekiny/Dotfiles
+[18:28:20.038][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/Dotfiles
+[18:28:20.039][info] [#0:script/provider/provider.lua:42]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = false
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:28:20.039][info] [#0:script/provider/provider.lua:48]: Load config from .luarc.json/.luarc.jsonc	file:///home/wadekiny/Dotfiles
+[18:28:20.039][info] [#0:script/provider/provider.lua:49]: {
+  ["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  ["Lua.workspace.checkThirdParty"] = false
+}
+[18:28:20.140][info] [#0:script/provider/completion.lua:43]: Enable completion.
+[18:28:20.140][info] [#0:script/provider/provider.lua:56]: Load config from client	fallback
+[18:28:20.149][info] [#0:script/provider/provider.lua:57]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = false
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:28:20.250][info] [#0:script/library.lua:207]: Init builtin library at:	file:///home/wadekiny/Dotfiles
+[18:28:20.268][info] [#0:script/plugin.lua:86]: plugin path:	/home/wadekiny/Dotfiles
+[18:28:20.268][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/wadekiny/Dotfiles
+[18:28:20.269][info] [#0:script/library.lua:207]: Init builtin library at:	nil
+[18:28:20.384][info] [#0:script/workspace/workspace.lua:304]: Preload start:	file:///home/wadekiny/Dotfiles
+[18:28:20.390][info] [#0:script/workspace/workspace.lua:310]: Scan files at:	file:///home/wadekiny/Dotfiles
+[18:28:20.505][info] [#0:script/workspace/workspace.lua:304]: Preload start:	<fallback>
+[18:28:20.506][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[18:28:20.607][info] [#0:script/workspace/workspace.lua:347]: Found 11 files at:	<fallback>
+[18:28:20.607][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	<fallback>
+[18:28:20.709][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.104] sec: <fallback>
+[18:28:20.709][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: <fallback>
+[18:28:20.709][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	<fallback>
+[18:28:20.709][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	<fallback>
+[18:28:20.711][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[18:28:20.890][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[18:28:20.991][info] [#0:script/workspace/workspace.lua:347]: Found 933 files at:	file:///home/wadekiny/Dotfiles
+[18:28:20.991][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles
+[18:28:22.451][warn] [#0:script/files.lua:678]: Compile [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Cocos4.0/library/cc/DrawNode.lua] takes [0.127] sec, size [6.778] kb.
+[18:28:22.883][warn] [#0:script/files.lua:544]: Parse LuaDoc of [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.107] sec, size [448.808] kb.
+[18:28:23.118][warn] [#0:script/files.lua:678]: Compile [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Defold/library/render.lua] takes [0.199] sec, size [22.202] kb.
+[18:28:23.775][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [2.614] sec: file:///home/wadekiny/Dotfiles
+[18:28:23.775][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles
+[18:28:23.775][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles
+[18:28:23.775][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	file:///home/wadekiny/Dotfiles
+[18:28:24.167][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[18:28:24.169][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[18:28:24.170][warn] [#0:script/proto/proto.lua:171]: Method [textDocument/inlayHint] takes [3.395]sec. {
+  id = 2,
+  jsonrpc = "2.0",
+  method = "textDocument/inlayHint",
+  params = {
+    range = {
+      end = {
+        character = 0,
+        line = 6
+      },
+      start = {
+        character = 0,
+        line = 0
+      }
+    },
+    textDocument = {
+      uri = "file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/telescope.lua"
+    }
+  }
+}
+[18:28:26.407][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.781] sec!
+[18:28:27.177][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.715] sec!
+[18:28:29.502][warn] [#0:script/await.lua:186]: Await step takes [0.515] sec.
+[18:28:29.512][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [missing-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/script/glob/gitignore.lua] takes [0.526] sec!
+[18:28:31.370][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/Dotfiles] finished, takes [7.198] sec.
+[18:31:33.297][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///home/wadekiny/test
+[18:31:33.397][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/Dotfiles
+[18:31:33.398][info] [#0:script/provider/provider.lua:42]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = false
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:31:33.398][info] [#0:script/provider/provider.lua:48]: Load config from .luarc.json/.luarc.jsonc	file:///home/wadekiny/Dotfiles
+[18:31:33.398][info] [#0:script/provider/provider.lua:49]: {
+  ["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  ["Lua.workspace.checkThirdParty"] = false
+}
+[18:31:33.633][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/test
+[18:31:33.633][info] [#0:script/provider/provider.lua:42]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = false
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:31:33.734][info] [#0:script/provider/provider.lua:56]: Load config from client	fallback
+[18:31:33.735][info] [#0:script/provider/provider.lua:57]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = false
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:31:33.735][info] [#0:script/library.lua:207]: Init builtin library at:	file:///home/wadekiny/test
+[18:31:33.752][info] [#0:script/plugin.lua:86]: plugin path:	/home/wadekiny/test
+[18:31:33.752][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/wadekiny/test
+[18:31:33.928][info] [#0:script/workspace/workspace.lua:304]: Preload start:	file:///home/wadekiny/test
+[18:31:33.929][info] [#0:script/workspace/workspace.lua:310]: Scan files at:	file:///home/wadekiny/test
+[18:31:33.932][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[18:31:34.033][info] [#0:script/workspace/workspace.lua:347]: Found 11 files at:	file:///home/wadekiny/test
+[18:31:34.033][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/test
+[18:31:34.033][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.001] sec: file:///home/wadekiny/test
+[18:31:34.033][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/test
+[18:31:34.033][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/test
+[18:31:34.033][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	file:///home/wadekiny/test
+[18:31:34.036][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/test], files count:[11]
+[18:31:34.037][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[18:31:34.075][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/test] finished, takes [0.040] sec.

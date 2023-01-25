@@ -8,7 +8,8 @@
     "coc-actions": ">=1.5.0",
     "coc-tsserver": ">=2.0.2",
     "coc-sh": ">=0.7.0",
-    "coc-pyright": ">=1.1.275"
+    "coc-pyright": ">=1.1.275",
+    "coc-snippets": ">=3.1.6"
   },
-  "lastUpdate": 1670228631637
+  "lastUpdate": 1674639436706
 }
