@@ -1,3 +1,11 @@
+-- local status_luasnip_ok, luasnip = pcall(require, "luasnip")
+-- if not status_luasnip_ok then
+--   return
+-- end
+--
+-- require("luasnip.loaders.from_vscode").lazy_load() -- load freindly-snippets
+
+
 
 -- NOTE: cmp --
 local kind_icons = {
