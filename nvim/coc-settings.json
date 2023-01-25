@@ -1,20 +1,20 @@
 {
     "Lua.telemetry.enable": false,
     "coc.preferences.extensionUpdateCheck": "weekly",
-    "suggest.floatConfig.border" : false,
-    "suggest.floatConfig.rounded" : false,
-    "diagnostic.floatConfig.border" : false,
-    "diagnostic.floatConfig.rounded" : false,
-    "signature.floatConfig.border" : false,
-    "signature.floatConfig.rounded" : false,
+    "suggest.floatConfig.border" : true,
+    "suggest.floatConfig.rounded" : true,
+    "diagnostic.floatConfig.border" : true,
+    "diagnostic.floatConfig.rounded" : true,
+    "signature.floatConfig.border" : true,
+    "signature.floatConfig.rounded" : true,
     "suggest.enablePreselect": false,
     "suggest.noselect": true,
 
-    "explorer.width": 30,
-    "explorer.file.column.indent.indentLine": true,
-    "explorer.icon.enableNerdfont": true,
-    "explorer.buffer.showHiddenBuffers": false,
-    "explorer.git.enable": false,
+//    "explorer.width": 30,
+//    "explorer.file.column.indent.indentLine": true,
+//    "explorer.icon.enableNerdfont": true,
+//    "explorer.buffer.showHiddenBuffers": false,
+//    "explorer.git.enable": false,
 
     "diagnostic.errorSign": "\uf467",
 	"diagnostic.warningSign": "\uf071",
@@ -46,5 +46,6 @@
 		"unit": "\uf475",
 		"value": "\uf89f",
 		"variable": "\ue71b"
-	}
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }
