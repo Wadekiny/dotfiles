@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
 Plug 'inkch/vim-fcitx5-auto-toggle'
 
-Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
+" Plug 'lyokha/vim-xkbswitch'         "require xkbswitch
 Plug 'jiangmiao/auto-pairs'			"自动括号	
 Plug 'junegunn/vim-peekaboo'		"复制缓存区
 Plug 'mg979/vim-visual-multi'       "多光标
@@ -41,7 +41,7 @@ Plug 'machakann/vim-highlightedyank'    "复制时高亮
 
 
 "complete---------------------------
-"Plug 'neoclide/coc.nvim', {'branch': 'release'} "补全插件
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "补全插件
 Plug 'godlygeek/tabular'    "对齐代码 (没在用)
 
 
@@ -84,7 +84,8 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'                         "输出改为浮动窗口
 
 
-Plug 'fgheng/winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对))
+" Plug 'fgheng/winbar.nvim'                           
+" Plug 'wadekiny/winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对)),但是, 浮动窗口youwenti
 
 "Plug 'famiu/bufdelete.nvim'                         "删除buffer不改变分屏结构
 
@@ -103,6 +104,7 @@ Plug 'williamboman/mason.nvim'
 "Plug 'kosayoda/nvim-lightbulb'
 "Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip' "片段补全
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
@@ -114,6 +116,9 @@ Plug 'windwp/nvim-ts-autotag'  "html标签补全
 Plug 'numToStr/Comment.nvim' "quick // # -- comment
 Plug 'dccsillag/magma-nvim', {'do': ':UpdateRemotePlugins'} " jupyter-like
 Plug 'ahmedkhalf/project.nvim'  "Project mananger
+Plug 'sbdchd/neoformat'   "formatter
+" Plug 'AckslD/nvim-neoclip.lua' "剪切板管理 
+Plug 'rafamadriz/friendly-snippets' " 片段补全
 call plug#end()
 
 
