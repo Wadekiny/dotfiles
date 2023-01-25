@@ -97,7 +97,7 @@ tnoremap <c-l> <C-\><C-n><c-w>l
 
 """---------- coc ----------""
 "" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh()
 ""}}}
 
 "  NOTE: alt group -----------------------------------------------------
@@ -216,39 +216,39 @@ nnoremap <space>f <cmd>call ChangePwd()<cr>
 "nvim 自带，ga -> get ascii
 
 """---------- coc ----------""
-"inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1):
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <TAB>
+     \ coc#pum#visible() ? coc#pum#next(1):
+     \ CheckBackspace() ? "\<Tab>" :
+     \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+ let col = col('.') - 1
+ return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap gl  <Plug>(coc-codeaction-selected)
+nmap gl  <Plug>(coc-codeaction-selected)
 "
-"" Make <CR> to accept selected completion item or notify coc.nvim to format
-"" <C-g>u breaks current undo, please make your own choice.
-"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-"
-"" Applying codeAction to the selected region.
-"" Example: `<leader>aap` for current paragraph
-"xmap gl  <Plug>(coc-codeaction-selected)
-"nmap gl  <Plug>(coc-codeaction-selected)
-"
-"" Use `[g` and `]g` to navigate diagnostics
-"" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-"nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
-"
-"" GoTo code navigation.
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-"
-"nmap rn <Plug>(coc-rename)
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap rn <Plug>(coc-rename)
 
 ""---------- coc-explorer ----------""
 "nmap tt <Cmd>CocCommand explorer<CR>
@@ -296,7 +296,7 @@ nnoremap <silent><space>h <Cmd>BufferLineCyclePrev<CR>
 
 
 
-
+nnoremap <c-f> <cmd>Neoformat<cr>
 nnoremap <F4> <cmd>call CompileCpp()<cr>
 " noremap  :call CompileRunGcc()<CR>
 "
