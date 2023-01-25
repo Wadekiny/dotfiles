@@ -5,6 +5,35 @@ if not status_ok then
 end
 
 bufferline.setup ({
+    highlights={
+        -- tab_selected={
+        --     bg = '#ffffff';
+        -- },
+        buffer_selected ={
+            -- bg = '#222299'
+            bg = '#202328'
+        },
+        numbers_selected ={
+            bg = '#202328'
+        },
+        close_button_selected ={
+            bg = '#202328'
+        },
+        modified_selected = {
+            bg = '#202328'
+        },
+        indicator_selected = {
+            bg = '#202328'
+        },
+        -- tab={
+        --     bg = '#ffffff';
+        -- },
+        -- fill = {
+        --     bg = '#00aaff'
+        -- },
+
+
+    },
     options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
     numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
