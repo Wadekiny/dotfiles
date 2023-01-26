@@ -1,9 +1,9 @@
-[18:28:19.786][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:65]: Lua Lsp startup, root: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:66]: ROOT:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:67]: LOGPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:68]: METAPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:69]: VERSION:	3.6.3
-[18:28:19.825][info] [#0:script/service/service.lua:141]: 
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:65]: Lua Lsp startup, root: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:66]: ROOT:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:67]: LOGPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:68]: METAPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:69]: VERSION:	3.6.3
+[16:30:14.778][info] [#0:script/service/service.lua:141]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
         Total: 1.987 MB
@@ -25,7 +25,7 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[18:28:19.834][info] [#0:script/language.lua:137]: VSC language: en-us
-[18:28:19.834][info] [#0:script/language.lua:138]: LS  language: en-us
-[18:28:19.834][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/wadekiny/Dotfiles
-[18:28:19.834][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_home_wadekiny_Dotfiles.log
+[16:30:14.786][info] [#0:script/language.lua:137]: VSC language: en-us
+[16:30:14.786][info] [#0:script/language.lua:138]: LS  language: en-us
+[16:30:14.786][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/wadekiny/Dotfiles
+[16:30:14.786][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_home_wadekiny_Dotfiles.log

@@ -1,9 +1,9 @@
-[18:28:19.786][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:65]: Lua Lsp startup, root: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:66]: ROOT:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:67]: LOGPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:68]: METAPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
-[18:28:19.787][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:69]: VERSION:	3.6.3
-[18:28:19.825][info] [#0:script/service/service.lua:141]: 
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:65]: Lua Lsp startup, root: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:66]: ROOT:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:67]: LOGPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:68]: METAPATH:	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
+[16:30:14.740][info] [#0:/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:69]: VERSION:	3.6.3
+[16:30:14.778][info] [#0:script/service/service.lua:141]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
         Total: 1.987 MB
@@ -25,13 +25,14 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[18:28:19.834][info] [#0:script/language.lua:137]: VSC language: en-us
-[18:28:19.834][info] [#0:script/language.lua:138]: LS  language: en-us
-[18:28:19.834][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/wadekiny/Dotfiles
-[18:28:19.834][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_home_wadekiny_Dotfiles.log
-[18:28:19.835][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///home/wadekiny/Dotfiles
-[18:28:20.038][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/Dotfiles
-[18:28:20.039][info] [#0:script/provider/provider.lua:42]: {
+[16:30:14.786][info] [#0:script/language.lua:137]: VSC language: en-us
+[16:30:14.786][info] [#0:script/language.lua:138]: LS  language: en-us
+[16:30:14.786][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/wadekiny/Dotfiles
+[16:30:14.786][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_home_wadekiny_Dotfiles.log
+[16:30:14.786][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///home/wadekiny/Dotfiles
+[16:30:14.787][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:14.990][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:14.990][info] [#0:script/provider/provider.lua:42]: {
   Lua = {
     completion = {
       autoRequire = true,
@@ -138,14 +139,122 @@
     }
   }
 }
-[18:28:20.039][info] [#0:script/provider/provider.lua:48]: Load config from .luarc.json/.luarc.jsonc	file:///home/wadekiny/Dotfiles
-[18:28:20.039][info] [#0:script/provider/provider.lua:49]: {
+[16:30:15.091][info] [#0:script/provider/completion.lua:43]: Enable completion.
+[16:30:15.091][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/Dotfiles
+[16:30:15.092][info] [#0:script/provider/provider.lua:42]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      groupFileStatus = {},
+      groupSeverity = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      neededFileStatus = {},
+      severity = {},
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      builtin = {},
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = false
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    typeFormat = {
+      config = {}
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = {},
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[16:30:15.092][info] [#0:script/provider/provider.lua:48]: Load config from .luarc.json/.luarc.jsonc	file:///home/wadekiny/Dotfiles
+[16:30:15.092][info] [#0:script/provider/provider.lua:49]: {
   ["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
   ["Lua.workspace.checkThirdParty"] = false
 }
-[18:28:20.140][info] [#0:script/provider/completion.lua:43]: Enable completion.
-[18:28:20.140][info] [#0:script/provider/provider.lua:56]: Load config from client	fallback
-[18:28:20.149][info] [#0:script/provider/provider.lua:57]: {
+[16:30:15.193][info] [#0:script/provider/provider.lua:56]: Load config from client	fallback
+[16:30:15.193][info] [#0:script/provider/provider.lua:57]: {
   Lua = {
     completion = {
       autoRequire = true,
@@ -252,34 +361,40 @@
     }
   }
 }
-[18:28:20.250][info] [#0:script/library.lua:207]: Init builtin library at:	file:///home/wadekiny/Dotfiles
-[18:28:20.268][info] [#0:script/plugin.lua:86]: plugin path:	/home/wadekiny/Dotfiles
-[18:28:20.268][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/wadekiny/Dotfiles
-[18:28:20.269][info] [#0:script/library.lua:207]: Init builtin library at:	nil
-[18:28:20.384][info] [#0:script/workspace/workspace.lua:304]: Preload start:	file:///home/wadekiny/Dotfiles
-[18:28:20.390][info] [#0:script/workspace/workspace.lua:310]: Scan files at:	file:///home/wadekiny/Dotfiles
-[18:28:20.505][info] [#0:script/workspace/workspace.lua:304]: Preload start:	<fallback>
-[18:28:20.506][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
-[18:28:20.607][info] [#0:script/workspace/workspace.lua:347]: Found 11 files at:	<fallback>
-[18:28:20.607][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	<fallback>
-[18:28:20.709][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.104] sec: <fallback>
-[18:28:20.709][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: <fallback>
-[18:28:20.709][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	<fallback>
-[18:28:20.709][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	<fallback>
-[18:28:20.711][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
-[18:28:20.890][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
-[18:28:20.991][info] [#0:script/workspace/workspace.lua:347]: Found 933 files at:	file:///home/wadekiny/Dotfiles
-[18:28:20.991][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles
-[18:28:22.451][warn] [#0:script/files.lua:678]: Compile [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Cocos4.0/library/cc/DrawNode.lua] takes [0.127] sec, size [6.778] kb.
-[18:28:22.883][warn] [#0:script/files.lua:544]: Parse LuaDoc of [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.107] sec, size [448.808] kb.
-[18:28:23.118][warn] [#0:script/files.lua:678]: Compile [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Defold/library/render.lua] takes [0.199] sec, size [22.202] kb.
-[18:28:23.775][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [2.614] sec: file:///home/wadekiny/Dotfiles
-[18:28:23.775][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles
-[18:28:23.775][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles
-[18:28:23.775][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	file:///home/wadekiny/Dotfiles
-[18:28:24.167][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
-[18:28:24.169][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
-[18:28:24.170][warn] [#0:script/proto/proto.lua:171]: Method [textDocument/inlayHint] takes [3.395]sec. {
+[16:30:15.294][info] [#0:script/library.lua:207]: Init builtin library at:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.321][info] [#0:script/plugin.lua:86]: plugin path:	/home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.321][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.321][info] [#0:script/library.lua:207]: Init builtin library at:	file:///home/wadekiny/Dotfiles
+[16:30:15.341][info] [#0:script/plugin.lua:86]: plugin path:	/home/wadekiny/Dotfiles
+[16:30:15.341][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/wadekiny/Dotfiles
+[16:30:15.341][info] [#0:script/library.lua:207]: Init builtin library at:	nil
+[16:30:15.457][info] [#0:script/workspace/workspace.lua:304]: Preload start:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.459][info] [#0:script/workspace/workspace.lua:310]: Scan files at:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.463][info] [#0:script/workspace/workspace.lua:304]: Preload start:	file:///home/wadekiny/Dotfiles
+[16:30:15.464][info] [#0:script/workspace/workspace.lua:310]: Scan files at:	file:///home/wadekiny/Dotfiles
+[16:30:15.528][info] [#0:script/workspace/workspace.lua:304]: Preload start:	<fallback>
+[16:30:15.528][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[16:30:15.535][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[16:30:15.630][info] [#0:script/workspace/workspace.lua:347]: Found 11 files at:	<fallback>
+[16:30:15.630][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	<fallback>
+[16:30:15.657][info] [#0:script/workspace/workspace.lua:347]: Found 11 files at:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.657][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.657][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.001] sec: file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.657][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.657][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.657][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	file:///home/wadekiny/ProgramFiles/dwm-wadekiny
+[16:30:15.659][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[16:30:15.730][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.102] sec: <fallback>
+[16:30:15.730][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: <fallback>
+[16:30:15.730][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	<fallback>
+[16:30:15.730][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	<fallback>
+[16:30:15.731][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[16:30:15.899][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[16:30:16.000][info] [#0:script/workspace/workspace.lua:347]: Found 933 files at:	file:///home/wadekiny/Dotfiles
+[16:30:16.000][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles
+[16:30:16.294][warn] [#0:script/proto/proto.lua:171]: Method [textDocument/inlayHint] takes [0.670]sec. {
+  _closeMessage = "Request cancelled.",
+  _closeReason = -32800,
   id = 2,
   jsonrpc = "2.0",
   method = "textDocument/inlayHint",
@@ -287,7 +402,7 @@
     range = {
       end = {
         character = 0,
-        line = 6
+        line = 43
       },
       start = {
         character = 0,
@@ -295,357 +410,177 @@
       }
     },
     textDocument = {
-      uri = "file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/telescope.lua"
+      uri = "file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua"
     }
   }
 }
-[18:28:26.407][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.781] sec!
-[18:28:27.177][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.715] sec!
-[18:28:29.502][warn] [#0:script/await.lua:186]: Await step takes [0.515] sec.
-[18:28:29.512][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [missing-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/script/glob/gitignore.lua] takes [0.526] sec!
-[18:28:31.370][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/Dotfiles] finished, takes [7.198] sec.
-[18:31:33.297][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///home/wadekiny/test
-[18:31:33.397][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/Dotfiles
-[18:31:33.398][info] [#0:script/provider/provider.lua:42]: {
-  Lua = {
-    completion = {
-      autoRequire = true,
-      callSnippet = "Disable",
-      displayContext = 0,
-      enable = true,
-      keywordSnippet = "Replace",
-      postfix = "@",
-      requireSeparator = ".",
-      showParams = true,
-      showWord = "Fallback",
-      workspaceWord = true
+[16:30:17.452][warn] [#0:script/files.lua:678]: Compile [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Cocos4.0/library/ccui/Slider.lua] takes [0.126] sec, size [6.441] kb.
+[16:30:17.809][warn] [#0:script/files.lua:544]: Parse LuaDoc of [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.102] sec, size [448.808] kb.
+[16:30:18.088][warn] [#0:script/files.lua:544]: Parse LuaDoc of [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/lovr/library/lovr/math.lua] takes [0.203] sec, size [45.651] kb.
+[16:30:18.244][warn] [#0:script/proto/proto.lua:171]: Method [textDocument/inlayHint] takes [1.231]sec. {
+  _closeMessage = "Request cancelled.",
+  _closeReason = -32800,
+  id = 7,
+  jsonrpc = "2.0",
+  method = "textDocument/inlayHint",
+  params = {
+    range = {
+      end = {
+        character = 0,
+        line = 43
+      },
+      start = {
+        character = 0,
+        line = 0
+      }
     },
-    diagnostics = {
-      disable = {},
-      disableScheme = { "git" },
-      enable = true,
-      globals = {},
-      groupFileStatus = {},
-      groupSeverity = {},
-      ignoredFiles = "Opened",
-      libraryFiles = "Opened",
-      neededFileStatus = {},
-      severity = {},
-      unusedLocalExclude = {},
-      workspaceDelay = 3000,
-      workspaceRate = 100
-    },
-    format = {
-      defaultConfig = {},
-      enable = true
-    },
-    hint = {
-      arrayIndex = "Auto",
-      await = true,
-      enable = true,
-      paramName = "All",
-      paramType = true,
-      semicolon = "SameLine",
-      setType = false
-    },
-    hover = {
-      enable = true,
-      enumsLimit = 5,
-      expandAlias = true,
-      previewFields = 50,
-      viewNumber = true,
-      viewString = true,
-      viewStringMax = 1000
-    },
-    misc = {
-      parameters = {}
-    },
-    runtime = {
-      builtin = {},
-      fileEncoding = "utf8",
-      meta = "${version} ${language} ${encoding}",
-      nonstandardSymbol = {},
-      path = { "?.lua", "?/init.lua" },
-      pathStrict = false,
-      plugin = "",
-      pluginArgs = {},
-      special = {},
-      unicodeName = false,
-      version = "Lua 5.4"
-    },
-    semantic = {
-      annotation = true,
-      enable = true,
-      keyword = false,
-      variable = true
-    },
-    signatureHelp = {
-      enable = true
-    },
-    spell = {
-      dict = {}
-    },
-    telemetry = {
-      enable = false
-    },
-    type = {
-      castNumberToInteger = true,
-      weakNilCheck = false,
-      weakUnionCheck = false
-    },
-    typeFormat = {
-      config = {}
-    },
-    window = {
-      progressBar = true,
-      statusBar = true
-    },
-    workspace = {
-      checkThirdParty = true,
-      ignoreDir = { ".vscode" },
-      ignoreSubmodules = true,
-      library = {},
-      maxPreload = 5000,
-      preloadFileSize = 500,
-      supportScheme = { "file", "untitled", "git" },
-      useGitIgnore = true,
-      userThirdParty = {}
+    textDocument = {
+      uri = "file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua"
     }
   }
 }
-[18:31:33.398][info] [#0:script/provider/provider.lua:48]: Load config from .luarc.json/.luarc.jsonc	file:///home/wadekiny/Dotfiles
-[18:31:33.398][info] [#0:script/provider/provider.lua:49]: {
-  ["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  ["Lua.workspace.checkThirdParty"] = false
-}
-[18:31:33.633][info] [#0:script/provider/provider.lua:41]: Load config from client	file:///home/wadekiny/test
-[18:31:33.633][info] [#0:script/provider/provider.lua:42]: {
-  Lua = {
-    completion = {
-      autoRequire = true,
-      callSnippet = "Disable",
-      displayContext = 0,
-      enable = true,
-      keywordSnippet = "Replace",
-      postfix = "@",
-      requireSeparator = ".",
-      showParams = true,
-      showWord = "Fallback",
-      workspaceWord = true
+[16:30:18.646][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [2.473] sec: file:///home/wadekiny/Dotfiles
+[16:30:18.646][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles
+[16:30:18.646][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles
+[16:30:18.646][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	file:///home/wadekiny/Dotfiles
+[16:30:19.047][warn] [#0:script/proto/proto.lua:171]: Method [textDocument/inlayHint] takes [0.605]sec. {
+  _closeMessage = "Request cancelled.",
+  _closeReason = -32800,
+  id = 9,
+  jsonrpc = "2.0",
+  method = "textDocument/inlayHint",
+  params = {
+    range = {
+      end = {
+        character = 0,
+        line = 43
+      },
+      start = {
+        character = 0,
+        line = 0
+      }
     },
-    diagnostics = {
-      disable = {},
-      disableScheme = { "git" },
-      enable = true,
-      globals = {},
-      groupFileStatus = {},
-      groupSeverity = {},
-      ignoredFiles = "Opened",
-      libraryFiles = "Opened",
-      neededFileStatus = {},
-      severity = {},
-      unusedLocalExclude = {},
-      workspaceDelay = 3000,
-      workspaceRate = 100
-    },
-    format = {
-      defaultConfig = {},
-      enable = true
-    },
-    hint = {
-      arrayIndex = "Auto",
-      await = true,
-      enable = true,
-      paramName = "All",
-      paramType = true,
-      semicolon = "SameLine",
-      setType = false
-    },
-    hover = {
-      enable = true,
-      enumsLimit = 5,
-      expandAlias = true,
-      previewFields = 50,
-      viewNumber = true,
-      viewString = true,
-      viewStringMax = 1000
-    },
-    misc = {
-      parameters = {}
-    },
-    runtime = {
-      builtin = {},
-      fileEncoding = "utf8",
-      meta = "${version} ${language} ${encoding}",
-      nonstandardSymbol = {},
-      path = { "?.lua", "?/init.lua" },
-      pathStrict = false,
-      plugin = "",
-      pluginArgs = {},
-      special = {},
-      unicodeName = false,
-      version = "Lua 5.4"
-    },
-    semantic = {
-      annotation = true,
-      enable = true,
-      keyword = false,
-      variable = true
-    },
-    signatureHelp = {
-      enable = true
-    },
-    spell = {
-      dict = {}
-    },
-    telemetry = {
-      enable = false
-    },
-    type = {
-      castNumberToInteger = true,
-      weakNilCheck = false,
-      weakUnionCheck = false
-    },
-    typeFormat = {
-      config = {}
-    },
-    window = {
-      progressBar = true,
-      statusBar = true
-    },
-    workspace = {
-      checkThirdParty = true,
-      ignoreDir = { ".vscode" },
-      ignoreSubmodules = true,
-      library = {},
-      maxPreload = 5000,
-      preloadFileSize = 500,
-      supportScheme = { "file", "untitled", "git" },
-      useGitIgnore = true,
-      userThirdParty = {}
+    textDocument = {
+      uri = "file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua"
     }
   }
 }
-[18:31:33.734][info] [#0:script/provider/provider.lua:56]: Load config from client	fallback
-[18:31:33.735][info] [#0:script/provider/provider.lua:57]: {
-  Lua = {
-    completion = {
-      autoRequire = true,
-      callSnippet = "Disable",
-      displayContext = 0,
-      enable = true,
-      keywordSnippet = "Replace",
-      postfix = "@",
-      requireSeparator = ".",
-      showParams = true,
-      showWord = "Fallback",
-      workspaceWord = true
-    },
-    diagnostics = {
-      disable = {},
-      disableScheme = { "git" },
-      enable = true,
-      globals = {},
-      groupFileStatus = {},
-      groupSeverity = {},
-      ignoredFiles = "Opened",
-      libraryFiles = "Opened",
-      neededFileStatus = {},
-      severity = {},
-      unusedLocalExclude = {},
-      workspaceDelay = 3000,
-      workspaceRate = 100
-    },
-    format = {
-      defaultConfig = {},
-      enable = true
-    },
-    hint = {
-      arrayIndex = "Auto",
-      await = true,
-      enable = true,
-      paramName = "All",
-      paramType = true,
-      semicolon = "SameLine",
-      setType = false
-    },
-    hover = {
-      enable = true,
-      enumsLimit = 5,
-      expandAlias = true,
-      previewFields = 50,
-      viewNumber = true,
-      viewString = true,
-      viewStringMax = 1000
-    },
-    misc = {
-      parameters = {}
-    },
-    runtime = {
-      builtin = {},
-      fileEncoding = "utf8",
-      meta = "${version} ${language} ${encoding}",
-      nonstandardSymbol = {},
-      path = { "?.lua", "?/init.lua" },
-      pathStrict = false,
-      plugin = "",
-      pluginArgs = {},
-      special = {},
-      unicodeName = false,
-      version = "Lua 5.4"
-    },
-    semantic = {
-      annotation = true,
-      enable = true,
-      keyword = false,
-      variable = true
-    },
-    signatureHelp = {
-      enable = true
-    },
-    spell = {
-      dict = {}
-    },
-    telemetry = {
-      enable = false
-    },
-    type = {
-      castNumberToInteger = true,
-      weakNilCheck = false,
-      weakUnionCheck = false
-    },
-    typeFormat = {
-      config = {}
-    },
-    window = {
-      progressBar = true,
-      statusBar = true
-    },
-    workspace = {
-      checkThirdParty = true,
-      ignoreDir = { ".vscode" },
-      ignoreSubmodules = true,
-      library = {},
-      maxPreload = 5000,
-      preloadFileSize = 500,
-      supportScheme = { "file", "untitled", "git" },
-      useGitIgnore = true,
-      userThirdParty = {}
-    }
-  }
-}
-[18:31:33.735][info] [#0:script/library.lua:207]: Init builtin library at:	file:///home/wadekiny/test
-[18:31:33.752][info] [#0:script/plugin.lua:86]: plugin path:	/home/wadekiny/test
-[18:31:33.752][warn] [#0:script/plugin.lua:101]: plugin not found:	/home/wadekiny/test
-[18:31:33.928][info] [#0:script/workspace/workspace.lua:304]: Preload start:	file:///home/wadekiny/test
-[18:31:33.929][info] [#0:script/workspace/workspace.lua:310]: Scan files at:	file:///home/wadekiny/test
-[18:31:33.932][info] [#0:script/workspace/workspace.lua:327]: Scan library at:	file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
-[18:31:34.033][info] [#0:script/workspace/workspace.lua:347]: Found 11 files at:	file:///home/wadekiny/test
-[18:31:34.033][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/test
-[18:31:34.033][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.001] sec: file:///home/wadekiny/test
-[18:31:34.033][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/test
-[18:31:34.033][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/test
-[18:31:34.033][info] [#0:script/workspace/workspace.lua:349]: Preload finish at:	file:///home/wadekiny/test
-[18:31:34.036][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/test], files count:[11]
-[18:31:34.037][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
-[18:31:34.075][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/test] finished, takes [0.040] sec.
+[16:30:19.047][warn] [#0:script/proto/proto.lua:122]: Response of [workspace/diagnostic/refresh] error [-32601]: Unhandled method workspace/diagnostic/refresh
+[16:30:19.049][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:30:19.244][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/ProgramFiles/dwm-wadekiny], files count:[11]
+[16:30:19.337][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/ProgramFiles/dwm-wadekiny] finished, takes [0.094] sec.
+[16:30:21.122][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.579] sec!
+[16:30:21.652][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.529] sec!
+[16:30:25.681][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/Dotfiles] finished, takes [6.628] sec.
+[16:32:46.552][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:32:50.027][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:32:51.602][warn] [#0:script/await.lua:186]: Await step takes [0.706] sec.
+[16:32:52.582][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.617] sec!
+[16:32:53.391][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.751] sec!
+[16:32:58.830][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:32:58.830][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:32:59.726][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:33:03.225][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:33:05.699][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.630] sec!
+[16:33:06.275][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.575] sec!
+[16:33:22.554][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:33:24.939][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:33:26.559][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:33:33.751][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:33:36.302][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.651] sec!
+[16:33:36.912][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.610] sec!
+[16:33:38.394][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:33:41.936][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:33:44.388][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.628] sec!
+[16:33:44.976][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.588] sec!
+[16:33:53.661][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:33:57.840][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:34:00.272][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.722] sec!
+[16:34:00.930][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.658] sec!
+[16:34:05.788][warn] [#0:script/await.lua:186]: Await step takes [0.951] sec.
+[16:34:09.542][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:34:12.241][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.618] sec!
+[16:34:12.811][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.569] sec!
+[16:34:18.832][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/Dotfiles] finished, takes [9.286] sec.
+[16:34:30.947][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:31.878][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:35.948][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:34:38.559][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.621] sec!
+[16:34:39.150][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.590] sec!
+[16:34:42.939][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:34:42.939][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:34:42.939][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:34:42.939][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:34:42.939][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:34:42.940][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:42.946][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:42.946][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:42.946][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:42.946][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:34:45.464][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:34:47.996][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.627] sec!
+[16:34:48.564][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.569] sec!
+[16:34:53.620][info] [#0:script/provider/diagnostic.lua:559]: Diagnostics scope [file:///home/wadekiny/Dotfiles] finished, takes [8.154] sec.
+[16:35:17.857][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:17.857][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:17.858][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:17.858][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:17.858][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:17.858][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:17.860][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:17.860][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:17.860][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:17.860][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:33.862][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:33.863][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:33.863][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:33.863][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:33.863][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:33.863][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:33.865][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:33.865][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:33.865][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:33.865][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:49.004][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:52.965][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:35:55.505][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.616] sec!
+[16:35:56.100][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.594] sec!
+[16:35:56.866][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:56.866][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:56.866][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:56.866][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:56.866][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:35:56.866][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:56.868][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:56.869][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:56.869][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:35:56.869][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:00.203][warn] [#0:script/await.lua:186]: Await step takes [1.159] sec.
+[16:36:00.221][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-value] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/script/parser/luadoc.lua] takes [1.185] sec!
+[16:36:01.934][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:01.934][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:01.943][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:01.943][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:01.943][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:01.943][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:01.946][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:01.946][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:01.946][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:01.946][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:16.807][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:17.603][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:36:20.223][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.603] sec!
+[16:36:20.779][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.555] sec!
+[16:36:21.670][info] [#0:script/provider/diagnostic.lua:542]: Diagnostics scope [file:///home/wadekiny/Dotfiles], files count:[922]
+[16:36:21.950][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:21.950][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:21.950][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:21.950][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:21.950][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/tmp/undo/%25home%25wadekiny%25Dotfiles%25nvim%25subconfig%25plugconfig%25nvim-tree.lua
+[16:36:21.951][info] [#0:script/workspace/workspace.lua:264]: Scan files at:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:21.952][info] [#0:script/workspace/loading.lua:157]: Load files from disk:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:21.952][info] [#0:script/workspace/loading.lua:169]: Loaded files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:21.952][info] [#0:script/workspace/loading.lua:178]: Compile files takes [0.000] sec: file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:21.952][info] [#0:script/workspace/loading.lua:179]: Loaded finish:	file:///home/wadekiny/Dotfiles/nvim/subconfig/plugconfig/nvim-tree.lua
+[16:36:24.475][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [redundant-parameter] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.741] sec!
+[16:36:25.071][warn] [#0:script/core/diagnostics/init.lua:135]: Diagnostics [invisible] @ [file:///home/wadekiny/Dotfiles/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/3rd/Jass/library/jass/common.lua] takes [0.596] sec!
