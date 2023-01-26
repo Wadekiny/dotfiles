@@ -94,7 +94,7 @@ Plug 'rcarriga/nvim-notify'                         "输出改为浮动窗口
 
 "Plug 'sunjon/shade.nvim'                            "使非活动窗口变暗
 "Plug 'folke/trouble.nvim'
-"Plug 'Pocco81/HighStr.nvim'
+" Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'
 "
 "Plug 'b0o/incline.nvim'
@@ -119,7 +119,12 @@ Plug 'ahmedkhalf/project.nvim'  "Project mananger
 Plug 'sbdchd/neoformat'   "formatter
 " Plug 'AckslD/nvim-neoclip.lua' "剪切板管理 
 Plug 'rafamadriz/friendly-snippets' " 片段补全
+Plug 'skywind3000/asyncrun.vim' " 快速编译运行
+
+
+
 call plug#end()
+
 
 
 

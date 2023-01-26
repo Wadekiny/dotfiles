@@ -252,7 +252,7 @@ tree.setup({
           diagnostics = false,
           git = false,
           profile = false,
-          watcher = truefalse
+          watcher = true--false
         },
       },
       notify = {

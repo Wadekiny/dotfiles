@@ -182,6 +182,7 @@ nnoremap <space>r :source $MYVIMRC<cr>
 function! ChangePwd() 
     let name = input('input the path: ')
     if name == ''
+        cd %:p:h
         lua vim.notify(vim.fn.getcwd(),vim.log.levels.INFO,{ title = "ChangePwd" })
     elseif name =='this' 
         cd %:p:h
@@ -297,12 +298,30 @@ nnoremap <silent><space>h <Cmd>BufferLineCyclePrev<CR>
 
 
 nnoremap <c-f> <cmd>Neoformat<cr>
-nnoremap <F4> <cmd>call CompileCpp()<cr>
+
+let g:asyncrun_open = 8
+noremap <F4> :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g <cr>
+noremap <F5> :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g  &&  ./%<.out<cr>
+
+
+
+" nnoremap <F4> <cmd>call CompileCpp()<cr>
+" nnoremap <F5> <cmd>call CompileRunCpp()<cr>
 " noremap  :call CompileRunGcc()<CR>
 "
 func! CompileCpp()
     if &filetype == 'cpp'
 		exec "!g++ -std=c++11 % -Wall -o %<.out -g"
+    endif 
+endfunc
+
+func! CompileRunCpp()
+    if &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %< -g"
+		:split
+		:res -15
+        exec "!time ./%<.out"
     endif 
 endfunc
 
