@@ -1,21 +1,14 @@
-" leader 
+"  NOTE: leader 
 let mapleader = ";"      " 定义<leader>键
 
-
 "  NOTE: one key -----------------------------------------------------
-"
 "{{{
-""---------- enhance finding (hop,like easymotion) ----------""
+""---------- enhance finding (hop, like easymotion) ----------""
 noremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
 noremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
 
-
 ""---------- vista ----------""
 nnoremap T <cmd>Vista!!<cr>
-
-""---------- source luafile ----------""
-nnoremap <space>s <cmd>source %<cr>
-"
 
 ""---------- global copy(vim-peekaboo) ----------""
 vnoremap Y "+y
@@ -45,39 +38,33 @@ nnoremap <s-tab> V<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 "}}}
-"
-"
+
+"  NOTE: alt group -----------------------------------------------------
+"{{{
+""---------- 分屏调整,切换; m是alt ----------""
+nnoremap <m-l> <c-w>5>
+nnoremap <m-k> <c-w>5+
+nnoremap <m-h> <c-w>5<
+nnoremap <m-j> <c-w>5-
+"}}}
+
+"  NOTE: ctrl group -----------------------------------------------------
+"{{{
+""---------- toggleterm ----------""
+"在lua配置中定义按键映射"
+" nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+" inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+""---------- NvimTree ----------""
+"在lua配置中定义按键映射"
+
+""---------- Neoformat ----------""
+nnoremap <c-f> <cmd>Neoformat<cr>
 
 ""---------- 保存 ----------""
 nnoremap <c-s> <cmd>:w<cr>
 inoremap <c-s> <cmd>:w<cr>
 vnoremap <c-s> <cmd>:w<cr>
-
-
-"  NOTE: ctrl group -----------------------------------------------------
-"
-"{{{
-""---------- toggleterm ----------""
-"在lua配置中定义按键映射"
-"
-""---------- NvimTree ----------""
-"在lua配置中定义按键映射"
-"
-"autocmd TermEnter term://*toggleterm#*
-"      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-
-"nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-"inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-
-" By applying the mappings this way you can pass a count to your
-" mapping to open a specific window.
-" For example: 2<C-t> will open terminal 2
-nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-
-""---------- select all ----------""
-"nnoremap <c-a>  gg<s-v>G
-
 
 ""---------- 分屏切换 ----------""
 nnoremap <c-h> <c-w>h
@@ -100,30 +87,18 @@ tnoremap <c-l> <C-\><C-n><c-w>l
 inoremap <silent><expr> <c-space> coc#refresh()
 ""}}}
 
-"  NOTE: alt group -----------------------------------------------------
-"
-"{{{
-""---------- 分屏调整,切换; m是alt ----------""
-nnoremap <m-l> <c-w>5>
-nnoremap <m-k> <c-w>5+
-nnoremap <m-h> <c-w>5<
-nnoremap <m-j> <c-w>5-
-"}}}
 
-"  NOTE: leader group -----------------------------------------------------
-"
+"  NOTE: leader & <F4...> group -----------------------------------------------------
 "{{{
-"
-"
-"
+""---------- notify ----------""
+nnoremap <silent> <leader><space> :lua require('notify').dismiss()<cr>
 ""---------- snipperrun ----------""
 nnoremap <leader>R <cmd>SnipRun<cr>
 nnoremap <leader>C <cmd>SnipClose<cr>
-
 vnoremap <leader>R :'<,'>SnipRun<cr>
 vnoremap <leader>C <cmd>SnipClose<cr>
-""---------- hop(like easymotion) ----------""
 
+""---------- hop(like easymotion) ----------""
 lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
 lua vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>HopLineAC<cr>", {})
 lua vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>HopLineBC<cr>", {})
@@ -134,7 +109,23 @@ lua vim.api.nvim_set_keymap('v', '<leader>j', "<cmd>HopLine<cr>", {})
 lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
 "lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
 
+
 ""---------- dap ----------""
+func! CompileCode()
+    :w
+    if &filetype == 'cpp'
+        :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g
+    endif 
+endfunc
+func! CompileRunCode()
+    :w
+    if &filetype == 'cpp'
+        :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g  && echo "==========" &&  ./%<.out
+    endif 
+    if &filetype == 'python'
+        :AsyncRun python3 %
+    endif 
+endfunc
 
 " 编译调试
 func! CompileAndDapContinue()
@@ -158,10 +149,18 @@ func! CompileAndDapContinue()
     endif 
 endfunc
 
+" 异步执行
+let g:asyncrun_open = 8
+"编译
+noremap <F4> <cmd>call CompileCode()<cr> 
+"编译执行
+noremap <F5> <cmd>call CompileRunCode()<cr>
+
 nnoremap <leader>e <Cmd>lua require("dapui").eval()<CR>
 nnoremap <leader>c <cmd>lua require'dap'.continue()<cr>
 nnoremap <F6> <cmd>call CompileAndDapContinue()<cr>
-nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr> <cmd>lua require"dapui".close()<cr>
+" 关闭quickfix窗口
+nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr> <cmd>cclose<cr>
 nnoremap <leader>s <cmd>lua require'dap'.step_into()<cr>
 nnoremap <leader>n <cmd>lua require'dap'.step_over()<cr>
 nnoremap <leader>o <cmd>lua require'dap'.step_out()<cr>
@@ -182,13 +181,29 @@ nnoremap <leader>H <cmd>Telescope help_tags<cr>
 nnoremap <leader>p <cmd>Telescope projects<cr>
 "---------- 取消搜索高亮 ----------""
 nnoremap <leader>h :noh<cr>
-
-"---------- 运行python代码 ----------""
 "}}}
 
 "  NOTE: space group -----------------------------------------------------
-"
 "{{{
+""---------- bufferline ----------""
+nnoremap <silent><space>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent><space>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent><space>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent><space>4 <Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent><space>5 <Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent><space>6 <Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent><space>7 <Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent><space>8 <Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent><space>9 <Cmd>BufferLineGoToBuffer 9<CR>
+nnoremap <silent><space>0 <Cmd>BufferLineGoToBuffer -1<CR>
+
+nnoremap <silent><space><s-l> <Cmd>BufferLineMoveNext<CR>
+nnoremap <silent><space><s-h> <Cmd>BufferLineMovePrev<CR>
+
+nnoremap <silent><space>l <Cmd>BufferLineCycleNext<CR>
+nnoremap <silent><space>h <Cmd>BufferLineCyclePrev<CR>
+""---------- source luafile ----------""
+nnoremap <space>s <cmd>source %<cr>
 ""---------- change buffer ----------""
 "nnoremap <space>h :bp<cr>
 "nnoremap <space>l :bn<cr>
@@ -196,7 +211,6 @@ nnoremap <space>d :bd<cr>
 nnoremap <space>q :q<cr>
 " need bufdelete.nvim
 "nnoremap <space>d :lua require('bufdelete').bufdelete(0,false)<cr>
-
 
 ""---------- vimrc ----------""
 nnoremap <space>e :edit $MYVIMRC<cr>                               
@@ -231,12 +245,9 @@ endfunction
 
 nnoremap <space>f <cmd>call ChangePwd()<cr>
 " more details : `:h expand`
-
-
 "}}}
 
 "  NOTE: other group
-"
 "{{{
 "nvim 自带，ga -> get ascii
 
@@ -253,14 +264,15 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
- let col = col('.') - 1
- return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap gl  <Plug>(coc-codeaction-selected)
-nmap gl  <Plug>(coc-codeaction-selected)
+" xmap instead of vmap(selectmode + visualmode)
+xnoremap gl  <Plug>(coc-codeaction-selected)<cr> 
+nnoremap gl  <Plug>(coc-codeaction-selected)<cr>
 "
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -287,67 +299,13 @@ nmap mm <Plug>MarkdownPreviewToggle
 function! MdPasteImage() 
     let g:mdip_imgdir_intext = './' . expand('%:t:r')
     let g:mdip_imgdir = './' . expand('%:t:r')
-    "echo g:mdip_imgdir
-    "echo g:mdip_imgdir_intext
     call mdip#MarkdownClipboardImage()
 endfunction
 autocmd FileType markdown nmap <buffer><silent> mp :call MdPasteImage()<CR>
 "}}}
-"
-"
-""---------- notify ----------""
-nnoremap <silent> <leader><space> :lua require('notify').dismiss()<cr>
 
-
-
-
-nnoremap <silent><space>1 <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent><space>2 <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent><space>3 <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent><space>4 <Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent><space>5 <Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent><space>6 <Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent><space>7 <Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent><space>8 <Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent><space>9 <Cmd>BufferLineGoToBuffer 9<CR>
-nnoremap <silent><space>0 <Cmd>BufferLineGoToBuffer -1<CR>
-
-nnoremap <silent><space><s-l> <Cmd>BufferLineMoveNext<CR>
-nnoremap <silent><space><s-h> <Cmd>BufferLineMovePrev<CR>
-
-nnoremap <silent><space>l <Cmd>BufferLineCycleNext<CR>
-nnoremap <silent><space>h <Cmd>BufferLineCyclePrev<CR>
-
-
-
-
-nnoremap <c-f> <cmd>Neoformat<cr>
-
-" 关闭quickfix窗口
-noremap <F3> <cmd>cclose<cr> 
-
-let g:asyncrun_open = 8
-noremap <F4> <cmd>call CompileCode()<cr>
-noremap <F5> <cmd>call CompileRunCode()<cr>
-" 异步执行
-func! CompileCode()
-    :w
-    if &filetype == 'cpp'
-        :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g
-    endif 
-endfunc
-
-func! CompileRunCode()
-    :w
-    if &filetype == 'cpp'
-        :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g  && echo "==========" &&  ./%<.out
-    endif 
-    if &filetype == 'python'
-        :AsyncRun python3 %
-    endif 
-endfunc
-
-func! CompileRunGcc()
+"  NOTE: 抄作业
+func! CompileRunGcc()"{{{
 	exec "w"
 	if &filetype == 'c'
 		set splitbelow
@@ -401,4 +359,4 @@ func! CompileRunGcc()
 		:sp
 		:term go run .
 	endif
-endfunc
+endfunc"}}}
