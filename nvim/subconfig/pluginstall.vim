@@ -17,7 +17,6 @@ Plug 'kylechui/nvim-surround'
 Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons) 
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' } "上面的缓冲区栏
 Plug 'nvim-lualine/lualine.nvim'    "下面的状态栏
-
 "Plug 'itchyny/lightline.vim'
 
 Plug 'kevinhwang91/rnvimr'          "ranger
@@ -88,18 +87,18 @@ Plug 'rcarriga/nvim-notify'                         "输出改为浮动窗口
 Plug 'wadekiny/wadekiny-winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对)),但是, 浮动窗口youwenti
 " Plug 'SmiteshP/nvim-navic'
 " Plug 'feline-nvim/feline.nvim'
+Plug 'b0o/incline.nvim'  "右上角悬浮窗"
 
 "Plug 'famiu/bufdelete.nvim'                         "删除buffer不改变分屏结构
 
 "Plug 'edluffy/hologram.nvim'                        "nvim内显示图片
 "Plug 'mbpowers/nvimager'
 
-"Plug 'sunjon/shade.nvim'                            "使非活动窗口变暗
+Plug 'sunjon/shade.nvim'                            "使非活动窗口变暗
 "Plug 'folke/trouble.nvim'
 " Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'
 "
-"Plug 'b0o/incline.nvim'
 
 Plug 'neovim/nvim-lspconfig'   
 Plug 'williamboman/mason.nvim'
@@ -121,8 +120,9 @@ Plug 'ahmedkhalf/project.nvim'  "Project mananger
 Plug 'sbdchd/neoformat'   "formatter
 " Plug 'AckslD/nvim-neoclip.lua' "剪切板管理 
 Plug 'rafamadriz/friendly-snippets' " 片段补全
-Plug 'skywind3000/asyncrun.vim' " 快速编译运行
+Plug 'skywind3000/asyncrun.vim' " 执行命令，并在quickfix窗口显示结果
 
+Plug 'lewis6991/satellite.nvim' "scrollbar
 
 
 call plug#end()
