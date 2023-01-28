@@ -4,8 +4,6 @@ local guide    = require 'parser.guide'
 local config   = require 'config'
 local glob     = require 'glob'
 
----@alias parser.visibleType 'public' | 'protected' | 'private' | 'package'
-
 ---@class parser.object
 ---@field package _visibleType? parser.visibleType
 
@@ -78,7 +76,7 @@ end
 ---@return vm.global?
 function vm.getDefinedClass(suri, source)
     source = guide.getSelfNode(source) or source
-    local sets = vm.getLocalSourcesSets(source)
+    local sets = vm.getVariableSets(source)
     if sets then
         for _, set in ipairs(sets) do
             if set.bindDocs then

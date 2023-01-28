@@ -183,14 +183,24 @@ function m.clearCacheExcept(uris)
     end
 end
 
-function m.clearAll(force)
+---@param uri? uri
+---@param force? boolean
+function m.clearAll(uri, force)
+    local scp
+    if uri then
+        scp = scope.getScope(uri)
+    end
     if force then
         for luri in files.eachFile() do
-            m.clear(luri, force)
+            if not scp or scope.getScope(luri) == scp then
+                m.clear(luri, force)
+            end
         end
     else
         for luri in pairs(m.cache) do
-            m.clear(luri)
+            if not scp or scope.getScope(luri) == scp then
+                m.clear(luri)
+            end
         end
     end
 end
@@ -498,11 +508,15 @@ local function askForDisable(uri)
     end
 end
 
-local function clearMemory()
+local function clearMemory(finished)
     if m.scopeDiagCount > 0 then
         return
     end
     vm.clearNodeCache()
+    if finished then
+        collectgarbage()
+        collectgarbage()
+    end
 end
 
 ---@async
@@ -514,10 +528,11 @@ function m.awaitDiagnosticsScope(suri, callback)
     while loading.count() > 0 do
         await.sleep(1.0)
     end
+    local finished
     m.scopeDiagCount = m.scopeDiagCount + 1
     local scopeDiag <close> = util.defer(function ()
         m.scopeDiagCount = m.scopeDiagCount - 1
-        clearMemory()
+        clearMemory(finished)
     end)
     local clock = os.clock()
     local bar <close> = progress.create(suri, lang.script.WORKSPACE_DIAGNOSTIC, 1)
@@ -557,6 +572,7 @@ function m.awaitDiagnosticsScope(suri, callback)
     end
     bar:remove()
     log.info(('Diagnostics scope [%s] finished, takes [%.3f] sec.'):format(scp:getName(), os.clock() - clock))
+    finished = true
 end
 
 function m.diagnosticsScope(uri, force)
@@ -564,7 +580,7 @@ function m.diagnosticsScope(uri, force)
         return
     end
     if not force and not config.get(uri, 'Lua.diagnostics.enable') then
-        m.clearAll()
+        m.clearAll(uri)
         return
     end
     if not force and config.get(uri, 'Lua.diagnostics.workspaceDelay') < 0 then
@@ -626,6 +642,12 @@ function m.pullDiagnosticScope(callback)
 end
 
 function m.refreshClient()
+    if not client.isReady() then
+        return
+    end
+    if not client.getAbility 'workspace.diagnostics.refreshSupport' then
+        return
+    end
     log.debug('Refresh client diagnostics')
     proto.request('workspace/diagnostic/refresh', json.null)
 end
@@ -655,6 +677,11 @@ files.watch(function (ev, uri) ---@async
         m.clear(uri)
         m.stopScopeDiag(uri)
         m.refresh(uri)
+        m.refreshScopeDiag('OnSave', uri)
+    elseif ev == 'create' then
+        m.stopScopeDiag(uri)
+        m.refresh(uri)
+        m.refreshScopeDiag('OnSave', uri)
     elseif ev == 'update' then
         m.stopScopeDiag(uri)
         m.refresh(uri)

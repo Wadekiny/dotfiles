@@ -431,6 +431,19 @@ local function resolveLongString(finishMark)
             : gsub('\r\n?', '\n')
         stringResult = result
     end
+    if finishMark == ']]' and State.version == 'Lua 5.1' then
+        local nestOffset = sfind(Lua, '[[', start, true)
+        if nestOffset and nestOffset < finishOffset then
+            fastForwardToken(nestOffset)
+            local nestStartPos = getPosition(nestOffset, 'left')
+            local nestFinishPos = getPosition(nestOffset + 1, 'right')
+            pushError {
+                type   = 'NESTING_LONG_MARK',
+                start  = nestStartPos,
+                finish = nestFinishPos,
+            }
+        end
+    end
     fastForwardToken(finishOffset + #finishMark)
     if miss then
         local pos = getPosition(finishOffset - 1, 'right')
@@ -2232,6 +2245,7 @@ local function parseFunction(isLocal, isAction)
         type    = 'function',
         start   = funcLeft,
         finish  = funcRight,
+        bstart  = funcRight,
         keyword = {
             [1] = funcLeft,
             [2] = funcRight,
@@ -2262,6 +2276,7 @@ local function parseFunction(isLocal, isAction)
             end
             func.name   = simple
             func.finish = simple.finish
+            func.bstart = simple.finish
             if not isAction then
                 simple.parent = func
                 pushError {
@@ -2302,6 +2317,7 @@ local function parseFunction(isLocal, isAction)
         if Tokens[Index + 1] == ')' then
             local parenRight = getPosition(Tokens[Index], 'right')
             func.finish = parenRight
+            func.bstart = parenRight
             if params then
                 params.finish = parenRight
             end
@@ -2309,6 +2325,7 @@ local function parseFunction(isLocal, isAction)
             skipSpace(true)
         else
             func.finish = lastRightPosition()
+            func.bstart = func.finish
             if params then
                 params.finish = func.finish
             end
@@ -2963,6 +2980,7 @@ local function parseDo()
         type   = 'do',
         start  = doLeft,
         finish = doRight,
+        bstart = doRight,
         keyword = {
             [1] = doLeft,
             [2] = doRight,
@@ -3145,6 +3163,7 @@ local function parseIfBlock(parent)
         parent  = parent,
         start   = ifLeft,
         finish  = ifRight,
+        bstart  = ifRight,
         keyword = {
             [1] = ifLeft,
             [2] = ifRight,
@@ -3155,7 +3174,8 @@ local function parseIfBlock(parent)
     if filter then
         ifblock.filter = filter
         ifblock.finish = filter.finish
-        filter.parent = ifblock
+        ifblock.bstart = ifblock.finish
+        filter.parent  = ifblock
     else
         missExp()
     end
@@ -3164,6 +3184,7 @@ local function parseIfBlock(parent)
     if thenToken == 'then'
     or thenToken == 'do' then
         ifblock.finish     = getPosition(Tokens[Index] + #thenToken - 1, 'right')
+        ifblock.bstart     = ifblock.finish
         ifblock.keyword[3] = getPosition(Tokens[Index], 'left')
         ifblock.keyword[4] = ifblock.finish
         if thenToken == 'do' then
@@ -3203,6 +3224,7 @@ local function parseElseIfBlock(parent)
         parent  = parent,
         start   = ifLeft,
         finish  = ifRight,
+        bstart  = ifRight,
         keyword = {
             [1] = ifLeft,
             [2] = ifRight,
@@ -3214,6 +3236,7 @@ local function parseElseIfBlock(parent)
     if filter then
         elseifblock.filter = filter
         elseifblock.finish = filter.finish
+        elseifblock.bstart = elseifblock.finish
         filter.parent = elseifblock
     else
         missExp()
@@ -3223,6 +3246,7 @@ local function parseElseIfBlock(parent)
     if thenToken == 'then'
     or thenToken == 'do' then
         elseifblock.finish     = getPosition(Tokens[Index] + #thenToken - 1, 'right')
+        elseifblock.bstart     = elseifblock.finish
         elseifblock.keyword[3] = getPosition(Tokens[Index], 'left')
         elseifblock.keyword[4] = elseifblock.finish
         if thenToken == 'do' then
@@ -3262,6 +3286,7 @@ local function parseElseBlock(parent)
         parent  = parent,
         start   = ifLeft,
         finish  = ifRight,
+        bstart  = ifRight,
         keyword = {
             [1] = ifLeft,
             [2] = ifRight,
@@ -3337,6 +3362,7 @@ local function parseFor()
         finish  = getPosition(Tokens[Index] + 2, 'right'),
         keyword = {},
     }
+    action.bstart     = action.finish
     action.keyword[1] = action.start
     action.keyword[2] = action.finish
     Index = Index + 2
@@ -3366,6 +3392,7 @@ local function parseFor()
             local loc = createLocal(name)
             loc.parent    = action
             action.finish = name.finish
+            action.bstart = action.finish
             action.loc    = loc
         end
         if expList then
@@ -3375,12 +3402,14 @@ local function parseFor()
                 value.parent  = expList
                 action.init   = value
                 action.finish = expList[#expList].finish
+                action.bstart = action.finish
             end
             local max = expList[2]
             if max then
                 max.parent    = expList
                 action.max    = max
                 action.finish = max.finish
+                action.bstart = action.finish
             else
                 pushError {
                     type   = 'MISS_LOOP_MAX',
@@ -3393,6 +3422,7 @@ local function parseFor()
                 step.parent   = expList
                 action.step   = step
                 action.finish = step.finish
+                action.bstart = action.finish
             end
         else
             pushError {
@@ -3414,7 +3444,8 @@ local function parseFor()
 
         local exps = parseExpList()
 
-        action.finish = inRight
+        action.finish     = inRight
+        action.bstart     = action.finish
         action.keyword[3] = inLeft
         action.keyword[4] = inRight
 
@@ -3435,6 +3466,7 @@ local function parseFor()
             local lastExp = exps[#exps]
             if lastExp then
                 action.finish = lastExp.finish
+                action.bstart = action.finish
             end
 
             action.exps = exps
@@ -3468,6 +3500,7 @@ local function parseFor()
         local left  = getPosition(Tokens[Index], 'left')
         local right = getPosition(Tokens[Index] + #doToken - 1, 'right')
         action.finish                     = left
+        action.bstart                     = action.finish
         action.keyword[#action.keyword+1] = left
         action.keyword[#action.keyword+1] = right
         if doToken == 'then' then
@@ -3518,6 +3551,7 @@ local function parseWhile()
         finish  = getPosition(Tokens[Index] + 4, 'right'),
         keyword = {},
     }
+    action.bstart     = action.finish
     action.keyword[1] = action.start
     action.keyword[2] = action.finish
     Index = Index + 2
@@ -3542,6 +3576,7 @@ local function parseWhile()
         local left  = getPosition(Tokens[Index], 'left')
         local right = getPosition(Tokens[Index] + #doToken - 1, 'right')
         action.finish                     = left
+        action.bstart                     = action.finish
         action.keyword[#action.keyword+1] = left
         action.keyword[#action.keyword+1] = right
         if doToken == 'then' then
@@ -3594,6 +3629,7 @@ local function parseRepeat()
         finish  = getPosition(Tokens[Index] + 5, 'right'),
         keyword = {},
     }
+    action.bstart     = action.finish
     action.keyword[1] = action.start
     action.keyword[2] = action.finish
     Index = Index + 2

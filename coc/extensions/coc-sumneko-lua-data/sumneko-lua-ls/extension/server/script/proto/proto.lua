@@ -23,6 +23,7 @@ local function logRecieve(proto)
     log.info('rpc recieve:', json.encode(proto))
 end
 
+---@class proto
 local m = {}
 
 m.ability = {}
@@ -53,7 +54,10 @@ function m.response(id, res)
         log.error('Response id is nil!', inspect(res))
         return
     end
-    assert(m.holdon[id])
+    if not m.holdon[id] then
+        log.error('Unknown response id!', id)
+        return
+    end
     m.holdon[id] = nil
     local data  = {}
     data.id     = id
@@ -66,7 +70,10 @@ function m.responseErr(id, code, message)
         log.error('Response id is nil!', inspect(message))
         return
     end
-    assert(m.holdon[id])
+    if not m.holdon[id] then
+        log.error('Unknown response id!', id)
+        return
+    end
     m.holdon[id] = nil
     m.send {
         id    = id,
@@ -181,7 +188,7 @@ function m.doMethod(proto)
                 m.responseErr(proto.id, proto._closeReason or define.ErrorCodes.InternalError, proto._closeMessage or res)
             end
         end
-        ok, res = xpcall(abil, log.error, proto.params)
+        ok, res = xpcall(abil, log.error, proto.params, proto.id)
         await.delay()
     end)
 end

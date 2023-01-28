@@ -279,6 +279,8 @@ PARSER_AMBIGUOUS_SYNTAX   =
 '在 Lua 5.1 中，函数调用的左括号必须与函数在同一行。'
 PARSER_NEED_PAREN         =
 '需要添加一对括号。'
+PARSER_NESTING_LONG_MARK  =
+'Lua 5.1 中不允许使用嵌套的 `[[...]]` 。'
 PARSER_LUADOC_MISS_CLASS_NAME           =
 '缺少类名称。'
 PARSER_LUADOC_MISS_EXTENDS_SYMBOL       =
@@ -447,6 +449,8 @@ COMMAND_JSON_TO_LUA_FAILED =
 'JSON 转 Lua 失败：{}'
 COMMAND_ADD_DICT           = -- TODO: need translate!
 'Add Word to dictionary'
+COMMAND_REFERENCE_COUNT    =
+'{} 个引用'
 
 COMPLETION_IMPORT_FROM           =
 '从 {} 中导入'
@@ -547,6 +551,14 @@ WINDOW_ASK_APPLY_LIBRARY         =
 '是否需要将你的工作环境配置为 `{}` ？'
 WINDOW_SEARCHING_IN_FILES        =
 '正在文件中搜索...'
+WINDOW_CONFIG_LUA_DEPRECATED     =
+'`config.lua` 已废弃，请改用 `config.json` 。'
+WINDOW_CONVERT_CONFIG_LUA        =
+'转换为 `config.json`'
+WINDOW_MODIFY_REQUIRE_PATH      =
+'你想要修改 `require` 的路径吗？'
+WINDOW_MODIFY_REQUIRE_OK        =
+'修改'
 
 CONFIG_LOAD_FAILED               =
 '无法读取设置文件：{}'
@@ -554,6 +566,8 @@ CONFIG_LOAD_ERROR                =
 '设置文件加载错误：{}'
 CONFIG_TYPE_ERROR                =
 '设置文件必须是lua或json格式：{}'
+CONFIG_MODIFY_FAIL_SYNTAX_ERROR  =
+'修改设置失败，设置文件中有语法错误：{}'
 
 PLUGIN_RUNTIME_ERROR             =
 [[
@@ -720,6 +734,20 @@ function find(path, pattern) end
 
 ---@param style font-style Style to apply
 function setFontStyle(style) end
+```
+
+### Literal Enum
+```
+local enums = {
+    READ = 0,
+    WRITE = 1,
+    CLOSED = 2
+}
+
+---@alias FileStates
+---| `enums.READ`
+---| `enums.WRITE`
+---| `enums.CLOSE`
 ```
 ---
 [View Wiki](https://github.com/sumneko/lua-language-server/wiki/Annotations#alias)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 		<Metadata>
-			<Identity Language="en-US" Id="lua" Version="3.6.3" Publisher="sumneko" TargetPlatform="linux-x64"/>
+			<Identity Language="en-US" Id="lua" Version="3.6.7" Publisher="sumneko" TargetPlatform="linux-x64"/>
 			<DisplayName>Lua</DisplayName>
 			<Description xml:space="preserve">Lua Language Server coded by Lua</Description>
 			<Tags>Lua,IntelliSense,EmmyLua,json,jsonc,lua,__sponsor_extension</Tags>

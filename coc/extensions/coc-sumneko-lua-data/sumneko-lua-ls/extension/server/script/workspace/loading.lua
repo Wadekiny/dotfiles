@@ -86,7 +86,7 @@ function mt:loadFile(uri, libraryUri)
                     files.addRef(uri)
                 end
                 self._cache[uri] = true
-                log.debug(('Skip loaded file: %s'):format(uri))
+                log.info(('Skip loaded file: %s'):format(uri))
             else
                 local content = pub.awaitTask('loadFile', furi.decode(uri))
                 self.read = self.read + 1
@@ -94,23 +94,19 @@ function mt:loadFile(uri, libraryUri)
                 if not content then
                     return
                 end
-                log.debug(('Preload file at: %s , size = %.3f KB'):format(uri, #content / 1024.0))
+                log.info(('Preload file at: %s , size = %.3f KB'):format(uri, #content / 1024.0))
                 --await.wait(function (waker)
                 --    self._sets[#self._sets+1] = waker
                 --end)
                 files.setText(uri, content, false)
-                if COMPILECORES then
-                    files.compileStateAsync(uri, function (state) end)
-                else
-                    files.compileState(uri)
-                end
+                files.compileState(uri)
                 if not self._cache[uri] then
                     files.addRef(uri)
                 end
                 self._cache[uri] = true
             end
             if libraryUri then
-                log.debug('++++As library of:', libraryUri)
+                log.info('++++As library of:', libraryUri)
             end
         end
     elseif files.isDll(uri) then
@@ -125,7 +121,7 @@ function mt:loadFile(uri, libraryUri)
                     files.addRef(uri)
                 end
                 self._cache[uri] = true
-                log.debug(('Skip loaded file: %s'):format(uri))
+                log.info(('Skip loaded file: %s'):format(uri))
             else
                 local content = pub.awaitTask('loadFile', furi.decode(uri))
                 self.read = self.read + 1
@@ -133,7 +129,7 @@ function mt:loadFile(uri, libraryUri)
                 if not content then
                     return
                 end
-                log.debug(('Preload dll at: %s , size = %.3f KB'):format(uri, #content / 1024.0))
+                log.info(('Preload dll at: %s , size = %.3f KB'):format(uri, #content / 1024.0))
                 --await.wait(function (waker)
                 --    self._sets[#self._sets+1] = waker
                 --end)
@@ -144,7 +140,7 @@ function mt:loadFile(uri, libraryUri)
                 self._cache[uri] = true
             end
             if libraryUri then
-                log.debug('++++As library of:', libraryUri)
+                log.info('++++As library of:', libraryUri)
             end
         end
     end

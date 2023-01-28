@@ -28,10 +28,11 @@ local pub      = require 'pub'
 ---@field text         string
 ---@field version?     integer
 ---@field originLines? integer[]
----@field state?       parser.state
 ---@field diffInfo?    table[]
 ---@field cache        table
 ---@field id           integer
+---@field state?       parser.state
+---@field compileCount integer
 
 ---@class files
 ---@field lazyCache?   lazy-cacher
@@ -49,7 +50,10 @@ function m.reset()
     m.visible        = {}
     m.globalVersion  = 0
     m.fileCount      = 0
-    m.astCount       = 0
+    ---@type table<uri, parser.state>
+    m.stateMap       = setmetatable({}, util.MODE_V)
+    ---@type table<parser.state, true>
+    m.stateTrace     = setmetatable({}, util.MODE_K)
 end
 
 m.reset()
@@ -75,7 +79,7 @@ end
 ---@return uri
 function m.getRealUri(uri)
     if platform.OS ~= 'Windows' then
-        return uri
+        return furi.normalize(uri)
     end
     local filename = furi.decode(uri)
     -- normalize uri
@@ -210,6 +214,12 @@ local function pluginOnSetText(file, text)
     return text
 end
 
+---@param file file
+function m.removeState(file)
+    file.state = nil
+    m.stateMap[file.uri] = nil
+end
+
 --- 设置文件文本
 ---@param uri uri
 ---@param text? string
@@ -251,14 +261,14 @@ function m.setText(uri, text, isTrust, callback)
     end
     local clock = os.clock()
     local newText = pluginOnSetText(file, text)
-    file.text       = newText
-    file.trusted    = isTrust
-    file.originText = text
-    file.rows       = nil
-    file.words      = nil
-    file.state      = nil
-    file.cache = {}
-    file.cacheActiveTime = math.huge
+    m.removeState(file)
+    file.text            = newText
+    file.trusted         = isTrust
+    file.originText      = text
+    file.rows            = nil
+    file.words           = nil
+    file.compileCount    = 0
+    file.cache           = {}
     m.globalVersion = m.globalVersion + 1
     m.onWatch('version', uri)
     if create then
@@ -304,7 +314,7 @@ function m.setRawText(uri, text)
     local file = m.fileMap[uri]
     file.text             = text
     file.originText       = text
-    file.state            = nil
+    m.removeState(file)
 end
 
 function m.getCachedRows(uri)
@@ -457,6 +467,7 @@ function m.remove(uri)
     if not file then
         return
     end
+    m.removeState(file)
     m.fileMap[uri]        = nil
     m._pairsCache         = nil
 
@@ -528,8 +539,8 @@ end
 ---@param state parser.state
 ---@param file file
 function m.compileStateThen(state, file)
-    file.state = state
-
+    m.stateTrace[state] = true
+    m.stateMap[file.uri] = state
     state.uri = file.uri
     state.lua = file.text
     state.ast.uri = file.uri
@@ -553,17 +564,15 @@ function m.compileStateThen(state, file)
         if passed > 0.1 then
             log.warn(('Convert lazy-table for [%s] takes [%.3f] sec, size [%.3f] kb.'):format(file.uri, passed, #file.text / 1000))
         end
-    else
-        m.astCount = m.astCount + 1
-        local removed
-        setmetatable(state, {__gc = function ()
-            if removed then
-                return
-            end
-            removed = true
-            m.astCount = m.astCount - 1
-        end})
     end
+
+    file.compileCount = file.compileCount + 1
+    if file.compileCount >= 3 then
+        file.state = state
+        log.debug('State persistence:', file.uri)
+    end
+
+    m.onWatch('compile', file.uri)
 end
 
 ---@param uri uri
@@ -609,8 +618,8 @@ function m.compileStateAsync(uri, callback)
         callback(nil)
         return
     end
-    if file.state then
-        callback(file.state)
+    if m.stateMap[uri] then
+        callback(m.stateMap[uri])
         return
     end
 
@@ -650,8 +659,8 @@ function m.compileState(uri)
     if not file then
         return
     end
-    if file.state then
-        return file.state
+    if m.stateMap[uri] then
+        return m.stateMap[uri]
     end
     if not m.checkPreload(uri) then
         return
@@ -665,8 +674,13 @@ function m.compileState(uri)
     }
 
     local ws     = require 'workspace'
+    local client = require 'client'
+    if not client.isReady() then
+        log.error('Client not ready!', uri)
+    end
     local prog <close> = progress.create(uri, lang.script.WINDOW_COMPILING, 0.5)
     prog:setMessage(ws.getRelativePath(uri))
+    log.trace('Compile State:', uri)
     local clock = os.clock()
     local state, err = parser.compile(file.text
         , 'Lua'
@@ -702,16 +716,13 @@ function m.getState(uri)
         return nil
     end
     local state = m.compileState(uri)
-    file.cacheActiveTime = timer.clock()
     return state
 end
 
+---@param uri uri
+---@return parser.state?
 function m.getLastState(uri)
-    local file = m.fileMap[uri]
-    if not file then
-        return nil
-    end
-    return file.state
+    return m.stateMap[uri]
 end
 
 function m.getFile(uri)
@@ -765,7 +776,6 @@ function m.getCache(uri)
     if not file then
         return nil
     end
-    --file.cacheActiveTime = timer.clock()
     return file.cache
 end
 
@@ -868,6 +878,15 @@ function m.getDllWords(uri)
     return file.words
 end
 
+---@return integer
+function m.countStates()
+    local n = 0
+    for _ in pairs(m.stateTrace) do
+        n = n + 1
+    end
+    return n
+end
+
 --- 注册事件
 ---@param callback async fun(ev: string, uri: uri)
 function m.watch(callback)
@@ -880,25 +899,6 @@ function m.onWatch(ev, uri)
             callback(ev, uri)
         end)
     end
-end
-
-function m.init()
-    --TODO 可以清空文件缓存，之后看要不要启用吧
-    --timer.loop(10, function ()
-    --    local list = {}
-    --    for _, file in pairs(m.fileMap) do
-    --        if timer.clock() - file.cacheActiveTime > 10.0 then
-    --            file.cacheActiveTime = math.huge
-    --            file.ast = nil
-    --            file.cache = {}
-    --            list[#list+1] = file.uri
-    --        end
-    --    end
-    --    if #list > 0 then
-    --        log.info('Flush file caches:', #list, '\n', table.concat(list, '\n'))
-    --        collectgarbage()
-    --    end
-    --end)
 end
 
 return m

@@ -4,6 +4,9 @@ local guide     = require 'parser.guide'
 local vm        = require 'vm.vm'
 local config    = require 'config'
 
+---@class parser.object
+---@field package _castTargetHead parser.object | vm.global | false
+
 ---获取class与alias
 ---@param suri uri
 ---@param name? string
@@ -41,10 +44,36 @@ function vm.isMetaFile(uri)
     for _, doc in ipairs(status.ast.docs) do
         if doc.type == 'doc.meta' then
             cache.isMeta = true
+            cache.metaName = doc.name
             return true
         end
     end
     return false
+end
+
+---@param uri uri
+---@return string?
+function vm.getMetaName(uri)
+    if not vm.isMetaFile(uri) then
+        return nil
+    end
+    local cache = files.getCache(uri)
+    if not cache then
+        return nil
+    end
+    if not cache.metaName then
+        return nil
+    end
+    return cache.metaName[1]
+end
+
+---@param uri uri
+---@return boolean
+function vm.isMetaFileRequireable(uri)
+    if not vm.isMetaFile(uri) then
+        return false
+    end
+    return vm.getMetaName(uri) ~= '_'
 end
 
 ---@param doc parser.object
@@ -413,4 +442,28 @@ function vm.isDiagDisabledAt(uri, position, name, err)
         end
     end
     return count > 0
+end
+
+---@param doc parser.object
+---@return (parser.object | vm.global)?
+function vm.getCastTargetHead(doc)
+    if doc._castTargetHead ~= nil then
+        return doc._castTargetHead or nil
+    end
+    local name = doc.name[1]:match '^[^%.]+'
+    if not name then
+        doc._castTargetHead = false
+        return nil
+    end
+    local loc = guide.getLocal(doc, name, doc.start)
+    if loc then
+        doc._castTargetHead = loc
+        return loc
+    end
+    local global = vm.getGlobal('variable', name)
+    if global then
+        doc._castTargetHead = global
+        return global
+    end
+    return nil
 end

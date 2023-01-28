@@ -1,4 +1,4 @@
----@meta
+---@meta utf8
 
 ---@version >5.3
 ---

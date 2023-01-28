@@ -21,6 +21,7 @@ local type         = type
 ---@field finish                integer
 ---@field range                 integer
 ---@field effect                integer
+---@field bstart                integer
 ---@field attrs                 string[]
 ---@field specials              parser.object[]
 ---@field labels                parser.object[]
@@ -98,6 +99,16 @@ local blockTypes = {
     ['main']        = true,
 }
 
+local topBlockTypes = {
+    ['while']       = true,
+    ['function']    = true,
+    ['if']          = true,
+    ['ifblock']     = true,
+    ['elseblock']   = true,
+    ['elseifblock'] = true,
+    ['main']        = true,
+}
+
 local breakBlockTypes = {
     ['while']       = true,
     ['in']          = true,
@@ -112,31 +123,31 @@ local childMap = {
     ['while']       = {'filter', '#'},
     ['in']          = {'keys', 'exps', '#'},
     ['loop']        = {'loc', 'init', 'max', 'step', '#'},
+    ['do']          = {'#'},
     ['if']          = {'#'},
     ['ifblock']     = {'filter', '#'},
     ['elseifblock'] = {'filter', '#'},
     ['elseblock']   = {'#'},
     ['setfield']    = {'node', 'field', 'value'},
-    ['setglobal']   = {'value'},
-    ['local']       = {'attrs', 'value'},
-    ['setlocal']    = {'value'},
-    ['return']      = {'#'},
-    ['do']          = {'#'},
-    ['select']      = {'vararg'},
-    ['table']       = {'#'},
-    ['tableindex']  = {'index', 'value'},
-    ['tablefield']  = {'field', 'value'},
-    ['tableexp']    = {'value'},
-    ['function']    = {'args', '#'},
-    ['funcargs']    = {'#'},
+    ['getfield']    = {'node', 'field'},
     ['setmethod']   = {'node', 'method', 'value'},
     ['getmethod']   = {'node', 'method'},
     ['setindex']    = {'node', 'index', 'value'},
     ['getindex']    = {'node', 'index'},
+    ['tableindex']  = {'index', 'value'},
+    ['tablefield']  = {'field', 'value'},
+    ['tableexp']    = {'value'},
+    ['setglobal']   = {'value'},
+    ['local']       = {'attrs', 'value'},
+    ['setlocal']    = {'value'},
+    ['return']      = {'#'},
+    ['select']      = {'vararg'},
+    ['table']       = {'#'},
+    ['function']    = {'args', '#'},
+    ['funcargs']    = {'#'},
     ['paren']       = {'exp'},
     ['call']        = {'node', 'args'},
     ['callargs']    = {'#'},
-    ['getfield']    = {'node', 'field'},
     ['list']        = {'#'},
     ['binary']      = {1, 2},
     ['unary']       = {1},
@@ -164,9 +175,10 @@ local childMap = {
     ['doc.version']        = {'#versions'},
     ['doc.diagnostic']     = {'#names'},
     ['doc.as']             = {'as'},
-    ['doc.cast']           = {'loc', '#casts'},
+    ['doc.cast']           = {'name', '#casts'},
     ['doc.cast.block']     = {'extends'},
     ['doc.operator']       = {'op', 'exp', 'extends'},
+    ['doc.meta']           = {'name'},
 }
 
 ---@type table<string, fun(obj: parser.object, list: parser.object[])>
@@ -432,7 +444,7 @@ function m.getRoot(obj)
     error('guide.getRoot overstack')
 end
 
----@param obj parser.object
+---@param obj parser.object | { uri: uri }
 ---@return uri
 function m.getUri(obj)
     if obj.uri then
@@ -776,6 +788,9 @@ function m.eachChild(source, callback)
 end
 
 --- 获取指定的 special
+---@param ast parser.object
+---@param name string
+---@param callback fun(src: parser.object)
 function m.eachSpecialOf(ast, name, callback)
     local root = m.getRoot(ast)
     local state = root.state
@@ -880,7 +895,7 @@ function m.getLineRange(state, row)
     return 0
 end
 
-local isSetMap = {
+local assignTypeMap = {
     ['setglobal']         = true,
     ['local']             = true,
     ['self']              = true,
@@ -890,7 +905,6 @@ local isSetMap = {
     ['setindex']          = true,
     ['tablefield']        = true,
     ['tableindex']        = true,
-    ['tableexp']          = true,
     ['label']             = true,
     ['doc.class']         = true,
     ['doc.alias']         = true,
@@ -903,9 +917,9 @@ local isSetMap = {
     ['doc.type.field']    = true,
     ['doc.type.array']    = true,
 }
-function m.isSet(source)
+function m.isAssign(source)
     local tp = source.type
-    if isSetMap[tp] then
+    if assignTypeMap[tp] then
         return true
     end
     if tp == 'call' then
@@ -917,7 +931,7 @@ function m.isSet(source)
     return false
 end
 
-local isGetMap = {
+local getTypeMap = {
     ['getglobal'] = true,
     ['getlocal']  = true,
     ['getfield']  = true,
@@ -926,7 +940,7 @@ local isGetMap = {
 }
 function m.isGet(source)
     local tp = source.type
-    if isGetMap[tp] then
+    if getTypeMap[tp] then
         return true
     end
     if tp == 'call' then
@@ -953,26 +967,14 @@ function m.getKeyNameOfLiteral(obj)
     if tp == 'field'
     or     tp == 'method' then
         return obj[1]
-    elseif tp == 'string' then
-        local s = obj[1]
-        if s then
-            return s
-        end
-    elseif tp == 'number' then
-        local n = obj[1]
-        if n then
-            return obj[1]
-        end
-    elseif tp == 'integer' then
-        local n = obj[1]
-        if n then
-            return obj[1]
-        end
-    elseif tp == 'boolean' then
-        local b = obj[1]
-        if b then
-            return b
-        end
+    elseif tp == 'string'
+    or     tp == 'number'
+    or     tp == 'integer'
+    or     tp == 'boolean'
+    or     tp == 'doc.type.integer'
+    or     tp == 'doc.type.string'
+    or     tp == 'doc.type.boolean' then
+        return obj[1]
     end
 end
 
@@ -1018,8 +1020,15 @@ function m.getKeyName(obj)
         return obj.enum[1]
     elseif tp == 'doc.field' then
         return obj.field[1]
-    elseif tp == 'doc.field.name' then
+    elseif tp == 'doc.field.name'
+    or     tp == 'doc.type.name'
+    or     tp == 'doc.class.name'
+    or     tp == 'doc.alias.name'
+    or     tp == 'doc.enum.name'
+    or     tp == 'doc.extends.name' then
         return obj[1]
+    elseif tp == 'doc.type.field' then
+        return m.getKeyName(obj.name)
     end
     return m.getKeyNameOfLiteral(obj)
 end
@@ -1087,99 +1096,6 @@ function m.getKeyType(obj)
         return type(obj[1])
     end
     return m.getKeyTypeOfLiteral(obj)
-end
-
---- 测试 a 到 b 的路径（不经过函数，不考虑 goto），
---- 每个路径是一个 block 。
----
---- 如果 a 在 b 的前面，返回 `"before"` 加上 2个`list<block>`
----
---- 如果 a 在 b 的后面，返回 `"after"` 加上 2个`list<block>`
----
---- 否则返回 `false`
----
---- 返回的2个 `list` 分别为基准block到达 a 与 b 的路径。
----@param a table
----@param b table
----@return string|false mode
----@return table? pathA
----@return table? pathB
-function m.getPath(a, b, sameFunction)
-    --- 首先测试双方在同一个函数内
-    if sameFunction and m.getParentFunction(a) ~= m.getParentFunction(b) then
-        return false
-    end
-    local mode
-    local objA
-    local objB
-    if a.finish < b.start then
-        mode = 'before'
-        objA = a
-        objB = b
-    elseif a.start > b.finish then
-        mode = 'after'
-        objA = b
-        objB = a
-    else
-        return 'equal', {}, {}
-    end
-    local pathA = {}
-    local pathB = {}
-    for _ = 1, 1000 do
-        objA = m.getParentBlock(objA)
-        if objA then
-            pathA[#pathA+1] = objA
-            if (not sameFunction and objA.type == 'function') or objA.type == 'main' then
-                break
-            end
-        end
-    end
-    for _ = 1, 1000 do
-        objB = m.getParentBlock(objB)
-        if objB then
-            pathB[#pathB+1] = objB
-            if (not sameFunction and objB.type == 'function') or objB.type == 'main' then
-                break
-            end
-        end
-    end
-    -- pathA: {1, 2, 3, 4, 5}
-    -- pathB: {5, 6, 2, 3}
-    local top = #pathB
-    local start
-    for i = #pathA, 1, -1 do
-        local currentBlock = pathA[i]
-        if currentBlock == pathB[top] then
-            start = i
-            break
-        end
-    end
-    if not start then
-        return false
-    end
-    -- pathA: {   1, 2, 3}
-    -- pathB: {5, 6, 2, 3}
-    local extra = 0
-    local align = top - start
-    for i = start, 1, -1 do
-        local currentA = pathA[i]
-        local currentB = pathB[i+align]
-        if currentA ~= currentB then
-            extra = i
-            break
-        end
-    end
-    -- pathA: {1}
-    local resultA = {}
-    for i = extra, 1, -1 do
-        resultA[#resultA+1] = pathA[i]
-    end
-    -- pathB: {5, 6}
-    local resultB = {}
-    for i = extra + align, 1, -1 do
-        resultB[#resultB+1] = pathB[i]
-    end
-    return mode, resultA, resultB
 end
 
 ---是否是全局变量（包括 _G.XXX 形式）
@@ -1336,6 +1252,22 @@ function m.getFunctionSelfNode(func)
     if parent.type == 'setmethod'
     or parent.type == 'setfield' then
         return parent.node
+    end
+    return nil
+end
+
+---@param source parser.object
+---@return parser.object?
+function m.getTopBlock(source)
+    for _ = 1, 1000 do
+        local block = source.parent
+        if not block then
+            return nil
+        end
+        if topBlockTypes[block.type] then
+            return block
+        end
+        source = block
     end
     return nil
 end

@@ -30,7 +30,7 @@ function m.loadRCConfig(uri, filename)
         scp:set('lastRCConfig', nil)
         return nil
     end
-    local suc, res = pcall(jsonc.decode, buf)
+    local suc, res = pcall(jsonc.decode_jsonc, buf)
     if not suc then
         errorMessage(lang.script('CONFIG_LOAD_ERROR', res))
         return scp:get('lastRCConfig')
@@ -54,14 +54,14 @@ function m.loadLocalConfig(uri, filename)
     end
     local buf = util.loadFile(path)
     if not buf then
-        errorMessage(lang.script('CONFIG_LOAD_FAILED', path))
+        --errorMessage(lang.script('CONFIG_LOAD_FAILED', path))
         scp:set('lastLocalConfig', nil)
         scp:set('lastLocalType', nil)
         return nil
     end
     local firstChar = buf:match '%S'
     if firstChar == '{' then
-        local suc, res = pcall(jsonc.decode, buf)
+        local suc, res = pcall(jsonc.decode_jsonc, buf)
         if not suc then
             errorMessage(lang.script('CONFIG_LOAD_ERROR', res))
             return scp:get('lastLocalConfig')

@@ -4,21 +4,25 @@ local vm       = require 'vm.vm'
 local ws       = require 'workspace.workspace'
 local guide    = require 'parser.guide'
 local timer    = require 'timer'
+local util     = require 'utility'
 
 ---@type table<vm.object, vm.node>
-vm.nodeCache = {}
+vm.nodeCache = setmetatable({}, util.MODE_K)
 
----@alias vm.node.object vm.object | vm.global
+---@alias vm.node.object vm.object | vm.global | vm.variable
 
 ---@class vm.node
 ---@field [integer] vm.node.object
 ---@field [vm.node.object] true
+---@field fields? table<vm.node|string, vm.node>
 local mt = {}
 mt.__index    = mt
 mt.id         = 0
 mt.type       = 'vm.node'
 mt.optional   = nil
 mt.data       = nil
+mt.hasDefined = nil
+mt.originNode = nil
 
 ---@param node vm.node | vm.node.object
 ---@return vm.node
@@ -54,6 +58,19 @@ function mt:isEmpty()
     return #self == 0
 end
 
+---@return boolean
+function mt:isTyped()
+    for _, c in ipairs(self) do
+        if c.type == 'global' and c.cate == 'type' then
+            return true
+        end
+        if guide.isLiteral(c) then
+            return true
+        end
+    end
+    return false
+end
+
 function mt:clear()
     self.optional = nil
     for i, c in ipairs(self) do
@@ -66,21 +83,6 @@ end
 ---@return vm.node.object?
 function mt:get(n)
     return self[n]
-end
-
-function mt:setData(k, v)
-    if not self.data then
-        self.data = {}
-    end
-    self.data[k] = v
-end
-
----@return any
-function mt:getData(k)
-    if not self.data then
-        return nil
-    end
-    return self.data[k]
 end
 
 function mt:addOptional()
@@ -289,7 +291,7 @@ function mt:narrow(uri, name)
     return self
 end
 
----@param obj vm.object
+---@param obj vm.object | vm.variable
 function mt:removeObject(obj)
     for index, c in ipairs(self) do
         if c == obj then
@@ -395,7 +397,7 @@ function mt:copy()
     return vm.createNode(self)
 end
 
----@param source vm.object
+---@param source vm.node.object | vm.generic
 ---@param node vm.node | vm.node.object
 ---@param cover? boolean
 ---@return vm.node
@@ -426,7 +428,7 @@ function vm.setNode(source, node, cover)
     return me
 end
 
----@param source vm.object
+---@param source vm.node.object
 ---@return vm.node?
 function vm.getNode(source)
     return vm.nodeCache[source]

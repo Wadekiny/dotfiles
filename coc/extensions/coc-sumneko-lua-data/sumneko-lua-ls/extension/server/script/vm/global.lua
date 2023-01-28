@@ -1,19 +1,26 @@
 local util  = require 'utility'
 local scope = require 'workspace.scope'
 local guide = require 'parser.guide'
-local files = require 'files'
-local ws    = require 'workspace'
 ---@class vm
 local vm    = require 'vm.vm'
 
+---@type table<string, vm.global>
+local allGlobals = {}
+---@type table<uri, table<string, boolean>>
+local globalSubs = util.multiTable(2)
+
+---@class parser.object
+---@field package _globalBase parser.object
+---@field package _globalBaseMap table<string, parser.object>
+---@field global vm.global
+
 ---@class vm.global.link
----@field gets   parser.object[]
----@field sets   parser.object[]
+---@field sets parser.object[]
+---@field gets parser.object[]
 
 ---@class vm.global
 ---@field links table<uri, vm.global.link>
 ---@field setsCache? table<uri, parser.object[]>
----@field getsCache? table<uri, parser.object[]>
 ---@field cate vm.global.cate
 local mt = {}
 mt.__index = mt
@@ -24,9 +31,6 @@ mt.name = ''
 ---@param source parser.object
 function mt:addSet(uri, source)
     local link = self.links[uri]
-    if not link.sets then
-        link.sets = {}
-    end
     link.sets[#link.sets+1] = source
     self.setsCache = nil
 end
@@ -35,11 +39,7 @@ end
 ---@param source parser.object
 function mt:addGet(uri, source)
     local link = self.links[uri]
-    if not link.gets then
-        link.gets = {}
-    end
     link.gets[#link.gets+1] = source
-    self.getsCache = nil
 end
 
 ---@param suri uri
@@ -93,40 +93,10 @@ function mt:getAllSets()
     return cache
 end
 
----@return parser.object[]
-function mt:getGets(suri)
-    if not self.getsCache then
-        self.getsCache = {}
-    end
-    local scp = scope.getScope(suri)
-    local cacheUri = scp.uri or '<callback>'
-    if self.getsCache[cacheUri] then
-        return self.getsCache[cacheUri]
-    end
-    local clock = os.clock()
-    self.getsCache[cacheUri] = {}
-    local cache = self.getsCache[cacheUri]
-    for uri, link in pairs(self.links) do
-        if link.gets then
-            if scp:isVisible(uri) then
-                for _, source in ipairs(link.gets) do
-                    cache[#cache+1] = source
-                end
-            end
-        end
-    end
-    local cost = os.clock() - clock
-    if cost > 0.1 then
-        log.warn('global-manager getGets costs', cost, self.name)
-    end
-    return cache
-end
-
 ---@param uri uri
 function mt:dropUri(uri)
     self.links[uri] = nil
     self.setsCache = nil
-    self.getsCache = nil
 end
 
 ---@return string
@@ -149,9 +119,37 @@ function mt:getKeyName()
     return self.name:match('[^' .. vm.ID_SPLITE .. ']+$')
 end
 
+---@return string?
+function mt:getFieldName()
+    return self.name:match(vm.ID_SPLITE .. '(.-)$')
+end
+
 ---@return boolean
 function mt:isAlive()
     return next(self.links) ~= nil
+end
+
+---@param uri uri
+---@return parser.object?
+function mt:getParentBase(uri)
+    local parentID = self.name:match('^(.-)' .. vm.ID_SPLITE)
+    if not parentID then
+        return nil
+    end
+    local parentName = self.cate .. '|' .. parentID
+    local global = allGlobals[parentName]
+    if not global then
+        return nil
+    end
+    local link = global.links[uri]
+    if not link then
+        return nil
+    end
+    local luckyBoy = link.sets[1] or link.gets[1]
+    if not luckyBoy then
+        return nil
+    end
+    return vm.getGlobalBase(luckyBoy)
 end
 
 ---@param cate vm.global.cate
@@ -160,18 +158,18 @@ local function createGlobal(name, cate)
     return setmetatable({
         name  = name,
         cate  = cate,
-        links = util.multiTable(2),
+        links = util.multiTable(2, function ()
+            return {
+                sets = {},
+                gets = {},
+            }
+        end),
     }, mt)
 end
 
 ---@class parser.object
 ---@field package _globalNode vm.global|false
 ---@field package _enums?     parser.object[]
-
----@type table<string, vm.global>
-local allGlobals = {}
----@type table<uri, table<string, boolean>>
-local globalSubs = util.multiTable(2)
 
 local compileObject
 local compilerGlobalSwitch = util.switch()
@@ -542,40 +540,69 @@ function vm.getEnums(source)
 end
 
 ---@param source parser.object
-local function compileSelf(source)
-    if source.parent.type ~= 'funcargs' then
-        return
+---@return boolean
+function vm.compileByGlobal(source)
+    local global = vm.getGlobalNode(source)
+    if not global then
+        return false
     end
-    ---@type parser.object
-    local node = source.parent.parent and source.parent.parent.parent and source.parent.parent.parent.node
-    if not node then
-        return
-    end
-    local fields = vm.getLocalFields(source, false)
-    if not fields then
-        return
-    end
-    local nodeLocalID = vm.getLocalID(node)
-    local globalNode  = node._globalNode
-    if not nodeLocalID and not globalNode then
-        return
-    end
-    for _, field in ipairs(fields) do
-        if field.type == 'setfield' then
-            local key = guide.getKeyName(field)
-            if key then
-                if nodeLocalID then
-                    local myID = nodeLocalID .. vm.ID_SPLITE .. key
-                    vm.insertLocalID(myID, field)
-                end
-                if globalNode then
-                    local myID = globalNode:getName() .. vm.ID_SPLITE .. key
-                    local myGlobal = vm.declareGlobal('variable', myID, guide.getUri(node))
-                    myGlobal:addSet(guide.getUri(node), field)
-                end
+    vm.setNode(source, global)
+    if global.cate == 'variable' then
+        if guide.isAssign(source) then
+            if vm.bindDocs(source) then
+                return true
+            end
+            if source.value and source.value.type ~= 'nil' then
+                vm.setNode(source, vm.compileNode(source.value))
+                return true
+            end
+        else
+            if vm.bindAs(source) then
+                return true
+            end
+            local node = vm.traceNode(source)
+            if node then
+                vm.setNode(source, node, true)
+                return true
             end
         end
     end
+    local globalBase = vm.getGlobalBase(source)
+    if not globalBase then
+        return false
+    end
+    local globalNode = vm.compileNode(globalBase)
+    vm.setNode(source, globalNode, true)
+    return true
+end
+
+---@param source parser.object
+---@return parser.object?
+function vm.getGlobalBase(source)
+    if source._globalBase then
+        return source._globalBase
+    end
+    local global = vm.getGlobalNode(source)
+    if not global then
+        return nil
+    end
+    ---@cast source parser.object
+    local root = guide.getRoot(source)
+    if not root._globalBaseMap then
+        root._globalBaseMap = {}
+    end
+    local name = global:asKeyName()
+    if not root._globalBaseMap[name] then
+        root._globalBaseMap[name] = {
+            type   = 'globalbase',
+            parent = root,
+            global = global,
+            start  = 0,
+            finish = 0,
+        }
+    end
+    source._globalBase = root._globalBaseMap[name]
+    return source._globalBase
 end
 
 ---@param source parser.object
@@ -600,18 +627,6 @@ local function compileAst(source)
     }, function (src)
         compileObject(src)
     end)
-
-    --[[
-    local mt
-    function mt:xxx()
-        self.a = 1
-    end
-
-    mt.a --> find this definition
-    ]]
-    guide.eachSourceType(source, 'self', function (src)
-        compileSelf(src)
-    end)
 end
 
 ---@param uri uri
@@ -629,24 +644,7 @@ local function dropUri(uri)
     end
 end
 
-for uri in files.eachFile() do
-    local state = files.getState(uri)
-    if state then
-        compileAst(state.ast)
-    end
-end
-
----@async
-files.watch(function (ev, uri)
-    if ev == 'update' then
-        dropUri(uri)
-        ws.awaitReady(uri)
-        local state = files.getState(uri)
-        if state then
-            compileAst(state.ast)
-        end
-    end
-    if ev == 'remove' then
-        dropUri(uri)
-    end
-end)
+return {
+    compileAst = compileAst,
+    dropUri    = dropUri,
+}

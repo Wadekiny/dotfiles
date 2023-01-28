@@ -5,6 +5,10 @@ local config    = require 'config.config'
 local util      = require 'utility'
 local lang      = require 'language'
 
+---@class vm.ANY
+---@diagnostic disable-next-line: assign-type-mismatch
+vm.ANY = debug.upvalueid(require, 1)
+
 ---@alias typecheck.err vm.node.object|string|vm.node
 
 ---@param object vm.node.object
@@ -217,6 +221,9 @@ local function checkValue(parent, child, mark, errs)
 
     if parent.type == 'doc.type.table' then
         if child.type == 'doc.type.table' then
+            if child == parent then
+                return true
+            end
             ---@cast parent parser.object
             ---@cast child parser.object
             local uri = guide.getUri(parent)
@@ -720,13 +727,14 @@ function vm.viewTypeErrorMessage(uri, errs)
                 lparams[paramName] = 'table'
             elseif value.type == 'generic' then
                 ---@cast value vm.generic
-                lparams[paramName] = vm.viewObject(value, uri)
+                lparams[paramName] = vm.getInfer(value):view(uri)
+            elseif value.type == 'variable' then
             else
-                ---@cast value -string, -vm.global, -vm.node, -vm.generic
+                ---@cast value -string, -vm.global, -vm.node, -vm.generic, -vm.variable
                 if paramName == 'key' then
                     lparams[paramName] = vm.viewKey(value, uri)
                 else
-                    lparams[paramName] = vm.viewObject(value, uri)
+                    lparams[paramName] = vm.getInfer(value):view(uri)
                                       or vm.getInfer(value):view(uri)
                 end
             end

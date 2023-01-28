@@ -91,7 +91,7 @@ function mt:resolve(uri, args)
                 if n.type == 'global' and n.cate == 'type' then
                     -- ---@field [integer]: number -> T[]
                     ---@cast n vm.global
-                    vm.getClassFields(uri, n, vm.declareGlobal('type', 'integer'), false, function (field)
+                    vm.getClassFields(uri, n, vm.declareGlobal('type', 'integer'), function (field)
                         resolve(object.node, vm.compileNode(field.extends))
                     end)
                 end
@@ -193,7 +193,11 @@ function mt:resolve(uri, args)
                     goto CONTINUE
                 end
             end
-            local view = vm.viewObject(obj, uri)
+            if obj.type == 'variable'
+            or obj.type == 'local' then
+                goto CONTINUE
+            end
+            local view = vm.getInfer(obj):view(uri)
             if view then
                 knownTypes[view] = true
             end
@@ -219,7 +223,7 @@ function mt:resolve(uri, args)
                     goto CONTINUE
                 end
             end
-            local view = vm.viewObject(n, uri)
+            local view = vm.getInfer(n):view(uri)
             if knownTypes[view] then
                 goto CONTINUE
             end

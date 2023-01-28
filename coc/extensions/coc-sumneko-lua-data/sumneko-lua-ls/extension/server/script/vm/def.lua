@@ -33,7 +33,7 @@ end
 ---@param source  parser.object
 ---@param pushResult fun(src: parser.object)
 local function searchByLocalID(source, pushResult)
-    local idSources = vm.getLocalSourcesSets(source)
+    local idSources = vm.getVariableSets(source)
     if not idSources then
         return
     end
@@ -78,7 +78,7 @@ function vm.getDefs(source)
         end
         if not mark[src] then
             mark[src] = true
-            if guide.isSet(src)
+            if guide.isAssign(src)
             or guide.isLiteral(src) then
                 results[#results+1] = src
             end

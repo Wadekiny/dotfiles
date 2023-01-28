@@ -1,14 +1,4 @@
 {
-	"__metadata": {
-		"id": "3a15b5a7-be12-47e3-8445-88ee3eabc8b2",
-		"isApplicationScoped": false,
-		"isPreReleaseVersion": false,
-		"preRelease": false,
-		"publisherDisplayName": "sumneko",
-		"publisherId": "fb626675-24cf-4881-8c13-b465f29bec2f",
-		"targetPlatform": "win32-x64",
-		"updated": true
-	},
 	"activationEvents": [
 		"onLanguage:lua",
 		"onWebviewPanel:lua-doc",
@@ -39,6 +29,12 @@
 		],
 		"configuration": {
 			"properties": {
+				"Lua.codeLens.enable": {
+					"default": false,
+					"markdownDescription": "%config.codeLens.enable%",
+					"scope": "resource",
+					"type": "boolean"
+				},
 				"Lua.completion.autoRequire": {
 					"default": true,
 					"markdownDescription": "%config.completion.autoRequire%",
@@ -217,6 +213,7 @@
 							"missing-return-value",
 							"need-check-nil",
 							"need-paren",
+							"nesting-long-mark",
 							"newfield-call",
 							"newline-call",
 							"no-unknown",
@@ -854,7 +851,7 @@
 							"type": "string"
 						},
 						"duplicate-set-field": {
-							"default": "Any",
+							"default": "Opened",
 							"description": "%config.diagnostics.duplicate-set-field%",
 							"enum": [
 								"Any",
@@ -2239,7 +2236,7 @@
 				},
 				"Lua.format.defaultConfig": {
 					"additionalProperties": false,
-					"default": {},
+					"default": [],
 					"markdownDescription": "%config.format.defaultConfig%",
 					"patternProperties": {
 						".*": {
@@ -2664,7 +2661,7 @@
 				},
 				"Lua.runtime.special": {
 					"additionalProperties": false,
-					"default": {},
+					"default": [],
 					"markdownDescription": "%config.runtime.special%",
 					"patternProperties": {
 						".*": {
@@ -2754,18 +2751,6 @@
 					"markdownDescription": "%config.spell.dict%",
 					"scope": "resource",
 					"type": "array"
-				},
-				"Lua.telemetry.enable": {
-					"default": null,
-					"markdownDescription": "%config.telemetry.enable%",
-					"scope": "resource",
-					"tags": [
-						"telemetry"
-					],
-					"type": [
-						"boolean",
-						"null"
-					]
 				},
 				"Lua.type.castNumberToInteger": {
 					"default": true,
@@ -2919,7 +2904,8 @@
 		"languages": [
 			{
 				"filenames": [
-					".luarc.json"
+					".luarc.json",
+					"config.json"
 				],
 				"id": "jsonc"
 			}
@@ -3077,5 +3063,5 @@
 	"sponsor": {
 		"url": "https://github.com/sumneko/lua-language-server/issues/484"
 	},
-	"version": "3.6.3"
+	"version": "3.6.7"
 }

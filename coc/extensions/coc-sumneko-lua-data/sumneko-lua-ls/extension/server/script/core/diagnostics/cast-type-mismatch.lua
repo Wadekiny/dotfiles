@@ -16,13 +16,13 @@ return function (uri, callback)
     end
 
     for _, doc in ipairs(state.ast.docs) do
-        if doc.type == 'doc.cast' and doc.loc then
+        if doc.type == 'doc.cast' and doc.name then
             await.delay()
-            local defs = vm.getDefs(doc.loc)
+            local defs = vm.getDefs(doc.name)
             local loc = defs[1]
             if loc then
                 local defNode = vm.compileNode(loc)
-                if defNode:getData 'hasDefined' then
+                if defNode.hasDefined then
                     for _, cast in ipairs(doc.casts) do
                         if not cast.mode and cast.extends then
                             local refNode = vm.compileNode(cast.extends)

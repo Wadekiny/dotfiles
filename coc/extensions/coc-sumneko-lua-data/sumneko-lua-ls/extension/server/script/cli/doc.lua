@@ -3,7 +3,7 @@ local furi     = require 'file-uri'
 local ws       = require 'workspace'
 local files    = require 'files'
 local util     = require 'utility'
-local json     = require 'json-beautify'
+local jsonb    = require 'json-beautify'
 local lang     = require 'language'
 local define   = require 'proto.define'
 local config   = require 'config.config'
@@ -149,7 +149,7 @@ local function collect(global)
     results[#results+1] = result
     ---@async
     ---@diagnostic disable-next-line: not-yieldable
-    vm.getClassFields(rootUri, global, nil, false, function (source)
+    vm.getClassFields(rootUri, global, vm.ANY, function (source)
         if source.type == 'doc.field' then
             ---@cast source parser.object
             if files.isLibrary(guide.getUri(source)) then
@@ -160,7 +160,7 @@ local function collect(global)
             if source.field.type == 'doc.field.name' then
                 field.name = source.field[1]
             else
-                field.name = ('[%s]'):format(vm.viewObject(source.field, rootUri))
+                field.name = ('[%s]'):format(vm.getInfer(source.field):view(rootUri))
             end
             field.type    = source.type
             field.file    = guide.getUri(source)
@@ -258,7 +258,7 @@ lclient():start(function (client)
 end)
 
 local outpath = LOGPATH .. '/doc.json'
-json.supportSparseArray = true
-util.saveFile(outpath, json.beautify(results))
+jsonb.supportSparseArray = true
+util.saveFile(outpath, jsonb.beautify(results))
 
 require 'cli.doc2md'

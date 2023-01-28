@@ -279,6 +279,8 @@ PARSER_AMBIGUOUS_SYNTAX   = -- TODO: need translate!
 '在 Lua 5.1 中，函数调用的左括号必须与函数在同一行。'
 PARSER_NEED_PAREN         = -- TODO: need translate!
 '需要添加一对括号。'
+PARSER_NESTING_LONG_MARK  = -- TODO: need translate!
+'Nesting of `[[...]]` is not allowed in Lua 5.1 .'
 PARSER_LUADOC_MISS_CLASS_NAME           =
 '缺少類別名稱。'
 PARSER_LUADOC_MISS_EXTENDS_SYMBOL       =
@@ -447,6 +449,8 @@ COMMAND_JSON_TO_LUA_FAILED =
 'JSON 轉 Lua 失敗：{}'
 COMMAND_ADD_DICT           =
 '添加單字到字典裡'
+COMMAND_REFERENCE_COUNT    = -- TODO: need translate!
+'{} references'
 
 COMPLETION_IMPORT_FROM           =
 '從 {} 中匯入'
@@ -547,6 +551,14 @@ WINDOW_ASK_APPLY_LIBRARY         =
 '是否需要將你的工作環境配置為 `{}` ？'
 WINDOW_SEARCHING_IN_FILES        =
 '正在檔案中搜尋...'
+WINDOW_CONFIG_LUA_DEPRECATED     = -- TODO: need translate!
+'`config.lua` is deprecated, please use `config.json` instead.'
+WINDOW_CONVERT_CONFIG_LUA        = -- TODO: need translate!
+'Convert to `config.json`'
+WINDOW_MODIFY_REQUIRE_PATH       = -- TODO: need translate!
+'Do you want to modify the require path?'
+WINDOW_MODIFY_REQUIRE_OK         = -- TODO: need translate!
+'Modify'
 
 CONFIG_LOAD_FAILED               =
 '無法讀取設定檔案：{}'
@@ -554,6 +566,8 @@ CONFIG_LOAD_ERROR                =
 '設定檔案載入錯誤：{}'
 CONFIG_TYPE_ERROR                =
 '設定檔案必須是lua或json格式：{}'
+CONFIG_MODIFY_FAIL_SYNTAX_ERROR  = -- TODO: need translate!
+'Failed to modify settings, there are syntax errors in the settings file: {}'
 
 PLUGIN_RUNTIME_ERROR             =
 [[
@@ -720,6 +734,20 @@ function find(path, pattern) end
 
 ---@param style font-style Style to apply
 function setFontStyle(style) end
+```
+
+### Literal Enum
+```
+local enums = {
+    READ = 0,
+    WRITE = 1,
+    CLOSED = 2
+}
+
+---@alias FileStates
+---| `enums.READ`
+---| `enums.WRITE`
+---| `enums.CLOSE`
 ```
 ---
 [檢視文件](https://github.com/sumneko/lua-language-server/wiki/Annotations#alias)

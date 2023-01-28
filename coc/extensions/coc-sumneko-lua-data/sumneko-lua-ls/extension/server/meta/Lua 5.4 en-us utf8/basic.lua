@@ -1,4 +1,4 @@
----@meta
+---@meta _
 
 ---
 ---Command-line arguments of Lua Standalone.

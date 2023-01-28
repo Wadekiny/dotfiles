@@ -129,17 +129,17 @@ DIAG_UNKNOWN_CAST_VARIABLE            =
 DIAG_CAST_TYPE_MISMATCH               =
 'Cannot convert `{def}` to `{ref}`。'
 DIAG_MISSING_RETURN_VALUE             =
-'At least {min} return values are required, but here only {rmax} values are returned.'
+'Annotations specify that at least {min} return value(s) are required, found {rmax} returned here instead.'
 DIAG_MISSING_RETURN_VALUE_RANGE       =
-'At least {min} return values are required, but here only {rmin} to {rmax} values are returned.'
+'Annotations specify that at least {min} return value(s) are required, found {rmin} to {rmax} returned here instead.'
 DIAG_REDUNDANT_RETURN_VALUE           =
-'At most {max} values returned, but the {rmax}th value was returned here.'
+'Annotations specify that at most {max} return value(s) are required, found {rmax} returned here instead.'
 DIAG_REDUNDANT_RETURN_VALUE_RANGE     =
-'At most {max} values returned, but {rmin}th to {rmax}th values were returned here.'
+'Annotations specify that at most {max} return value(s) are required, found {rmin} to {rmax} returned here instead.'
 DIAG_MISSING_RETURN                   =
-'Return value is required here.'
+'Annotations specify that a return value is required here.'
 DIAG_RETURN_TYPE_MISMATCH             =
-'The type of the {index} return value is `{def}`, but the actual return is `{ref}`.'
+'Annotations specify that return value #{index} has a type of `{def}`, returning value of type `{ref}` here instead.'
 DIAG_UNKNOWN_OPERATOR                 =
 'Unknown operator `{}`.'
 DIAG_UNREACHABLE_CODE                 =
@@ -279,6 +279,8 @@ PARSER_AMBIGUOUS_SYNTAX   = -- TODO: need translate!
 'In Lua 5.1, the left brackets called by the function must be in the same line as the function.'
 PARSER_NEED_PAREN         = -- TODO: need translate!
 'Need to add a pair of parentheses.'
+PARSER_NESTING_LONG_MARK  =
+'Nesting of `[[...]]` is not allowed in Lua 5.1 .'
 PARSER_LUADOC_MISS_CLASS_NAME           =
 '<class name> expected.'
 PARSER_LUADOC_MISS_EXTENDS_SYMBOL       =
@@ -447,6 +449,8 @@ COMMAND_JSON_TO_LUA_FAILED =
 'Convert JSON to Lua failed: {}'
 COMMAND_ADD_DICT           =
 'Add Word to dictionary'
+COMMAND_REFERENCE_COUNT    =
+'{} references'
 
 COMPLETION_IMPORT_FROM           =
 'Import from {}'
@@ -547,6 +551,14 @@ WINDOW_ASK_APPLY_LIBRARY         =
 'Do you need to configure your work environment as `{}`?'
 WINDOW_SEARCHING_IN_FILES        =
 'Searching in files...'
+WINDOW_CONFIG_LUA_DEPRECATED     =
+'`config.lua` is deprecated, please use `config.json` instead.'
+WINDOW_CONVERT_CONFIG_LUA        =
+'Convert to `config.json`'
+WINDOW_MODIFY_REQUIRE_PATH       =
+'Do you want to modify the require path?'
+WINDOW_MODIFY_REQUIRE_OK         =
+'Modify'
 
 CONFIG_LOAD_FAILED               =
 'Unable to read the settings file: {}'
@@ -554,6 +566,8 @@ CONFIG_LOAD_ERROR                =
 'Setting file loading error: {}'
 CONFIG_TYPE_ERROR                =
 'The setting file must be in lua or json format: {}'
+CONFIG_MODIFY_FAIL_SYNTAX_ERROR  =
+'Failed to modify settings, there are syntax errors in the settings file: {}'
 
 PLUGIN_RUNTIME_ERROR             =
 [[
@@ -720,6 +734,20 @@ function find(path, pattern) end
 
 ---@param style font-style Style to apply
 function setFontStyle(style) end
+```
+
+### Literal Enum
+```
+local enums = {
+    READ = 0,
+    WRITE = 1,
+    CLOSED = 2
+}
+
+---@alias FileStates
+---| `enums.READ`
+---| `enums.WRITE`
+---| `enums.CLOSE`
 ```
 ---
 [View Wiki](https://github.com/sumneko/lua-language-server/wiki/Annotations#alias)

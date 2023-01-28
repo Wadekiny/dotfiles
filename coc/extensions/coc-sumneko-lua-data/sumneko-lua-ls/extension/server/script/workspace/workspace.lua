@@ -45,9 +45,6 @@ end
 
 --- 初始化工作区
 function m.create(uri)
-    if furi.isValid(uri) then
-        uri = furi.normalize(uri)
-    end
     log.info('Workspace create: ', uri)
     local scp = scope.createFolder(uri)
     m.folders[#m.folders+1] = scp
@@ -204,9 +201,12 @@ function m.getLibraryMatchers(scp)
             librarys[m.normalize(path)] = true
         end
     end
-    log.debug('meta path:', scp:get 'metaPath')
-    if scp:get 'metaPath' then
-        librarys[m.normalize(scp:get 'metaPath')] = true
+    local metaPaths = scp:get 'metaPaths'
+    log.debug('meta path:', inspect(metaPaths))
+    if metaPaths then
+        for _, metaPath in ipairs(metaPaths) do
+            librarys[m.normalize(metaPath)] = true
+        end
     end
 
     local matchers = {}
@@ -308,7 +308,7 @@ function m.awaitPreload(scp)
 
     if scp.uri and not scp:get('bad root') then
         log.info('Scan files at:', scp:getName())
-        scp:gc(fw.watch(m.normalize(furi.decode(scp.uri))))
+        scp:gc(fw.watch(m.normalize(furi.decode(scp.uri)), true))
         local count = 0
         ---@async
         native:scan(furi.decode(scp.uri), function (path)
@@ -326,7 +326,7 @@ function m.awaitPreload(scp)
     for _, libMatcher in ipairs(librarys) do
         log.info('Scan library at:', libMatcher.uri)
         local count = 0
-        scp:gc(fw.watch(furi.decode(libMatcher.uri)))
+        scp:gc(fw.watch(furi.decode(libMatcher.uri), true))
         scp:addLink(libMatcher.uri)
         ---@async
         libMatcher.matcher:scan(furi.decode(libMatcher.uri), function (path)

@@ -9,11 +9,12 @@ local fsu     = require 'fs-utility'
 local define  = require "proto.define"
 local files   = require 'files'
 local await   = require 'await'
-local timer   = require 'timer'
 local encoder = require 'encoder'
 local ws      = require 'workspace.workspace'
 local scope   = require 'workspace.scope'
 local inspect = require 'inspect'
+local jsonb   = require 'json-beautify'
+local jsonc   = require 'jsonc'
 
 local m = {}
 
@@ -187,10 +188,14 @@ local function compileSingleMetaDoc(uri, script, metaLang, status)
     if not suc then
         log.debug('MiddleScript:\n', middleScript)
     end
+    local text = table.concat(compileBuf)
     if disable and status == 'default' then
-        return nil
+        return text, false
     end
-    return table.concat(compileBuf)
+    if status == 'disable' then
+        return text, false
+    end
+    return text, true
 end
 
 local function loadMetaLocale(langID, result)
@@ -221,11 +226,8 @@ local function initBuiltIn(uri)
         loadMetaLocale(langID, metaLang)
     end
 
-    if scp:get('metaPath') == metaPath:string() then
-        log.debug('Has meta path, skip:', metaPath:string())
-        return
-    end
-    scp:set('metaPath', metaPath:string())
+    local metaPaths = {}
+    scp:set('metaPaths', metaPaths)
     local suc = xpcall(function ()
         if not fs.exists(metaPath) then
             fs.create_directories(metaPath)
@@ -240,13 +242,10 @@ local function initBuiltIn(uri)
     for libName, status in pairs(define.BuiltIn) do
         status = config.get(uri, 'Lua.runtime.builtin')[libName] or status
         log.debug('Builtin status:', libName, status)
-        if status == 'disable' then
-            goto CONTINUE
-        end
 
         ---@type fs.path
         local libPath = templateDir / (libName .. '.lua')
-        local metaDoc = compileSingleMetaDoc(uri, fsu.loadFile(libPath), metaLang, status)
+        local metaDoc, include = compileSingleMetaDoc(uri, fsu.loadFile(libPath), metaLang, status)
         if metaDoc then
             metaDoc = encoder.encode(encoding, metaDoc, 'auto')
 
@@ -257,13 +256,17 @@ local function initBuiltIn(uri)
 
             local ok, err = out:saveFile(outputLibName, metaDoc)
             if not ok then
-                log.debug("Save Meta File:", err)
+                log.debug("Save Meta File Failed:", err)
                 goto CONTINUE
             end
 
             local outputPath = metaPath / outputLibName
             m.metaPaths[outputPath:string()] = true
             log.debug('Meta path:', outputPath:string())
+
+            if include then
+                metaPaths[#metaPaths+1] = outputPath:string()
+            end
         end
         ::CONTINUE::
     end
@@ -274,26 +277,85 @@ local function initBuiltIn(uri)
 end
 
 ---@param libraryDir fs.path
-local function loadSingle3rdConfig(libraryDir)
-    local configText = fsu.loadFile(libraryDir / 'config.lua')
+---@return table?
+local function loadSingle3rdConfigFromJson(libraryDir)
+    local path = libraryDir / 'config.json'
+    local configText = fsu.loadFile(path)
+    if not configText then
+        return nil
+    end
+
+    local suc, cfg = xpcall(jsonc.decode_jsonc, function (err)
+        log.error('Decode config.json failed at:', libraryDir:string(), err)
+    end, configText)
+    if not suc then
+        return nil
+    end
+
+    if type(cfg) ~= 'table' then
+        log.error('config.json must be an object:', libraryDir:string())
+        return nil
+    end
+
+    return cfg
+end
+
+---@param libraryDir fs.path
+---@return table?
+local function loadSingle3rdConfigFromLua(libraryDir)
+    local path = libraryDir / 'config.lua'
+    local configText = fsu.loadFile(path)
     if not configText then
         return nil
     end
 
     local env = setmetatable({}, { __index = _G })
-    assert(load(configText, '@' .. libraryDir:string(), 't', env))()
+    local f, err = load(configText, '@' .. libraryDir:string(), 't', env)
+    if not f then
+        log.error('Load config.lua failed at:', libraryDir:string(), err)
+        return nil
+    end
+
+    local suc = xpcall(f, function (err)
+        log.error('Load config.lua failed at:', libraryDir:string(), err)
+    end)
+
+    if not suc then
+        return nil
+    end
 
     local cfg = {}
+    for k, v in pairs(env) do
+        cfg[k] = v
+    end
+
+    return cfg
+end
+
+---@param libraryDir fs.path
+local function loadSingle3rdConfig(libraryDir)
+    local cfg = loadSingle3rdConfigFromJson(libraryDir)
+    if not cfg then
+        cfg = loadSingle3rdConfigFromLua(libraryDir)
+        if not cfg then
+            return
+        end
+        local jsonbuf = jsonb.beautify(cfg)
+        client.requestMessage('Info', lang.script.WINDOW_CONFIG_LUA_DEPRECATED, {
+            lang.script.WINDOW_CONVERT_CONFIG_LUA,
+        }, function (action, index)
+            if index == 1 and jsonbuf then
+                fsu.saveFile(libraryDir / 'config.json', jsonbuf)
+                fsu.fileRemove(libraryDir / 'config.lua')
+            end
+        end)
+    end
 
     cfg.path = libraryDir:filename():string()
     cfg.name = cfg.name or cfg.path
 
     if fs.exists(libraryDir / 'plugin.lua') then
         cfg.plugin = true
-    end
-
-    for k, v in pairs(env) do
-        cfg[k] = v
     end
 
     if cfg.words then
@@ -352,15 +414,37 @@ end
 
 local function apply3rd(uri, cfg, onlyMemory)
     local changes = {}
-    if cfg.configs then
-        for _, change in ipairs(cfg.configs) do
-            changes[#changes+1] = {
-                key    = change.key,
-                action = change.action,
-                prop   = change.prop,
-                value  = change.value,
-                uri    = uri,
-            }
+    if cfg.settings then
+        for key, value in pairs(cfg.settings) do
+            if type(value) == 'table' then
+                if #value == 0 then
+                    for k, v in pairs(value) do
+                        changes[#changes+1] = {
+                            key    = key,
+                            action = 'prop',
+                            prop   = k,
+                            value  = v,
+                            uri    = uri,
+                        }
+                    end
+                else
+                    for _, v in ipairs(value) do
+                        changes[#changes+1] = {
+                            key    = key,
+                            action = 'add',
+                            value  = v,
+                            uri    = uri,
+                        }
+                    end
+                end
+            else
+                changes[#changes+1] = {
+                    key    = key,
+                    action = 'set',
+                    value  = value,
+                    uri    = uri,
+                }
+            end
         end
     end
 
@@ -485,6 +569,10 @@ local function check3rdByFileName(uri, configs)
                 goto CONTINUE
             end
             if hasAsked[cfg.name] then
+                goto CONTINUE
+            end
+            local library = ('%s/library'):format(cfg.dirname)
+            if util.arrayHas(config.get(uri, 'Lua.workspace.library'), library) then
                 goto CONTINUE
             end
             for _, filename in ipairs(cfg.files) do

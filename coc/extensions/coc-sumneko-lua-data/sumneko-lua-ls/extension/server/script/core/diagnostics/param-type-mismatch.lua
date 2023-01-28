@@ -6,9 +6,11 @@ local await = require 'await'
 
 ---@param defNode  vm.node
 local function expandGenerics(defNode)
+    ---@type parser.object[]
     local generics = {}
     for dn in defNode:eachObject() do
         if dn.type == 'doc.generic.name' then
+            ---@cast dn parser.object
             generics[#generics+1] = dn
         end
     end
@@ -18,14 +20,12 @@ local function expandGenerics(defNode)
     end
 
     for _, generic in ipairs(generics) do
-        local limits = generic.generic.extends
+        local limits = generic.generic and generic.generic.extends
         if limits then
             defNode:merge(vm.compileNode(limits))
         else
-            local unknownType = vm.getGlobal('type', 'unknown')
-            if unknownType then
-                defNode:merge(unknownType)
-            end
+            local unknownType = vm.declareGlobal('type', 'unknown')
+            defNode:merge(unknownType)
         end
     end
 end

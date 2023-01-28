@@ -374,6 +374,7 @@ local template = {
                                             },
     ['Lua.window.statusBar']                = Type.Boolean >> true,
     ['Lua.window.progressBar']              = Type.Boolean >> true,
+    ['Lua.codeLens.enable']                 = Type.Boolean >> false,
     ['Lua.format.enable']                   = Type.Boolean >> true,
     ['Lua.format.defaultConfig']            = Type.Hash(Type.String, Type.String)
                                             >> {},
@@ -384,7 +385,6 @@ local template = {
                                                 auto_complete_table_sep = "true"
                                             },
     ['Lua.spell.dict']                      = Type.Array(Type.String),
-    ['Lua.telemetry.enable']                = Type.Or(Type.Boolean >> false, Type.Nil) >> nil,
     ['Lua.misc.parameters']                 = Type.Array(Type.String),
     ['Lua.misc.executablePath']             = Type.String,
     ['Lua.type.castNumberToInteger']        = Type.Boolean >> true,

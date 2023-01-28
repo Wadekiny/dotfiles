@@ -1,7 +1,7 @@
 PUSH [===[]===]
 if not JIT then DISABLE() end
 PUSH [===[
----@meta
+---@meta bit
 
 ---@version JIT
 ---@class bitlib

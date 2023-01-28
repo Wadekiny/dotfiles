@@ -10,6 +10,19 @@ const LANGUAGE_ID = "lua";
  * Manages webview panels
  */
 class PsiViewer {
+    static createOrShow(context) {
+        // const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
+        // If we already have a panel, show it.
+        // Otherwise, create angular panel.
+        if (PsiViewer.currentPanel) {
+            PsiViewer.currentPanel.panel.reveal(vscode.ViewColumn.Two);
+        }
+        else {
+            PsiViewer.currentPanel = new PsiViewer(context, vscode.ViewColumn.Two);
+            PsiViewer.currentPanel.active(context);
+        }
+        return PsiViewer.currentPanel;
+    }
     constructor(context, column) {
         this.context = context;
         this.disposables = [];
@@ -27,19 +40,6 @@ class PsiViewer {
         // Listen for when the panel is disposed
         // This happens when the user closes the panel or when the panel is closed programatically
         this.panel.onDidDispose(() => this.dispose(), null, this.disposables);
-    }
-    static createOrShow(context) {
-        // const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
-        // If we already have a panel, show it.
-        // Otherwise, create angular panel.
-        if (PsiViewer.currentPanel) {
-            PsiViewer.currentPanel.panel.reveal(vscode.ViewColumn.Two);
-        }
-        else {
-            PsiViewer.currentPanel = new PsiViewer(context, vscode.ViewColumn.Two);
-            PsiViewer.currentPanel.active(context);
-        }
-        return PsiViewer.currentPanel;
     }
     dispose() {
         PsiViewer.currentPanel = undefined;

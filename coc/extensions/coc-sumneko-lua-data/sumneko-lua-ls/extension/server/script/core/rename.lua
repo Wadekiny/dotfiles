@@ -178,6 +178,11 @@ local function ofFieldThen(key, src, newname, callback)
         if not suc then
             return
         end
+    elseif src.type == 'doc.field' then
+        local suc = renameField(src.field, newname, callback)
+        if not suc then
+            return
+        end
     end
 end
 
@@ -200,12 +205,9 @@ local function ofGlobal(source, newname, callback)
     if not global then
         return
     end
-    local uri = guide.getUri(source)
-    for _, set in ipairs(global:getSets(uri)) do
-        ofFieldThen(key, set, newname, callback)
-    end
-    for _, get in ipairs(global:getGets(uri)) do
-        ofFieldThen(key, get, newname, callback)
+    local refs = vm.getRefs(source)
+    for _, ref in ipairs(refs) do
+        ofFieldThen(key, ref, newname, callback)
     end
 end
 
@@ -235,8 +237,10 @@ local function ofDocTypeName(source, newname, callback)
             callback(doc, doc.enum.start, doc.enum.finish, newname)
         end
     end
-    for _, doc in ipairs(global:getGets(uri)) do
-        if doc.type == 'doc.type.name' then
+    local refs = vm.getRefs(source)
+    for _, doc in ipairs(refs) do
+        if doc.type == 'doc.type.name'
+        or doc.type == 'doc.extends.name' then
             callback(doc, doc.start, doc.finish, newname)
         end
     end
@@ -280,10 +284,13 @@ local function rename(source, newname, callback)
     elseif source.type == 'doc.class.name'
     or     source.type == 'doc.type.name'
     or     source.type == 'doc.alias.name'
-    or     source.type == 'doc.enum.name' then
+    or     source.type == 'doc.enum.name'
+    or     source.type == 'doc.extends.name' then
         return ofDocTypeName(source, newname, callback)
     elseif source.type == 'doc.param.name' then
         return ofDocParamName(source, newname, callback)
+    elseif source.type == 'doc.field.name' then
+        return ofField(source, newname, callback)
     elseif source.type == 'string'
     or     source.type == 'number'
     or     source.type == 'integer'
@@ -315,7 +322,9 @@ local function prepareRename(source)
     or source.type == 'doc.type.name'
     or source.type == 'doc.alias.name'
     or source.type == 'doc.enum.name'
-    or source.type == 'doc.param.name' then
+    or source.type == 'doc.param.name'
+    or source.type == 'doc.field.name'
+    or source.type == 'doc.extends.name' then
         return source, source[1]
     elseif source.type == 'string'
     or     source.type == 'number'
@@ -351,11 +360,13 @@ local accept = {
     ['number']     = true,
     ['integer']    = true,
 
-    ['doc.class.name'] = true,
-    ['doc.type.name']  = true,
-    ['doc.alias.name'] = true,
-    ['doc.param.name'] = true,
-    ['doc.enum.name']  = true,
+    ['doc.class.name']   = true,
+    ['doc.type.name']    = true,
+    ['doc.alias.name']   = true,
+    ['doc.param.name']   = true,
+    ['doc.enum.name']    = true,
+    ['doc.field.name']   = true,
+    ['doc.extends.name'] = true,
 }
 
 local m = {}

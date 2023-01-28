@@ -23,15 +23,20 @@ local fs         = require 'bee.filesystem'
 
 require 'library'
 
+---@class provider
+local m = {}
+
+m.attributes = {}
+
 ---@async
-local function updateConfig(uri)
+function m.updateConfig(uri)
     config.addNullSymbol(json.null)
     local specified = cfgLoader.loadLocalConfig(uri, CONFIGPATH)
     if specified then
         log.info('Load config from specified', CONFIGPATH)
         log.info(inspect(specified))
         -- watch directory
-        filewatch.watch(workspace.getAbsolutePath(uri, CONFIGPATH):gsub('[^/\\]+$', ''))
+        filewatch.watch(workspace.getAbsolutePath(uri, CONFIGPATH):gsub('[^/\\]+$', ''), false)
         config.update(scope.override, specified)
     end
 
@@ -58,11 +63,6 @@ local function updateConfig(uri)
     config.update(scope.fallback, global)
 end
 
----@class provider
-local m = {}
-
-m.attributes = {}
-
 function m.register(method)
     return function (attrs)
         m.attributes[method] = attrs
@@ -81,7 +81,7 @@ filewatch.event(function (ev, path) ---@async
         for _, scp in ipairs(workspace.folders) do
             local configPath = workspace.getAbsolutePath(scp.uri, CONFIGPATH)
             if path == configPath then
-                updateConfig(scp.uri)
+                m.updateConfig(scp.uri)
             end
         end
     end
@@ -89,7 +89,7 @@ filewatch.event(function (ev, path) ---@async
         for _, scp in ipairs(workspace.folders) do
             local rcPath     = workspace.getAbsolutePath(scp.uri, '.luarc.json')
             if path == rcPath then
-                updateConfig(scp.uri)
+                m.updateConfig(scp.uri)
             end
         end
     end
@@ -97,7 +97,7 @@ filewatch.event(function (ev, path) ---@async
         for _, scp in ipairs(workspace.folders) do
             local rcPath     = workspace.getAbsolutePath(scp.uri, '.luarc.jsonc')
             if path == rcPath then
-                updateConfig(scp.uri)
+                m.updateConfig(scp.uri)
             end
         end
     end
@@ -109,14 +109,15 @@ m.register 'initialize' {
 
         if params.rootUri then
             workspace.initRoot(params.rootUri)
+            cap.resolve('ROOT_PATH', furi.decode(params.rootUri):gsub('\\', '/') .. '/')
         end
 
         if params.workspaceFolders then
             for _, folder in ipairs(params.workspaceFolders) do
-                workspace.create(folder.uri)
+                workspace.create(files.getRealUri(folder.uri))
             end
         elseif params.rootUri then
-            workspace.create(params.rootUri)
+            workspace.create(files.getRealUri(params.rootUri))
         end
 
         local response = {
@@ -133,9 +134,8 @@ m.register 'initialize' {
 m.register 'initialized'{
     ---@async
     function (params)
-        files.init()
         local _ <close> = progress.create(workspace.getFirstScope().uri, lang.script.WINDOW_INITIALIZING, 0.5)
-        updateConfig()
+        m.updateConfig()
         local registrations = {}
 
         if client.getAbility 'workspace.didChangeConfiguration.dynamicRegistration' then
@@ -176,63 +176,63 @@ m.register 'workspace/didChangeConfiguration' {
         if CONFIGPATH then
             return
         end
-        updateConfig()
-    end
-}
-
-m.register 'workspace/didCreateFiles' {
-    ---@async
-    function (params)
-        log.debug('workspace/didCreateFiles', inspect(params))
-        for _, file in ipairs(params.files) do
-            if workspace.isValidLuaUri(file.uri) then
-                files.setText(file.uri, util.loadFile(furi.decode(file.uri)), false)
-            end
-        end
-    end
-}
-
-m.register 'workspace/didDeleteFiles' {
-    function (params)
-        log.debug('workspace/didDeleteFiles', inspect(params))
-        for _, file in ipairs(params.files) do
-            files.remove(file.uri)
-            local childs = files.getChildFiles(file.uri)
-            for _, uri in ipairs(childs) do
-                log.debug('workspace/didDeleteFiles#child', uri)
-                files.remove(uri)
-            end
-        end
+        m.updateConfig()
     end
 }
 
 m.register 'workspace/didRenameFiles' {
+    capability = {
+        workspace = {
+            fileOperations = {
+                didRename = {
+                    filters = function ()
+                        local filters = {}
+                        for i, scp in ipairs(workspace.folders) do
+                            local path = furi.decode(scp.uri):gsub('\\', '/')
+                            filters[i] = {
+                                pattern = {
+                                    glob = path .. '/**',
+                                    options = {
+                                        ignoreCase = true,
+                                    }
+                                },
+                            }
+                        end
+                        return filters
+                    end
+                },
+            },
+        },
+    },
     ---@async
     function (params)
         log.debug('workspace/didRenameFiles', inspect(params))
+        local renames = {}
         for _, file in ipairs(params.files) do
-            local text = files.getOriginText(file.oldUri)
-            if text then
-                files.remove(file.oldUri)
-                if workspace.isValidLuaUri(file.newUri) then
-                    files.setText(file.newUri, text, false)
-                end
+            local oldUri = furi.normalize(file.oldUri)
+            local newUri = furi.normalize(file.newUri)
+            if  workspace.isValidLuaUri(oldUri)
+            and workspace.isValidLuaUri(newUri) then
+                renames[#renames+1] = {
+                    oldUri = oldUri,
+                    newUri = newUri,
+                }
             end
-            local childs = files.getChildFiles(file.oldUri)
+            local childs = files.getChildFiles(oldUri)
             for _, uri in ipairs(childs) do
-                local ctext = files.getOriginText(uri)
-                if ctext then
+                if files.exists(uri) then
                     local ouri = uri
-                    local tail = ouri:sub(#file.oldUri)
+                    local tail = ouri:sub(#oldUri)
                     local nuri = file.newUri .. tail
-                    log.debug('workspace/didRenameFiles#child', ouri, nuri)
-                    files.remove(uri)
-                    if workspace.isValidLuaUri(nuri) then
-                        files.setText(nuri, text, false)
-                    end
+                    renames[#renames+1] = {
+                        oldUri = ouri,
+                        newUri = nuri,
+                    }
                 end
             end
         end
+        local core = require 'core.modifyRequirePath'
+        core(renames)
     end
 }
 
@@ -249,31 +249,36 @@ m.register 'workspace/didChangeWorkspaceFolders' {
     function (params)
         log.debug('workspace/didChangeWorkspaceFolders', inspect(params))
         for _, folder in ipairs(params.event.added) do
-            workspace.create(folder.uri)
-            updateConfig()
-            workspace.reload(scope.getScope(folder.uri))
+            local uri = files.getRealUri(folder.uri)
+            workspace.create(uri)
+            m.updateConfig()
+            workspace.reload(scope.getScope(uri))
         end
         for _, folder in ipairs(params.event.removed) do
-            workspace.remove(folder.uri)
+            local uri = files.getRealUri(folder.uri)
+            workspace.remove(uri)
         end
     end
 }
 
 m.register 'textDocument/didOpen' {
+    ---@async
     function (params)
         local doc      = params.textDocument
-        local scheme   = furi.split(doc.uri)
-        local supports = config.get(doc.uri, 'Lua.workspace.supportScheme')
+        local uri      = files.getRealUri(doc.uri)
+        local scheme   = furi.split(uri)
+        local supports = config.get(uri, 'Lua.workspace.supportScheme')
         if not util.arrayHas(supports, scheme) then
             return
         end
-        local uri    = files.getRealUri(doc.uri)
         log.debug('didOpen', uri)
         local text  = doc.text
         files.setText(uri, text, true, function (file)
             file.version = doc.version
         end)
         files.open(uri)
+        workspace.awaitReady(uri)
+        files.compileState(uri)
     end
 }
 
@@ -300,6 +305,7 @@ m.register 'textDocument/didChange' {
         end
         local changes = params.contentChanges
         local uri     = files.getRealUri(doc.uri)
+        workspace.awaitReady(uri)
         local text = files.getOriginText(uri)
         if not text then
             files.setText(uri, pub.awaitTask('loadFile', furi.decode(uri)), false)
@@ -796,7 +802,7 @@ m.register 'textDocument/signatureHelp' {
             infos[i] = {
                 label           = result.label,
                 parameters      = parameters,
-                activeParameter = result.index - 1,
+                activeParameter = math.max(0, result.index - 1),
                 documentation   = result.description and {
                     value = tostring(result.description),
                     kind  = 'markdown',
@@ -874,11 +880,13 @@ m.register 'textDocument/codeAction' {
         },
     },
     abortByFileUpdate = true,
+    ---@async
     function (params)
         local core        = require 'core.code-action'
         local uri         = files.getRealUri(params.textDocument.uri)
         local range       = params.range
         local diagnostics = params.context.diagnostics
+        workspace.awaitReady(uri)
 
         local state = files.getState(uri)
         if not state then
@@ -912,6 +920,53 @@ m.register 'textDocument/codeAction' {
     end
 }
 
+m.register 'textDocument/codeLens' {
+    capability = {
+        codeLensProvider = {
+            resolveProvider = true,
+        }
+    },
+    abortByFileUpdate = true,
+    ---@async
+    function (params)
+        local uri = files.getRealUri(params.textDocument.uri)
+        if not config.get(uri, 'Lua.codeLens.enable') then
+            return
+        end
+        workspace.awaitReady(uri)
+        local state = files.getState(uri)
+        if not state then
+            return nil
+        end
+        local core = require 'core.code-lens'
+        local results = core.codeLens(uri)
+        if not results then
+            return nil
+        end
+        local codeLens = {}
+        for _, result in ipairs(results) do
+            codeLens[#codeLens+1] = {
+                range = converter.packRange(state, result.position, result.position),
+                data  = {
+                    uri = uri,
+                    id   = result.id,
+                },
+            }
+        end
+        return codeLens
+    end
+}
+
+m.register 'codeLens/resolve' {
+    ---@async
+    function (codeLen)
+        local core = require 'core.code-lens'
+        local command = core.resolve(codeLen.data.uri, codeLen.data.id)
+        codeLen.command = command or converter.command('...', '', {})
+        return codeLen
+    end
+}
+
 m.register 'workspace/executeCommand' {
     capability = {
         executeCommandProvider = {
@@ -938,7 +993,7 @@ m.register 'workspace/executeCommand' {
             return core(params.arguments[1])
         elseif command == 'lua.setConfig' then
             local core = require 'core.command.setConfig'
-            return core(params.arguments[1])
+            return core(params.arguments)
         elseif command == 'lua.autoRequire' then
             local core = require 'core.command.autoRequire'
             return core(params.arguments[1])
@@ -1156,6 +1211,7 @@ m.register '$/status/click' {
             titleDiagnostic,
             DEVELOP and 'Restart Server' or nil,
             DEVELOP and 'Clear Node Cache' or nil,
+            DEVELOP and 'GC' or nil,
         })
         if not result then
             return
@@ -1167,11 +1223,14 @@ m.register '$/status/click' {
             end
         elseif result == 'Restart Server' then
             local diag = require 'provider.diagnostic'
-            diag.clearAll(true)
+            diag.clearAll(nil, true)
             os.exit(0, true)
         elseif result == 'Clear Node Cache' then
             local vm = require 'vm'
             vm.clearNodeCache()
+            collectgarbage()
+            collectgarbage()
+        elseif result == 'GC' then
             collectgarbage()
             collectgarbage()
         end
@@ -1573,3 +1632,5 @@ files.watch(function (ev, uri)
         end
     end
 end)
+
+return m
