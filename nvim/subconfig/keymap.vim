@@ -135,8 +135,32 @@ lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
 "lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
 
 ""---------- dap ----------""
+
+" 编译调试
+func! CompileAndDapContinue()
+    :w
+    if &filetype == 'cpp'
+        let filename = expand("%:p")
+        let outname = substitute(filename, '\.cpp', '\.out', '') 
+        let cmd = printf("g++ -std=c++11 -g %s -o  %s",filename,outname)
+        " :exec "!g++ -std=c++11 % -Wall -o %<.out -g" 
+        let return = system(cmd)
+        let length = strlen(return)
+        let error_flag = match(return, "error")
+        if length != 0 "如果返回长度不是0,有错误(没有添加-Wall参数)
+            echo return 
+            "redraw 如果echo的长度过大，多于1行,就需要Press ENTER or type command to continue,用redraw命令可以重绘
+        else           "g++ 无输出,编译通过
+            redraw
+            echo " CPP file Compiled"
+            :lua require'dap'.continue()
+        endif
+    endif 
+endfunc
+
 nnoremap <leader>e <Cmd>lua require("dapui").eval()<CR>
 nnoremap <leader>c <cmd>lua require'dap'.continue()<cr>
+nnoremap <F6> <cmd>call CompileAndDapContinue()<cr>
 nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr> <cmd>lua require"dapui".close()<cr>
 nnoremap <leader>s <cmd>lua require'dap'.step_into()<cr>
 nnoremap <leader>n <cmd>lua require'dap'.step_over()<cr>
@@ -305,7 +329,7 @@ noremap <F3> <cmd>cclose<cr>
 let g:asyncrun_open = 8
 noremap <F4> <cmd>call CompileCode()<cr>
 noremap <F5> <cmd>call CompileRunCode()<cr>
-"
+" 异步执行
 func! CompileCode()
     :w
     if &filetype == 'cpp'
