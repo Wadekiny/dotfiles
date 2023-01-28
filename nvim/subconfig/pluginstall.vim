@@ -85,7 +85,9 @@ Plug 'rcarriga/nvim-notify'                         "输出改为浮动窗口
 
 
 " Plug 'fgheng/winbar.nvim'                           
-" Plug 'wadekiny/winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对)),但是, 浮动窗口youwenti
+Plug 'wadekiny/wadekiny-winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对)),但是, 浮动窗口youwenti
+" Plug 'SmiteshP/nvim-navic'
+" Plug 'feline-nvim/feline.nvim'
 
 "Plug 'famiu/bufdelete.nvim'                         "删除buffer不改变分屏结构
 

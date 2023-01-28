@@ -6,6 +6,10 @@ end
 
 bufferline.setup ({
     highlights={
+        fill ={
+            bg = '#0d1117',
+        },
+
         -- tab_selected={
         --     bg = '#ffffff';
         -- },
@@ -23,7 +27,8 @@ bufferline.setup ({
             bg = '#202328'
         },
         indicator_selected = {
-            bg = '#202328'
+            fg = '#00ff88', --和winbar 一致，美观
+            bg = '#202328',
         },
         -- tab={
         --     bg = '#ffffff';

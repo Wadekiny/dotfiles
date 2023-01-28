@@ -299,29 +299,27 @@ nnoremap <silent><space>h <Cmd>BufferLineCyclePrev<CR>
 
 nnoremap <c-f> <cmd>Neoformat<cr>
 
+" 关闭quickfix窗口
+noremap <F3> <cmd>cclose<cr> 
+
 let g:asyncrun_open = 8
-noremap <F4> :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g <cr>
-noremap <F5> :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g  &&  ./%<.out<cr>
-
-
-
-" nnoremap <F4> <cmd>call CompileCpp()<cr>
-" nnoremap <F5> <cmd>call CompileRunCpp()<cr>
-" noremap  :call CompileRunGcc()<CR>
+noremap <F4> <cmd>call CompileCode()<cr>
+noremap <F5> <cmd>call CompileRunCode()<cr>
 "
-func! CompileCpp()
+func! CompileCode()
+    :w
     if &filetype == 'cpp'
-		exec "!g++ -std=c++11 % -Wall -o %<.out -g"
+        :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g
     endif 
 endfunc
 
-func! CompileRunCpp()
+func! CompileRunCode()
+    :w
     if &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %< -g"
-		:split
-		:res -15
-        exec "!time ./%<.out"
+        :AsyncRun g++ -std=c++11 % -Wall -o %<.out -g  && echo "==========" &&  ./%<.out
+    endif 
+    if &filetype == 'python'
+        :AsyncRun python3 %
     endif 
 endfunc
 

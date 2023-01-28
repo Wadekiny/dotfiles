@@ -77,7 +77,10 @@ source ~/.config/nvim/subconfig/plugconfig/toggleterm.lua
 " source ~/.config/nvim/subconfig/plugconfig/notify.lua
 
 " bufferline下面的winbar
-" source ~/.config/nvim/subconfig/plugconfig/winbar.lua
+source ~/.config/nvim/subconfig/plugconfig/winbar.lua
+
+" lua require('feline').setup()
+" lua require('feline').winbar.setup()
 
 " 颜色变量可视化
 lua require('colorizer').setup()
@@ -141,8 +144,6 @@ if exists("g:neovide")
     let g:neovide_padding_bottom=10
 end
  
-
-
 
 
 
