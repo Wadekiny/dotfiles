@@ -3,10 +3,7 @@ local dap, dapui = require("dap"), require("dapui")
 
 dap.adapters.python = {
   type = 'executable';
-  --command = 'python';
-  --command = os.getenv('HOME') .. '/.virtualenvs/tools/bin/python';
   command = 'python3';
-
   args = { '-m', 'debugpy.adapter' };
 }
 
@@ -31,15 +28,26 @@ dap.configurations.python = {
 
 dap.configurations.cpp = {
   {
-    name = "Launch file",
+    name = "This",
     type = "cppdbg",
     request = "launch",
+    -- program = "${file}",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        return string.gsub(vim.fn.expand("%:p"),"%.cpp","%.out")
     end,
     cwd = '${workspaceFolder}',
     stopAtEntry = true,
   },
+  -- {
+  --   name = "Launch file",
+  --   type = "cppdbg",
+  --   request = "launch",
+  --   program = function()
+  --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+  --   end,
+  --   cwd = '${workspaceFolder}',
+  --   stopAtEntry = true,
+  -- },
   -- {
   --   name = 'Attach to gdbserver :1234',
   --   type = 'cppdbg',
@@ -58,14 +66,48 @@ dap.configurations.cpp = {
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
+  vim.api.nvim_command("DapVirtualTextEnable")
+  vim.api.nvim_command("NvimTreeClose")
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
+  vim.api.nvim_command("DapVirtualTextDisable")
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
+  vim.api.nvim_command("DapVirtualTextDisable")
 end
 
+dap.listeners.before.disconnect["dapui_config"] = function()
+  dapui.close()
+  vim.api.nvim_command("DapVirtualTextDisable")
+end
+
+
+
+
+
+
+-- nvim-dap uses five signs:
+--
+-- - `DapBreakpoint` for breakpoints (default: `B`)
+-- - `DapBreakpointCondition` for conditional breakpoints (default: `C`)
+-- - `DapLogPoint` for log points (default: `L`)
+-- - `DapStopped` to indicate where the debugee is stopped (default: `→`)
+-- - `DapBreakpointRejected` to indicate breakpoints rejected by the debug
+--   adapter (default: `R`)
+--
+-- You can customize the signs by setting them with the |sign_define()| function.
+-- For example:
+--
+--  
+-- >lua
+--   vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
+
+
+vim.fn.sign_define("DapBreakpoint", {text=''})
+vim.fn.sign_define("DapStopped", {text=''}) --去掉符号，不然在运行到断点时会覆盖断点符号
+vim.fn.sign_define("DapBreakpointCondition", {text=''}) --去掉符号，不然在运行到断点时会覆盖断点符号
 
 require("dapui").setup({
               icons = { expanded = "", collapsed = "" },
