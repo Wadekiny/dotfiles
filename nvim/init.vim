@@ -18,7 +18,7 @@
 "<leader>grep不好用？
 "lspsaga
 "packer
-"修改的插件 winbar nvim-tree vim-surround
+"修改的插件 winbar  vim-surround (nvim-tree)
 "
 " nvim 设置
 source ~/.config/nvim/subconfig/settings.vim
@@ -104,8 +104,8 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 " 右上角stateline
 "lua require('incline').setup()
 
-"使非活动窗口变暗 主题也许能做到，但是边界变丑
-"source ~/.config/nvim/subconfig/plugconfig/shade.lua
+"使非活动窗口变暗 主题也许能做到，但是边界变丑,使用vista会出问题
+" source ~/.config/nvim/subconfig/plugconfig/shade.lua
 
 " 剪切板管理工具
 " source ~/.config/nvim/subconfig/plugconfig/nvim-neoclip.lua
@@ -124,6 +124,7 @@ lua require('sniprun').setup({})
 lua require('nvim-ts-autotag').setup()
 lua require("project_nvim").setup{}
 lua require("telescope").load_extension('projects')
+lua require("satellite").setup()
 
 
 
@@ -144,6 +145,4 @@ if exists("g:neovide")
     let g:neovide_padding_bottom=10
 end
  
-
-
 
