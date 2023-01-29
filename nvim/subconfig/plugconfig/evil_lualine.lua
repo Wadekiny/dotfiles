@@ -176,7 +176,8 @@ ins_left {
 ins_left {
     'filename',
     --path=conditions.path_style('auto'),
-    path=conditions.path_style(1),
+    -- path=conditions.path_style(1),
+    path=conditions.path_style(0),
     cond = conditions.buffer_not_empty,
     color = { fg = colors.magenta, gui = 'bold' },
 }
