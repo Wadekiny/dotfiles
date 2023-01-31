@@ -144,5 +144,3 @@ if exists("g:neovide")
     let g:neovide_padding_right=10
     let g:neovide_padding_bottom=10
 end
- 
-
