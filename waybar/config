@@ -32,7 +32,9 @@
     ],
 
     "custom/spaceleft":{
-        "format": "",
+        /* "format": "", */
+        "format": "⭘",
+        "on-click": "wlogout",
     },
 
     "custom/spaceright":{
@@ -110,7 +112,7 @@
         //"format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
         "format-wifi": "直 {essid}", // Icon: wifi
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠  Disconnected",
+        "format-disconnected": "⚠ Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}"
     },
 
@@ -118,17 +120,24 @@
         "format":"{icon}",
         "on-click": "activate",
         "format-icons":{
-            /* "1":"1", */
-            /* "2":"2", */
-            /* "3":"3", */
-            /* "4":"4", */
-            /* "5":"5", */
-            /* "6":"6", */
-            /* "7":"7", */
-            /* "8":"8", */
-            /* "9":"9", */
-            /* "10":"0", */
-            "1":"",
+            /* "1":"", */
+            /* "2":"", */
+            /* "3":"", */
+            /* "4":"", */
+            /* "5":"", */
+            /* "6":"", */
+            /* "7":"", */
+            /* "8":"", */
+            /* "9":"", */
+            /* "10":"", */
+            /* "11":"", */
+            /* "12":"", */
+            /* "13":"", */
+            /* "14":"ﬄ", */
+            /* "15":"﬐", */
+
+            /*      */
+            "1":"",
             "2":"",
             "3":"",
             "4":"",
@@ -138,12 +147,13 @@
             "8":"",
             "9":"",
             "10":"",
-            "11":"",
+            "11":"",
             "12":"",
-            "13":"",
+            "13":"ﱘ",
             "14":"ﬄ",
             "15":"﬐",
-            "default": "",
+            "16":"",
+            "default": "",
         },
         "sort-by-number":true
     },
@@ -156,7 +166,7 @@
             "phone": ["", "", "", ""],
             "default": ["", "", "", ""]
         },
-        "scroll-step": 10,
+        "scroll-step": 5,
         "on-click": "pavucontrol",
         "tooltip": false
     },
