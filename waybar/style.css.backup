@@ -50,7 +50,7 @@
 }
 
 /* The whole bar */
-#waybar {
+    #waybar {
     color: white;
     /* background: #002c34; */
     /* background: #aaaaee; */
@@ -59,19 +59,35 @@
     /* font-family: FiraCode Nerd Font, Cantarell, Noto Sans, sans-serif; */
     /* font-family: JetBrainsMono Nerd Font, Kingnam Maiyuan, Noto Sans, sans-serif; */
     font-family: JetBrainsMono Nerd Font, Kingnam Maiyuan;
+
     font-size: 18px;
 }
 
 window#waybar > box {
-    border-radius: 20px;
-    margin: 5px 5px 6px 5px;
+    border-radius: 5;
+    /* margin: 3px 3px 3px 3px; */
+    margin: 0px 0px 4px 0px;
     box-shadow: 0px 0px 3px #101010;
 }
 
 /* Each module */
+#custom-asd2num
+{
+    /* background: #141834; */
+    background:#aaaaee;
+    background:rgba(193,193,255,0.7);
+    color:black;
+    font-weight:bold;
+    /* background: rgba(14,18,34,0.2); */
+    /* background: rgba(0,0,0,0.1); */
+    padding-left: 8px;
+    padding-right: 8px;
+    /* margin-top:5px; */
+}
+
+
 #disk,
 #battery,
-#clock,
 #cpu,
 #custom-keyboard-layout,
 #memory,
@@ -82,18 +98,19 @@ window#waybar > box {
 #temperature
 {
     /* background: #141834; */
-    background:#aaaade;
+    background:#aaaaee;
+    background:rgba(176,176,238,0.6);
     color:black;
     font-weight:bold;
     /* background: rgba(14,18,34,0.2); */
     /* background: rgba(0,0,0,0.1); */
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
     /* margin-top:5px; */
 }
 
 #disk{
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 
@@ -196,17 +213,21 @@ window#waybar > box {
     /* No styles */
     /* background: rgba(0,0,0,0.5); */
     /* background:#141834; */
-    background: #9999ee;
+    /* background: #9999ee; */
+    background:rgba(176,176,238,0.4);
+
 
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 0px 5px 5px 0px;
+    padding-top:2px;
+    /* border-radius: 0px 5px 5px 0px; */
     /* margin-top:5px; */
     /* margin-right:5; */
     /* background: blue; */
 }
 
 #window {
+    /* text-align:center; */
     padding-left:10;
     padding-right:10;
     /* margin-top:5px; */
@@ -230,20 +251,22 @@ label {
 
 
 #custom-spaceright{
-    background: #141834;
+    /* background: #141834; */
+    background : rgba(10,14,30,0.7);
     color:#bbbbbb;
     padding-left:6;
     padding-right:6;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 0px 0px 0px;
     /* margin-top:5px; */
 }
 
 #custom-spaceleft{
-    background: #141834;
+    /* background: #141834; */
+    background : rgba(10,14,30,0.7);
     color:#bbbbbb;
     padding-left:6;
     padding-right:12;
-    border-radius: 5px 0px 0px 5px;
+    /* border-radius: 5px 0px 0px 5px; */
     /* margin-top:5px; */
     /* margin-left:5px; */
 }
@@ -258,13 +281,14 @@ label {
     font-size:20;
     padding-left: 6;
     padding-right: 9;
-    /* margin-bottom:-5; */
-    /* margin-top:-5; */
-    background: #141834;
+    /* margin-bottom:-2; */
+    /* margin-top:2; */
+    /* background: #141834; */
+    background : rgba(10,14,30,0.7);
     /* font-weight:bold; */
     color: #bbbbbb;
-    border-bottom:2px solid rgba(0,0,0,0);
-    border-top:2px solid rgba(0,0,0,0);
+    /* border-bottom:2px solid rgba(0,0,0,0); */
+    /* border-top:2px solid rgba(0,0,0,0); */
     /* border-bottom:10px solid white; */
 }
 
@@ -276,7 +300,7 @@ label {
     background: #444874;
     color:white;
     font-weight:bold;
-    border-bottom: 2px solid white; 
+    /* border-bottom: 2px solid white;  */
 }
 
 /* #workspaces button.focused { */
@@ -294,6 +318,7 @@ label {
 #workspaces button.urgent {
     background: #141834;
     font-weight:bold;
-    border-color: #c9545d;
+    /* border-color: #c9545d; */
     color: #c9545d;
 }
+
