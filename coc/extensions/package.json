@@ -9,7 +9,9 @@
     "coc-tsserver": ">=2.0.2",
     "coc-sh": ">=0.7.0",
     "coc-pyright": ">=1.1.275",
-    "coc-snippets": ">=3.1.6"
+    "coc-snippets": ">=3.1.6",
+    "coc-css": ">=2.0.0",
+    "coc-html": ">=1.8.0"
   },
-  "lastUpdate": 1674639436706
+  "lastUpdate": 1675251173307
 }
