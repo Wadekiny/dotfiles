@@ -143,10 +143,15 @@ func! CompileAndDapContinue()
             "redraw 如果echo的长度过大，多于1行,就需要Press ENTER or type command to continue,用redraw命令可以重绘
         else           "g++ 无输出,编译通过
             redraw
-            echo " CPP file Compiled"
+            echo " CPP [ Compiled Debug ]"
             :lua require'dap'.continue()
         endif
     endif 
+    if &filetype == 'python'
+        redraw
+        echo " PYTHON [ Debug ]"
+        :lua require'dap'.continue()
+    endif
 endfunc
 
 " 异步执行
@@ -160,7 +165,7 @@ nnoremap <leader>e <Cmd>lua require("dapui").eval()<CR>
 nnoremap <leader>c <cmd>lua require'dap'.continue()<cr>
 nnoremap <F6> <cmd>call CompileAndDapContinue()<cr>
 " 关闭quickfix窗口
-nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr> <cmd>cclose<cr>
+nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr> <cmd>cclose<cr>  <cmd>AsyncStop<cr>
 nnoremap <leader>s <cmd>lua require'dap'.step_into()<cr>
 nnoremap <leader>n <cmd>lua require'dap'.step_over()<cr>
 nnoremap <leader>o <cmd>lua require'dap'.step_out()<cr>
@@ -301,7 +306,7 @@ function! MdPasteImage()
     let g:mdip_imgdir = './' . expand('%:t:r')
     call mdip#MarkdownClipboardImage()
 endfunction
-autocmd FileType markdown nmap <buffer><silent> mp :call MdPasteImage()<CR>
+autocmd FileType markdown nmap <buffer><silent> mp :call MdPasteImage()<CR>keymap
 "}}}
 
 "  NOTE: 抄作业

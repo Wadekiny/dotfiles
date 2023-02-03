@@ -129,7 +129,7 @@ lua require("satellite").setup()
 
 
 if exists("g:neovide")
-    set guifont=JetBrainsMaiYuanNerdFontMono
+    set guifont=JetBrainsMaiYuanNerdFontMono:h10
     "set guifont=Kingnam_Maiyuan,Code_New_Roman_NerdFont_Mono
     "set guifont=CodeNewRoman_Nerd_Font_Mono:h14
     "set guifont=Code_New_Roman:h14

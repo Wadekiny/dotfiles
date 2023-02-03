@@ -10,6 +10,8 @@ let g:coc_global_extensions = [
     \'coc-sh',
     \'coc-tsserver',
     \'coc-snippets',
+    \'coc-css',
+    \'coc-html',
     \]
 
 "\'coc-explorer',
