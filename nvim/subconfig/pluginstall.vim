@@ -96,7 +96,7 @@ Plug 'b0o/incline.nvim'  "右上角悬浮窗"
 
 Plug 'sunjon/shade.nvim'                            "使非活动窗口变暗
 "Plug 'folke/trouble.nvim'
-" Plug 'Pocco81/HighStr.nvim'
+Plug 'Pocco81/HighStr.nvim'
 "Plug 'rhysd/accelerated-jk'
 "
 

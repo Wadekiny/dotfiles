@@ -185,7 +185,8 @@ nnoremap <leader>B <cmd>Telescope buffers<cr>
 nnoremap <leader>H <cmd>Telescope help_tags<cr>
 nnoremap <leader>p <cmd>Telescope projects<cr>
 "---------- 取消搜索高亮 ----------""
-nnoremap <leader>h :noh<cr>
+vnoremap <leader>a :<c-u>HSHighlight 1<cr>
+nnoremap <leader>h :noh<cr> :HSRmHighlight<cr>
 "}}}
 
 "  NOTE: space group -----------------------------------------------------
