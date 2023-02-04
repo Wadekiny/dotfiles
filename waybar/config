@@ -19,7 +19,7 @@
     "modules-center": [
     ],
     "modules-right": [
-        "custom/asd2num",
+        "custom/asd2num", //加一个自定义的模块
         "disk",
         "network",
         "cpu",
@@ -45,6 +45,7 @@
         
     },
 
+    // 设置好，主要是exec和signal(signal由py脚本发送)
     "custom/asd2num":{
         "format": "{}",
         "exec" : "source /home/wadekiny/Scripts/keyd/asd2num_flag.txt && echo $_asd2num",
