@@ -185,8 +185,9 @@ nnoremap <leader>B <cmd>Telescope buffers<cr>
 nnoremap <leader>H <cmd>Telescope help_tags<cr>
 nnoremap <leader>p <cmd>Telescope projects<cr>
 "---------- 取消搜索高亮 ----------""
-vnoremap <leader>a :<c-u>HSHighlight 1<cr>
-nnoremap <leader>h :noh<cr> :HSRmHighlight<cr>
+" vnoremap <leader>a :<c-u>HSHighlight 1<cr>
+" nnoremap <leader>h :noh<cr> :HSRmHighlight<cr>
+ nnoremap <leader>h :noh<cr> 
 "}}}
 
 "  NOTE: space group -----------------------------------------------------
@@ -277,13 +278,14 @@ endfunction
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 " xmap instead of vmap(selectmode + visualmode)
-xnoremap gl  <Plug>(coc-codeaction-selected)<cr> 
-nnoremap gl  <Plug>(coc-codeaction-selected)<cr>
+xnoremap go  <Plug>(coc-codeaction-selected)<cr> 
+nnoremap go  <Plug>(coc-codeaction-selected)<cr>
 "
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gl :CocDiagnostics<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
