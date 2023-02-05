@@ -5,16 +5,8 @@ import autopy as at
 import ipdb
 from pynput import keyboard
 from pynput.keyboard import Key, Listener
-#at.key.tap('9')
-#at.key.tap('1')
-#at.key.tap('3')
-#at.key.tap('7')
-#at.key.tap('2')
-#at.key.tap('4')
-#at.key.tap('6')
-#at.key.tap('8')
 if sys.argv[-1] == "root_password":
-    at.key.type_string('91372468',0)
+    at.key.type_string('<password>',0)
 
 
 
