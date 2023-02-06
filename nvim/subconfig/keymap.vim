@@ -60,6 +60,10 @@ nnoremap <m-j> <c-w>5-
 
 ""---------- Neoformat ----------""
 nnoremap <c-f> <cmd>Neoformat<cr>
+" 对应的语言需要安装对应的服务
+" pacman -S clang-format
+" pip install black
+" pacman -S yapf
 
 ""---------- 保存 ----------""
 nnoremap <c-s> <cmd>:w<cr>
@@ -97,6 +101,19 @@ nnoremap <leader>R <cmd>SnipRun<cr>
 nnoremap <leader>C <cmd>SnipClose<cr>
 vnoremap <leader>R :'<,'>SnipRun<cr>
 vnoremap <leader>C <cmd>SnipClose<cr>
+
+" 当前文件内查找
+function! SearchThisFile() 
+    let pattern = input('Pattern: ')
+    let cmd = printf("vimgrep '%s' %% | copen",pattern)
+    let length = strlen(pattern)
+    if length != 0
+        execute cmd
+    endif
+endfunction
+
+" nnoremap <leader>v  <cmd>call SearchThisFile()<cr> 
+nnoremap <leader>v  <cmd>Grepper -tool rg -buffer<cr> 
 
 ""---------- hop(like easymotion) ----------""
 lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
@@ -368,3 +385,5 @@ func! CompileRunGcc()"{{{
 		:term go run .
 	endif
 endfunc"}}}
+
+

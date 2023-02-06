@@ -124,6 +124,10 @@ Plug 'skywind3000/asyncrun.vim' " 执行命令，并在quickfix窗口显示结�
 
 Plug 'lewis6991/satellite.nvim' "scrollbar
 
+Plug 'kevinhwang91/nvim-bqf' "make quickfix window better
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'mhinz/vim-grepper'
+
 
 call plug#end()
 
