@@ -142,7 +142,8 @@
         "states": {
           "warning": 70,
           "critical": 90
-        }
+        },
+        "on-click":"alacritty -t 'btop' -e btop",
     },
 
     "memory": {
@@ -151,7 +152,8 @@
         "states": {
             "warning": 70,
             "critical": 90
-        }
+        },
+        "on-click":"alacritty -t 'btop' -e btop",
     },
 
     "network": {

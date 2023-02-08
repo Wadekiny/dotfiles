@@ -154,6 +154,8 @@ window#waybar > box {
 #clock:hover,
 #custom-spaceleft:hover,
 #custom-spaceright:hover,
+#cpu:hover,
+#memory:hover,
 #custom-close:hover,
 #pulseaudio:hover
 {
