@@ -46,6 +46,9 @@
 "  - INFO: new rhs: `<cmd>lua require("which-key").show("\"", {mode = "v", auto = true})<cr>`
 "
 "
+"
+
+
 " nvim 设置
 source ~/.config/nvim/subconfig/settings.vim
 " 插件安装
