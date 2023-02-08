@@ -3,7 +3,7 @@
     "coc.preferences.extensionUpdateCheck": "weekly",
     "suggest.enablePreselect": false,
     "suggest.noselect": true,
-    //"suggest.floatConfig": {"border": true,"rounded": true,"shadow": true},
+    "suggest.floatConfig": {"border": true,"rounded": true,"shadow": true},
     "signature.floatConfig": {"border": true,"title": "Signature"},
     "diagnostic.floatConfig": {"border": true,"title": "Diagnostic"},
     "diagnostic.enable": true,
@@ -18,10 +18,10 @@
 //    "explorer.buffer.showHiddenBuffers": false,
 //    "explorer.git.enable": false,
 
-    "diagnostic.errorSign": "\uf467",
-	"diagnostic.warningSign": "\uf071",
-	"diagnostic.infoSign": "\uf129",
-	"diagnostic.hintSign": "\uf864",
+    "diagnostic.errorSign": "",
+	"diagnostic.warningSign": "",
+	"diagnostic.infoSign": "",//
+	"diagnostic.hintSign": "ྗྗ",//
     "suggest.completionItemKindLabels": {
 		"class": "\uf0e8",
 		"color": "\ue22b",

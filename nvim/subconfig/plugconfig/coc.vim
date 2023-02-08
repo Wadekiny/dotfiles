@@ -34,6 +34,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " for more details, see `:h CocFloating`
 "
 "和边框搭配使用
-"hi CocFloating guibg= #0d1117 
+hi CocFloating guibg= #0d1117 
 
-hi CocFloating guibg=#222222
+"hi CocFloating guibg=#222222
