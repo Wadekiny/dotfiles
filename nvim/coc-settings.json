@@ -3,7 +3,7 @@
     "coc.preferences.extensionUpdateCheck": "weekly",
     "suggest.enablePreselect": false,
     "suggest.noselect": true,
-    "suggest.floatConfig": {"border": true,"rounded": true,"shadow": true},
+    //"suggest.floatConfig": {"border": true,"rounded": true,"shadow": true},
     "signature.floatConfig": {"border": true,"title": "Signature"},
     "diagnostic.floatConfig": {"border": true,"title": "Diagnostic"},
     "diagnostic.enable": true,
