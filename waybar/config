@@ -10,15 +10,17 @@
     /* "margin-bottom":6, */
 
     "modules-left": [
-        /* "sway/workspaces", */
+        "sway/workspaces",
         "custom/spaceleft",
         "wlr/workspaces",
         "custom/spaceright",
+        //"hyprland/submap",
         "hyprland/window",
     ],
     "modules-center": [
     ],
     "modules-right": [
+        "custom/close",
         "custom/asd2num", //加一个自定义的模块
         "disk",
         "network",
@@ -33,16 +35,30 @@
         "tray",
     ],
 
+    //"hyprland/window":{
+    //    "format": "-> {}",
+    //    "separate-outputs": true,
+    //},
+
     "custom/spaceleft":{
         //"format": "",
         "format": "⭘",
         "on-click": "wlogout",
+        "tooltip":false,
     },
 
     "custom/spaceright":{
         "format": "",
         "on-click": "rofi -theme slate.rasi -show combi -show-icons",
+        "tooltip":false,
         
+    },
+
+
+    "custom/close":{
+        "format":"",
+        "on-click": "hyprctl dispatch killactive 1",
+        "tooltip":false ,
     },
 
     // 设置好，主要是exec和signal(signal由py脚本发送)
@@ -56,7 +72,8 @@
     "disk": {
         "interval": 30,
         "format": " {free}",
-        "path": "/"
+        "path": "/",
+        "on-click":"nautilus"
     },
 
     "battery": {
@@ -150,21 +167,21 @@
         "format":"{icon}",
         "on-click": "activate",
         "format-icons":{
-            /* "1":"", */
-            /* "2":"", */
-            /* "3":"", */
-            /* "4":"", */
-            /* "5":"", */
-            /* "6":"", */
-            /* "7":"", */
-            /* "8":"", */
-            /* "9":"", */
-            /* "10":"", */
-            /* "11":"", */
-            /* "12":"", */
-            /* "13":"", */
-            /* "14":"ﬄ", */
-            /* "15":"﬐", */
+            //"1":"",
+            //"2":"",
+            //"3":"",
+            //"4":"",
+            //"5":"",
+            //"6":"",
+            //"7":"",
+            //"8":"",
+            //"9":"",
+            //"10":"",
+            //"11":"",
+            //"12":"",
+            //"13":"",
+            //"14":"ﬄ",
+            //"15":"﬐",
 
             /*     ﱘ  */
             "1":"",
