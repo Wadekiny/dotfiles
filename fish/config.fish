@@ -6,6 +6,14 @@
 set fish_greeting
 set -x PATH /home/wadekiny/.local/bin $PATH
 abbr aconda 'eval /home/wadekiny/anaconda3/bin/conda "shell.fish" "hook" $argv | source'
+
+if not test $HYPRLAND_CMD
+    echo "start Hyprland..."
+    starthyprland
+end
+
+
+
 abbr ra ranger
 abbr lg lazygit
 abbr nv nvim
