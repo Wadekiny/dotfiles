@@ -161,7 +161,7 @@
         //"format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
         "format-wifi": "直 {essid}", // Icon: wifi
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠ Disconnected",
+        "format-disconnected": " Disconnected",//
         "tooltip-format": "{ifname}: {ipaddr}"
     },
 
