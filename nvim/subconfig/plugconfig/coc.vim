@@ -12,6 +12,7 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-css',
     \'coc-html',
+    \'coc-spell-checker',
     \]
 
 "\'coc-explorer',

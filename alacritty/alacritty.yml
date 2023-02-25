@@ -169,7 +169,7 @@ font:
   #size: 15
   #size: 12.5
   #size: 14
-  size: 13.5
+  size: 13
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

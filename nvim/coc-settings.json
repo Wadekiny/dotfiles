@@ -7,10 +7,10 @@
     "signature.floatConfig": {"border": true,"title": "Signature"},
     "diagnostic.floatConfig": {"border": true,"title": "Diagnostic"},
     "diagnostic.enable": true,
-    "diagnostic.virtualText": true,
+    //"diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
     "diagnostic.virtualTextFormat": " %message",
-    "diagnostic.enableMessage": "never",
+    //"diagnostic.enableMessage": "never",
 
 //    "explorer.width": 30,
 //    "explorer.file.column.indent.indentLine": true,
@@ -18,10 +18,11 @@
 //    "explorer.buffer.showHiddenBuffers": false,
 //    "explorer.git.enable": false,
 
-    "diagnostic.errorSign": "",
+    "diagnostic.errorSign": "",
 	"diagnostic.warningSign": "",
 	"diagnostic.infoSign": "",//
-	"diagnostic.hintSign": "ྗྗ",//
+	"diagnostic.hintSign": "ྗྗ",//
+    
     "suggest.completionItemKindLabels": {
 		"class": "\uf0e8",
 		"color": "\ue22b",
@@ -49,5 +50,8 @@
 		"value": "\uf89f",
 		"variable": "\ue71b"
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "cSpell.userWords": [
+    "mathjax"
+  ]
 }

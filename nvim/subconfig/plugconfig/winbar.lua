@@ -53,5 +53,6 @@ winbar.setup({
         'dapui_scopes',
         'dapui_console',
         'dap-repl',
+        'coctree'
     }
 })
