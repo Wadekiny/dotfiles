@@ -1,4 +1,3 @@
-require('mason').setup{}
 
 -- NOTE: 按键映射
 local opts = { noremap=true, silent=true }

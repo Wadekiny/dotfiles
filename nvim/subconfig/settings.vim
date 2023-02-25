@@ -1,4 +1,4 @@
-
+"set foldmethod=syntax
 set termguicolors
 set nocompatible         " 设置不兼容原始vi模式
 set nomodeline            
@@ -16,7 +16,7 @@ set number               " 开启行号显示
 set relativenumber       " 特殊行号
 set cursorline           " 高亮显示当前行
 "set whichwrap+=<,>,h,l   " 设置光标键跨行
-set ttimeoutlen=100        " 设置<ESC>键响应时间
+set ttimeoutlen=10        " 设置<ESC>键响应时间
 "set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 set mouse=a
 set hidden
@@ -82,10 +82,11 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "撤销记忆
 if has('persistent_undo')
+	set undodir=$HOME/.config/nvim/tmp/undo
 	set undofile
-	set undodir=~/.config/nvim/tmp/undo,.
 endif
 
 "非聚焦窗口不显示光标
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
+

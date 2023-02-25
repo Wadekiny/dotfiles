@@ -39,7 +39,7 @@ require("which-key").setup {
   },
   window = {
     border = "none", -- none, single, double, shadow
-    position = "top", -- bottom, top
+    position = "bottom", -- bottom, top
     margin = { 2, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     --padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
     padding = { 1,1, 1, 1 }, -- extra window padding [top, right, bottom, left]

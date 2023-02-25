@@ -16,9 +16,9 @@ tree.setup({
     sort_by = "name",
     root_dirs = {},
     prefer_startup_root = false,
-    sync_root_with_cwd = false,
+    sync_root_with_cwd = true,
     reload_on_bufenter = false,
-    respect_buf_cwd = false,
+    respect_buf_cwd = true,
     on_attach = "disable",
     remove_keymaps = false,
     select_prompts = false,
@@ -160,8 +160,8 @@ tree.setup({
         auto_open = true,
       },
       update_focused_file = {
-        enable = false,
-        update_root = false,
+        enable = true,
+        update_root = true,
         ignore_list = {},
       },
       ignore_ft_on_setup = {},
@@ -252,7 +252,7 @@ tree.setup({
           diagnostics = false,
           git = false,
           profile = false,
-          watcher = truefalse
+          watcher = true--false
         },
       },
       notify = {

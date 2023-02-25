@@ -7,10 +7,11 @@
     "signature.floatConfig": {"border": true,"title": "Signature"},
     "diagnostic.floatConfig": {"border": true,"title": "Diagnostic"},
     "diagnostic.enable": true,
-    "diagnostic.virtualText": true,
+    //"diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
     "diagnostic.virtualTextFormat": " %message",
-    "diagnostic.enableMessage": "never",
+    //"diagnostic.enableMessage": "never",
+    
 
 //    "explorer.width": 30,
 //    "explorer.file.column.indent.indentLine": true,
