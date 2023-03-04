@@ -128,6 +128,11 @@ Plug 'kevinhwang91/nvim-bqf' "make quickfix window better
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'mhinz/vim-grepper'
 
+Plug 'anuvyklack/middleclass' 
+Plug 'anuvyklack/windows.nvim' "窗口管理
+
+Plug 'kevinhwang91/promise-async' 
+Plug 'kevinhwang91/nvim-ufo' "代码折叠
 
 call plug#end()
 

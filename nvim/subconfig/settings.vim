@@ -1,3 +1,4 @@
+"set foldmethod=syntax
 set termguicolors
 set nocompatible         " 设置不兼容原始vi模式
 set nomodeline            
@@ -22,7 +23,6 @@ set hidden
 set updatetime=100
 set shortmess+=c
 set numberwidth=5
-set fdm=marker
 "set scrolloff=3
 filetype plugin on
 

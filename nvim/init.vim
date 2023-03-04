@@ -21,30 +21,6 @@
 "修改的插件 winbar  vim-surround (nvim-tree)
 "which_key: health#which_key#check
 "========================================================================
-"## WhichKey: checking conflicting keymaps
-"  - WARNING: conflicting keymap exists for mode **"n"**, lhs: **"t"**
-"  - INFO: rhs: ` `
-"  - WARNING: conflicting keymap exists for mode **"n"**, lhs: **"ys"**
-"  - INFO: rhs: `<Plug>(nvim-surround-normal)`
-"  - WARNING: conflicting keymap exists for mode **"n"**, lhs: **"yS"**
-"  - INFO: rhs: `<Plug>(nvim-surround-normal-line)`
-"  - WARNING: conflicting keymap exists for mode **"n"**, lhs: **"gc"**
-"  - INFO: rhs: `<Plug>(comment_toggle_linewise)`
-"  - WARNING: conflicting keymap exists for mode **"n"**, lhs: **"gb"**
-"  - INFO: rhs: `<Plug>(comment_toggle_blockwise)`
-"  - WARNING: buffer-local keymap overriding global for mode **"i"**, buf: 0, lhs: **"<c-r>"**
-"  - INFO: old rhs: `peekaboo#peek(1, "\<c-r>",  0)`
-"  - INFO: new rhs: `<cmd>lua require("which-key").show("\18", {mode = "i", auto = true})<cr>`
-"  - WARNING: buffer-local keymap overriding global for mode **"n"**, buf: 0, lhs: **"\""**
-"  - INFO: old rhs: `peekaboo#peek(v:count1, '"',  0)`
-"  - INFO: new rhs: `<cmd>lua require("which-key").show("\"", {mode = "n", auto = true})<cr>`
-"  - WARNING: buffer-local keymap overriding global for mode **"n"**, buf: 0, lhs: **"@"**
-"  - INFO: old rhs: `peekaboo#peek(v:count1, '@', 0)`
-"  - INFO: new rhs: `<cmd>lua require("which-key").show("@", {mode = "n", auto = true})<cr>`
-"  - WARNING: buffer-local keymap overriding global for mode **"x"**, buf: 0, lhs: **"\""**
-"  - INFO: old rhs: `peekaboo#peek(v:count1, '"',  1)`
-"  - INFO: new rhs: `<cmd>lua require("which-key").show("\"", {mode = "v", auto = true})<cr>`
-"
 "
 "
 
@@ -146,6 +122,7 @@ source ~/.config/nvim/subconfig/plugconfig/nvim-tree.lua
 " lua require("mason").setup()
 source ~/.config/nvim/subconfig/plugconfig/comment.lua
 source ~/.config/nvim/subconfig/plugconfig/neoformat.vim
+source ~/.config/nvim/subconfig/plugconfig/ufo.lua
 
 
 lua require('nvim-surround').setup{}
@@ -195,3 +172,5 @@ if exists("g:neovide")
     let g:neovide_padding_right=10
     let g:neovide_padding_bottom=10
 end
+
+hi Folded guibg=#005522 ctermbg=blue
