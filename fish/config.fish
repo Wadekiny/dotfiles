@@ -24,3 +24,5 @@ abbr todo nvim ~/Blog/source/_posts/TODO.md
 abbr code cd ~/Code
 abbr dot cd ~/Dotfiles
 abbr test cd ~/test
+
+export PATH="/home/wadekiny/.local/bin:/home/wadekiny/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/bin/toolchain_gcc_t-head_linux/bin"
