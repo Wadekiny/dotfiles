@@ -1,0 +1,63 @@
+{
+    "Lua.telemetry.enable": false,
+    "coc.preferences.extensionUpdateCheck": "weekly",
+    "suggest.enablePreselect": false,
+    "suggest.noselect": true,
+    "suggest.floatConfig": {"border": true,"rounded": true,"shadow": true},
+    "signature.floatConfig": {"border": true,"title": "Signature"},
+    "diagnostic.floatConfig": {"border": true,"title": "Diagnostic"},
+    "diagnostic.enable": true,
+    //"diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "diagnostic.virtualTextFormat": " %message",
+    //"diagnostic.enableMessage": "never",
+
+//    "explorer.width": 30,
+//    "explorer.file.column.indent.indentLine": true,
+//    "explorer.icon.enableNerdfont": true,
+//    "explorer.buffer.showHiddenBuffers": false,
+//    "explorer.git.enable": false,
+
+    "diagnostic.errorSign": "",
+	"diagnostic.warningSign": "",
+	"diagnostic.infoSign": "",//
+	"diagnostic.hintSign": "ྗྗ",//
+    
+    "suggest.completionItemKindLabels": {
+		"class": "\uf0e8",
+		"color": "\ue22b",
+		"constant": "\uf8fe",
+		"default": "\uf29c",
+		"enum": "\uf435",
+		"enumMember": "\uf02b",
+		"event": "\ufacd",
+		"field": "\uf93d",
+		"file": "\uf723",
+		"folder": "\uf115",
+		"function": "\u0192",
+		"interface": "\uf417",
+		"keyword": "\uf1de",
+		"method": "\uf6a6",
+		"module": "\uf40d",
+		"operator": "\uf915",
+		"property": "\ue624",
+		"reference": "\ufa46",
+		"snippet": "\ue60b",
+		"struct": "\ufb44",
+		"text": "\ue612",
+		"typeParameter": "\uf728",
+		"unit": "\uf475",
+		"value": "\uf89f",
+		"variable": "\ue71b"
+  },
+  "snippets.ultisnips.pythonPrompt": false,
+  "cSpell.userWords": [
+    "DFRF",
+    "LSTM",
+    "Mofa",
+    "deeplearning",
+    "mathjax",
+    "talkinghead",
+    "wadekiny"
+  ]
+}
