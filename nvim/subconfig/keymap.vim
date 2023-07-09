@@ -3,9 +3,9 @@ let mapleader = ";"      " 定义<leader>键
 
 "  NOTE: one key -----------------------------------------------------
 "{{{
-""---------- enhance finding (hop, like easymotion) ----------""
-noremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
-noremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
+" ""---------- enhance finding (hop, like easymotion) ----------""
+" noremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
+" noremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
 
 ""---------- vista ----------""
 nnoremap T <cmd>Vista!!<cr>
@@ -115,19 +115,24 @@ endfunction
 " nnoremap <leader>v  <cmd>call SearchThisFile()<cr> 
 nnoremap <leader>v  <cmd>Grepper -tool rg -buffer<cr> 
 
-""---------- hop(like easymotion) ----------""
-lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
-lua vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>HopLineAC<cr>", {})
-lua vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>HopLineBC<cr>", {})
-"lua vim.api.nvim_set_keymap('n', '<leader>f', "<cmd>HopChar1<cr>", {})
-
-lua vim.api.nvim_set_keymap('v', '<leader>w', "<cmd>HopWord<cr>", {})
-lua vim.api.nvim_set_keymap('v', '<leader>j', "<cmd>HopLine<cr>", {})
-lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
-"lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
-
-
+" ""---------- hop(like easymotion) ----------""
+" lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
+" lua vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>HopLineAC<cr>", {})
+" lua vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>HopLineBC<cr>", {})
+" "lua vim.api.nvim_set_keymap('n', '<leader>f', "<cmd>HopChar1<cr>", {})
+"
+" lua vim.api.nvim_set_keymap('v', '<leader>w', "<cmd>HopWord<cr>", {})
+" lua vim.api.nvim_set_keymap('v', '<leader>j', "<cmd>HopLine<cr>", {})
+" lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
+" "lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
+"
+" --------------flash.nvim----------------- "
 ""---------- dap ----------""
+nnoremap <leader>w <cmd>lua require'flash'.jump()<cr>
+xnoremap <leader>w <cmd>lua require'flash'.jump()<cr>
+onoremap <leader>w <cmd>lua require'flash'.jump()<cr>
+
+
 func! CompileCode()
     :w
     if &filetype == 'cpp'

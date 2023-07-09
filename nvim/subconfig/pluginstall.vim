@@ -14,7 +14,8 @@ Plug 'gcmt/wildfire.vim'            "快速块选
 Plug 'kylechui/nvim-surround'       
 
 "display-------------------------------
-Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons) 
+" Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons) 
+Plug 'nvim-tree/nvim-web-devicons' "图标
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' } "上面的缓冲区栏
 Plug 'nvim-lualine/lualine.nvim'    "下面的状态栏
 "Plug 'itchyny/lightline.vim'
@@ -71,6 +72,7 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'lukas-reineke/indent-blankline.nvim'          "缩进线
 Plug 'folke/which-key.nvim'                         "命令提示
 Plug 'phaazon/hop.nvim'                             "升级版 easymotion
+Plug 'folke/flash.nvim'
 Plug 'norcalli/nvim-colorizer.lua'                  "颜色变量可视化
 
 Plug 'folke/todo-comments.nvim'                     "todo高亮
@@ -83,9 +85,11 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'                         "输出改为浮动窗口
 
 
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } "用于显示winbar
 " Plug 'fgheng/winbar.nvim'                           
-Plug 'wadekiny/wadekiny-winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对)),但是, 浮动窗口youwenti
-" Plug 'SmiteshP/nvim-navic'
+" Plug 'wadekiny/wadekiny-winbar.nvim'                           "winbar 显示路径(做了修改，去掉了图标，可以改变背景颜色，可以多种路径(绝对，相对，家目录相对)),但是, 浮动窗口youwenti
+Plug 'Bekaboo/dropbar.nvim'
+"""" Plug 'SmiteshP/nvim-navic'
 " Plug 'feline-nvim/feline.nvim'
 Plug 'b0o/incline.nvim'  "右上角悬浮窗"
 
@@ -110,7 +114,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } "用于显示winbar
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'} "代码片段运行
 Plug 'windwp/nvim-ts-autotag'  "html标签补全
 
@@ -133,6 +136,8 @@ Plug 'anuvyklack/windows.nvim' "窗口管理
 
 Plug 'kevinhwang91/promise-async' 
 Plug 'kevinhwang91/nvim-ufo' "代码折叠
+
+Plug 'gelguy/wilder.nvim' "命令行补全
 
 call plug#end()
 
