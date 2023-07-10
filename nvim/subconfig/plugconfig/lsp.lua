@@ -25,7 +25,8 @@ local lsp_flags = {
   debounce_text_changes = 100,
 }
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-lspconfig.sumneko_lua.setup {
+-- lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -35,10 +36,12 @@ lspconfig.sumneko_lua.setup {
         version = 'LuaJIT',
       },
       diagnostics = {
-        globals = {"vim", "packer_bootstrap"},
+        -- globals = {"vim", "packer_bootstrap"},
+        globals = {"vim", "require"},
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
       },
       telemetry = {
         enable = false,
@@ -62,6 +65,7 @@ lspconfig.pyright.setup {
     }
   },
 }
+
 
 lspconfig.clangd.setup{
   capabilities = capabilities,

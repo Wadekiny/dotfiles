@@ -281,40 +281,40 @@ nnoremap <space>f <cmd>call ChangePwd()<cr>
 "nvim 自带，ga -> get ascii
 
 """---------- coc ----------""
-inoremap <silent><expr> <TAB>
-     \ coc#pum#visible() ? coc#pum#next(1):
-     \ CheckBackspace() ? "\<Tab>" :
-     \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-" xmap instead of vmap(selectmode + visualmode)
-xnoremap go  <Plug>(coc-codeaction-selected)<cr> 
-nnoremap go  <Plug>(coc-codeaction-selected)<cr>
+" inoremap <silent><expr> <TAB>
+"      \ coc#pum#visible() ? coc#pum#next(1):
+"      \ CheckBackspace() ? "\<Tab>" :
+"      \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 "
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gl :CocDiagnostics<cr>
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
+" " Make <CR> to accept selected completion item or notify coc.nvim to format
+" " <C-g>u breaks current undo, please make your own choice.
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
+" function! CheckBackspace() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+"
+" " Applying codeAction to the selected region.
+" " Example: `<leader>aap` for current paragraph
+" " xmap instead of vmap(selectmode + visualmode)
+" xnoremap go  <Plug>(coc-codeaction-selected)<cr> 
+" nnoremap go  <Plug>(coc-codeaction-selected)<cr>
+" "
+" " Use `[g` and `]g` to navigate diagnostics
+" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> gl :CocDiagnostics<cr>
+"
+" " GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+"
 nmap rn <Plug>(coc-rename)
 
 ""---------- coc-explorer ----------""

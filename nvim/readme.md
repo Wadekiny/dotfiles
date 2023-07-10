@@ -1,4 +1,0 @@
-## MAPPINGS
-| KEY | COMMAND | DESCRIPTION |
-|-----|---------|-------------|
-

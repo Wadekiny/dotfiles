@@ -78,11 +78,6 @@ require("lazy").setup(
 		"nvim-telescope/telescope.nvim",
 		config = function() dofile(plug_config_path .. "telescope.lua") end,
 	},
-	{
-		--"右侧类、函数、变量列表
-		"liuchengxu/vista.vim",
-		config = function() vim.cmd("source" .. plug_config_path .. "vista.vim") end,
-	},
 
 	-- "themes
 	{"joshdick/onedark.vim"},
@@ -96,8 +91,13 @@ require("lazy").setup(
 	{"folke/tokyonight.nvim"},		--{ 'branch': 'main' }
 
 	-- "complete---------------------------
-	'neoclide/coc.nvim', --{'branch': 'release'} "补全插件
+	--'neoclide/coc.nvim', --{'branch': 'release'} "补全插件
 	-- 'godlygeek/tabular', --    "对齐代码 (没在用)
+	{
+		--"右侧类、函数、变量列表
+		--"liuchengxu/vista.vim",
+		--config = function() vim.cmd("source" .. plug_config_path .. "vista.vim") end,
+	},
 	-- "markdown---------------------------
 	{	-- markdown preview
 		"iamcco/markdown-preview.nvim",
@@ -112,7 +112,10 @@ require("lazy").setup(
 	-- need a config
 	{"mfussenegger/nvim-dap"},		--"调试引擎
 	{"rcarriga/nvim-dap-ui"},		--"调试UI
-	{"theHamsta/nvim-dap-virtual-text"},	-- "调试虚拟文字
+	{
+        "theHamsta/nvim-dap-virtual-text",
+		config = function() dofile(plug_config_path .. "dap.lua") end,
+    },	-- "调试虚拟文字
 	-- lua plugins
 	{"lewis6991/impatient.nvim"},		--"启动加速
 	{"nvim-lua/plenary.nvim"},		--"neovim的一个库，很多其他插件需要这个
@@ -152,19 +155,18 @@ require("lazy").setup(
 		--"nvim-tree/nvim-tree.lua",
 		-- config = function() dofile(plug_config_path .. "nvim-tree.lua") end,
 	},
-    	-- TODO:
 	{
 		--"命令输入改为浮动窗口
-		"folke/noice.nvim",
-		config = function() dofile(plug_config_path .. "noice.lua") end,
+		-- "folke/noice.nvim",
+		-- config = function() dofile(plug_config_path .. "noice.lua") end,
 	},
 
 	{"MunifTanjim/nui.nvim"},
-	{
-        --"输出改为浮动窗口
-        "rcarriga/nvim-notify",
-		config = function() dofile(plug_config_path .. "notify.lua") end,
-    },
+	-- {
+ --        --"输出改为浮动窗口
+ --        "rcarriga/nvim-notify",
+	-- 	config = function() dofile(plug_config_path .. "notify.lua") end,
+    -- },
 	{
         -- 用于显示winbar
         -- "glepnir/lspsaga.nvim",
@@ -173,23 +175,38 @@ require("lazy").setup(
     {"Bekaboo/dropbar.nvim"},
 	--{"b0o/incline.nvim"},			--  "右上角悬浮窗"
 	--{"sunjon/shade.nvim"},			--"使非活动窗口变暗
-	--{"neovim//vim-lspconfig"},		-- 
-	--{"williamboman/mason.nvim"},		--
-	--{"hrsh7th/cmp-nvim-lsp"},		--
-	--{"saadparwaiz1/cmp_luasnip"},		-- "片段补全
-	--{"hrsh7th/cmp-buffer"},			--
-	--{"hrsh7th/cmp-path"},			--
-	--{"hrsh7th/cmp-cmdline"},		--
-	--{"hrsh7th/nvim-cmp"},			--
-	{"michaelb/sniprun",config=true},			-- 代码片段运行
-	{"windwp/nvim-ts-autotag",config=true},		--  "html标签补全
+	{"williamboman/mason.nvim", build = ":MasonUpdate", config=true},		--
+	{
+        "neovim/nvim-lspconfig",
+		config = function() dofile(plug_config_path .. "lsp.lua") end,
+    },		-- 
+
+	{"hrsh7th/cmp-nvim-lsp",},		--
+	-- {"saadparwaiz1/cmp_luasnip",},		-- "片段补全
+	{"hrsh7th/cmp-buffer",},			--
+	{"hrsh7th/cmp-path",},			--
+	{"hrsh7th/cmp-cmdline",},		--
+	{"hrsh7th/cmp-vsnip",},		--
+	{"hrsh7th/vim-vsnip",},		--
+	{
+        "hrsh7th/nvim-cmp",
+		config = function() dofile(plug_config_path .. "cmp.lua") end,
+    },			--
+	-- {"michaelb/sniprun",},			-- 代码片段运行
+	-- {"windwp/nvim-ts-autotag",},		--  "html标签补全
+
+
 	{
         -- "quick // # -- comment
         "numToStr/Comment.nvim",
 		config = function() dofile(plug_config_path .. "comment.lua") end,
     },
     -- {"dccsillag/magma-nvim"},		-- jupyter-like
-	{"ahmedkhalf/project.nvim",config=true},		--  "Project mananger
+	{
+        --  "Project mananger
+        "ahmedkhalf/project.nvim",
+        config= function() require("project_nvim").setup{} end
+    },		
 	{
         --   "formatter
         "sbdchd/neoformat",
