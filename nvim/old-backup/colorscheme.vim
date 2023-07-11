@@ -7,15 +7,16 @@ if has('termguicolors')
   set termguicolors
 endif
 " The configuration options should be placed before `colorscheme sonokai`.
-let g:sonokai_style = 'shusia'
 "let g:sonokai_style = 'default'
-let g:sonokai_better_performance = 1
 "let g:sonokai_dim_inactive_windows = 1
 "let g:sonokai_colors_override = {'bg0': ['#1e222a', '235'], 'bg2': ['#282c34', '236']}
 "let g:sonokai_colors_override = {'bg0': ['#222222', '235'], 'bg2': ['#222222', '236']}
 "let g:sonokai_colors_override = {'bg0': ['#222222', '235'] }
+let g:sonokai_style = 'shusia'
+let g:sonokai_better_performance = 1
 let g:sonokai_colors_override = {'bg0': ['#0d1117', '235'] , 'black':['#a9dc76','232'],'bg_dim':     ['0d1117',   '232']}
-colorscheme sonokai
+
+" colorscheme sonokai
 
 "          \ 'black':      ['#1a181a',   '232'],
 "          \ 'bg_dim':     ['#211f21',   '232'],
@@ -41,23 +42,11 @@ colorscheme sonokai
 "          \ 'grey':       ['#848089',   '246'],
 "          \ 'grey_dim':   ['#605d68',   '240'],
 "          \ 'none':       ['NONE',      'NONE']
-
-
-
-
-
-
+"
 " highlightedyank
 "vim-highlightedyank 复制时高亮
-let g:highlightedyank_highlight_duration = 400
-highlight HighlightedyankRegion cterm=reverse gui=reverse
-
-
-
-
-
-
-
+" let g:highlightedyank_highlight_duration = 400
+" highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 "colorscheme yowish 
 "let g:yowish = {}
@@ -72,4 +61,3 @@ highlight HighlightedyankRegion cterm=reverse gui=reverse
 "colorscheme molokai 
 "let g:rehash256 = 1
 "let g:molokai_original = 1
-"

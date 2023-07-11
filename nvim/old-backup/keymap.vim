@@ -8,7 +8,8 @@ let mapleader = ";"      " 定义<leader>键
 " noremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
 
 ""---------- vista ----------""
-nnoremap T <cmd>Vista!!<cr>
+" nnoremap T <cmd>Vista!!<cr>
+nnoremap T <cmd>SymbolsOutline<cr>
 
 ""---------- global copy(vim-peekaboo) ----------""
 vnoremap Y "+y
@@ -86,45 +87,13 @@ tnoremap <c-j> <C-\><C-n><c-w>j
 tnoremap <c-k> <C-\><C-n><c-w>k
 tnoremap <c-l> <C-\><C-n><c-w>l
 
-"""---------- coc ----------""
-"" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-""}}}
 
 
 "  NOTE: leader & <F4...> group -----------------------------------------------------
 "{{{
 ""---------- notify ----------""
 nnoremap <silent> <leader><space> :lua require('notify').dismiss()<cr>
-""---------- snipperrun ----------""
-nnoremap <leader>R <cmd>SnipRun<cr>
-nnoremap <leader>C <cmd>SnipClose<cr>
-vnoremap <leader>R :'<,'>SnipRun<cr>
-vnoremap <leader>C <cmd>SnipClose<cr>
 
-" 当前文件内查找
-function! SearchThisFile() 
-    let pattern = input('Pattern: ')
-    let cmd = printf("vimgrep '%s' %% | copen",pattern)
-    let length = strlen(pattern)
-    if length != 0
-        execute cmd
-    endif
-endfunction
-
-" nnoremap <leader>v  <cmd>call SearchThisFile()<cr> 
-nnoremap <leader>v  <cmd>Grepper -tool rg -buffer<cr> 
-
-" ""---------- hop(like easymotion) ----------""
-" lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
-" lua vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>HopLineAC<cr>", {})
-" lua vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>HopLineBC<cr>", {})
-" "lua vim.api.nvim_set_keymap('n', '<leader>f', "<cmd>HopChar1<cr>", {})
-"
-" lua vim.api.nvim_set_keymap('v', '<leader>w', "<cmd>HopWord<cr>", {})
-" lua vim.api.nvim_set_keymap('v', '<leader>j', "<cmd>HopLine<cr>", {})
-" lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
-" "lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
 "
 " --------------flash.nvim----------------- "
 ""---------- dap ----------""
@@ -183,9 +152,10 @@ noremap <F4> <cmd>call CompileCode()<cr>
 "编译执行
 noremap <F5> <cmd>call CompileRunCode()<cr>
 
+nnoremap <F6> <cmd>call CompileAndDapContinue()<cr>
+
 nnoremap <leader>e <Cmd>lua require("dapui").eval()<CR>
 nnoremap <leader>c <cmd>lua require'dap'.continue()<cr>
-nnoremap <F6> <cmd>call CompileAndDapContinue()<cr>
 " 关闭quickfix窗口
 nnoremap <leader>q <cmd>lua require'dap'.terminate()<cr> <cmd>cclose<cr>  <cmd>AsyncStop<cr>
 nnoremap <leader>s <cmd>lua require'dap'.step_into()<cr>
@@ -279,46 +249,6 @@ nnoremap <space>f <cmd>call ChangePwd()<cr>
 "  NOTE: other group
 "{{{
 "nvim 自带，ga -> get ascii
-
-"""---------- coc ----------""
-" inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1):
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"
-" " Make <CR> to accept selected completion item or notify coc.nvim to format
-" " <C-g>u breaks current undo, please make your own choice.
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"
-" function! CheckBackspace() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" " Applying codeAction to the selected region.
-" " Example: `<leader>aap` for current paragraph
-" " xmap instead of vmap(selectmode + visualmode)
-" xnoremap go  <Plug>(coc-codeaction-selected)<cr> 
-" nnoremap go  <Plug>(coc-codeaction-selected)<cr>
-" "
-" " Use `[g` and `]g` to navigate diagnostics
-" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-" nmap <silent> [g <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" nmap <silent> gl :CocDiagnostics<cr>
-"
-" " GoTo code navigation.
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-"
-nmap rn <Plug>(coc-rename)
-
-""---------- coc-explorer ----------""
-"nmap tt <Cmd>CocCommand explorer<CR>
 nmap tt <Cmd>NvimTreeToggle<CR>
 
 ""---------- markdown preview ----------""
@@ -392,3 +322,88 @@ func! CompileRunGcc()"{{{
 endfunc"}}}
 
 
+
+
+
+
+
+
+
+
+
+" WARNING: 忽略
+
+""---------- snipperrun ----------""
+nnoremap <leader>R <cmd>SnipRun<cr>
+nnoremap <leader>C <cmd>SnipClose<cr>
+vnoremap <leader>R :'<,'>SnipRun<cr>
+vnoremap <leader>C <cmd>SnipClose<cr>
+
+" 当前文件内查找
+function! SearchThisFile() 
+    let pattern = input('Pattern: ')
+    let cmd = printf("vimgrep '%s' %% | copen",pattern)
+    let length = strlen(pattern)
+    if length != 0
+        execute cmd
+    endif
+endfunction
+
+" nnoremap <leader>v  <cmd>call SearchThisFile()<cr> 
+nnoremap <leader>v  <cmd>Grepper -tool rg -buffer<cr> 
+
+
+" """---------- coc ----------""
+" "" Use <c-space> to trigger completion.
+" inoremap <silent><expr> <c-space> coc#refresh()
+" ""}}}
+"""---------- coc ----------""
+" inoremap <silent><expr> <TAB>
+"      \ coc#pum#visible() ? coc#pum#next(1):
+"      \ CheckBackspace() ? "\<Tab>" :
+"      \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"
+" " Make <CR> to accept selected completion item or notify coc.nvim to format
+" " <C-g>u breaks current undo, please make your own choice.
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
+" function! CheckBackspace() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+"
+" " Applying codeAction to the selected region.
+" " Example: `<leader>aap` for current paragraph
+" " xmap instead of vmap(selectmode + visualmode)
+" xnoremap go  <Plug>(coc-codeaction-selected)<cr> 
+" nnoremap go  <Plug>(coc-codeaction-selected)<cr>
+" "
+" " Use `[g` and `]g` to navigate diagnostics
+" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> gl :CocDiagnostics<cr>
+"
+" " GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+"
+nmap rn <Plug>(coc-rename)
+
+""---------- coc-explorer ----------""
+"nmap tt <Cmd>CocCommand explorer<CR>
+"
+" ""---------- hop(like easymotion) ----------""
+" lua vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>HopWord<cr>", {})
+" lua vim.api.nvim_set_keymap('n', '<leader>j', "<cmd>HopLineAC<cr>", {})
+" lua vim.api.nvim_set_keymap('n', '<leader>k', "<cmd>HopLineBC<cr>", {})
+" "lua vim.api.nvim_set_keymap('n', '<leader>f', "<cmd>HopChar1<cr>", {})
+"
+" lua vim.api.nvim_set_keymap('v', '<leader>w', "<cmd>HopWord<cr>", {})
+" lua vim.api.nvim_set_keymap('v', '<leader>j', "<cmd>HopLine<cr>", {})
+" lua vim.api.nvim_set_keymap('v', '<leader>k', "<cmd>HopLine<cr>", {})
+" "lua vim.api.nvim_set_keymap('v', '<leader>f', "<cmd>HopChar1<cr>", {})
