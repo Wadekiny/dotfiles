@@ -46,7 +46,8 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 10
-    y: 5
+    y: 3
+
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -117,7 +118,9 @@ font:
     #family: DroidSansMono Nerd Font
     #family: CodeNewRoman Nerd Font Mono
     #family: CodeNewRoman Nerd Font Mono
-    family: CodeNewRomanMaiYuanNerdFontMono
+    # family: CodeNewRomanMaiYuanNerdFontMono
+    #family: JetBrainsMaiYuanNerdFontMono
+    family: JetbrainsMonoNerdFont Mono
     #family: wadekiny
       #family: Kingnam MaiYuan 
     #family: Mononoki Nerd Font  Mono
@@ -169,7 +172,7 @@ font:
   #size: 15
   #size: 12.5
   #size: 14
-  size: 13
+  size: 12.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
