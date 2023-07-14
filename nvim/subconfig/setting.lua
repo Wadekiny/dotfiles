@@ -1,3 +1,4 @@
+vim.loader.enable()
 vim.o.termguicolors=true
 vim.o.compatible = false
 vim.o.modeline = false
@@ -40,9 +41,9 @@ vim.o.autowrite = true
 vim.o.confirm = true
 
 -- 记住上次位置
-vim.cmd[[
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]]
+-- vim.cmd[[
+--     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+-- ]]
 
 -- 撤销记忆
 vim.cmd[[

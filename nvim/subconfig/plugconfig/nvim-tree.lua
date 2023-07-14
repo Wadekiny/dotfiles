@@ -4,12 +4,30 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+-- local function my_on_attach(bufnr)
+--     local api = require"nvim-tree.api"
+--     api.config.mappings.default_on_attach(bufnr)
+--     vim.keymap.set('n','i',api.node.open.edit)
+--     vim.keymap.del('n','<BS>', {buffer=bufnr})
+--     vim.keymap.set('n','<BS>',api.tree.change_root_to_parent)
+--     vim.keymap.set('n','u',api.tree.change_root_to_parent)
+--     vim.keymap.del('n','<CR>', {buffer=bufnr})
+--     vim.keymap.set('n','<CR>',api.tree.change_root_to_node)
+-- end
+
 -- empty setup using defaults
-require("nvim-tree").setup()
+-- require("nvim-tree").setup()
 
 -- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  -- on_attach = my_on_attach,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
   view = {
     width = 30,
   },
@@ -19,8 +37,7 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
-})
---
+})--
 --
 --
 -- local tree = require('nvim-tree')

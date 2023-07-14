@@ -47,27 +47,40 @@ require("lazy").setup(
         lazy=false,
         config=function()
             vim.cmd([[
-            let g:sonokai_style = 'shusia'
-            let g:sonokai_better_performance = 1
-            let g:sonokai_colors_override = {'bg0': ['#0d1117', '235'] , 'black':['#a9dc76','232'],'bg_dim':['0d1117',   '232']}
-            colorscheme sonokai
+                let g:sonokai_style = 'shusia'
+                let g:sonokai_better_performance = 1
+                let g:sonokai_colors_override = {'bg0': ['#0d1117', '235'] , 'black':['#a9dc76','232'],'bg_dim':['0d1117',   '232']}
+                colorscheme sonokai
             ]])
         end
     },
     -- NOTE:base
-	{"lewis6991/impatient.nvim"},		--"启动加速
 	{"nvim-lua/plenary.nvim"},		--"neovim的一个库，很多其他插件需要这个
 	{"nvim-lua/popup.nvim"},		--"提供弹窗api
 
 	-- NOTE:input-------------------------------
-	{"inkch/vim-fcitx5-auto-toggle"},
-	{"jiangmiao/auto-pairs"},		--"自动括号	
-	{"junegunn/vim-peekaboo"},		--"复制缓存区
-	{"mg979/vim-visual-multi"},        	--"多光标
-	{"gcmt/wildfire.vim"},             	--"快速块选
+    {"h-hg/fcitx.nvim",},
+	{"jiangmiao/auto-pairs"},		--"自动括号.vim	
+	{"junegunn/vim-peekaboo"},		--"复制缓存区.vim
+    {
+        "AckslD/nvim-neoclip.lua",
+        dependencies = {
+            {'kkharji/sqlite.lua'},
+        -- you'll need at least one of these
+            {'nvim-telescope/telescope.nvim'},
+        -- {'ibhagwan/fzf-lua'},
+        },
+        config = function()
+            require('telescope').load_extension('neoclip')
+            require('neoclip').setup()
+        end,
+    },
+
+	{"mg979/vim-visual-multi"},        	--"多光标.vim
+	{"gcmt/wildfire.vim"},             	--"快速块选.vim
 	{'kylechui/nvim-surround',config=true},
-	{"ethanholz/nvim-lastplace"},		--"记录退出文件时的编辑位置 auto return back to the last modified positon when open a file
-	{
+	{"ethanholz/nvim-lastplace",config=true},		--"记录退出文件时的编辑位置 	
+    {
 		--"命令提示,
 		"folke/which-key.nvim",
 		config = function() dofile(plug_config_path .. "whichkey.lua") end,
@@ -119,6 +132,7 @@ require("lazy").setup(
 	{"norcalli/nvim-colorizer.lua",config=true},	--"颜色变量可视化
 	{"folke/todo-comments.nvim",config=true},		--"todo高亮
 	{
+        -- 复制高亮.vim
         "machakann/vim-highlightedyank",
         config = function ()
             vim.cmd[[
@@ -146,7 +160,18 @@ require("lazy").setup(
         "lewis6991/gitsigns.nvim",config=true,
         --config = function() vim.cmd("source" .. plug_config_path .. "gitgutter.vim") end,
 	},
-	{"mhinz/vim-startify"},           	--"启动界面
+    {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            vim.g.indent_blankline_filetype_exclude = { 'dashboard', 'lspinfo', 'packer', 'checkhealth', 'help', 'man', 'NvimTree' }
+            require('dashboard').setup {
+              -- config
+            }
+        end,
+        dependencies = { {'nvim-tree/nvim-web-devicons'}}
+    },
+
 	{
 		-- 需要等待其自动安装对应的语言高亮，挺耗时间，设置了优先使用git
 		"nvim-treesitter/nvim-treesitter",
@@ -166,10 +191,6 @@ require("lazy").setup(
 
 
     -- NOTE:search---------------------------
-	{"junegunn/fzf"},			-- { 'do': { -> fzf#install() } }
-	{"mhinz/vim-grepper"},			--
-	{"anuvyklack/middleclass"},		--
-	{"anuvyklack/windows.nvim"},		-- "窗口管理
     {
         "nvim-telescope/telescope-file-browser.nvim",
         config = function ()
@@ -185,15 +206,18 @@ require("lazy").setup(
 	{
         --  "Project mananger
         "ahmedkhalf/project.nvim",
-        config= function() require("project_nvim").setup{} end
+        config= function() 
+            require('telescope').load_extension('projects')
+            require("project_nvim").setup{}
+        end
     },
 
-
+    -- { "CRAG666/code_runner.nvim", config = true },
 
 	-- NOTE:markdown---------------------------
-    {
-        {"ellisonleao/glow.nvim", config = true, cmd = "Glow"}
-    },
+    -- {
+    --     {"ellisonleao/glow.nvim", config = true, cmd = "Glow"}
+    -- },
 	-- {	-- markdown preview
 	-- 	"iamcco/markdown-preview.nvim",
 	-- 	config = function() vim.cmd("source" .. plug_config_path .. "markdown.vim") end,
@@ -203,19 +227,19 @@ require("lazy").setup(
 	-- {"mzlogin/vim-markdown-toc"},     --"生成markdown目录
     {
         -- 需要配置外部可执行文件，checkhealth
-        "ekickx/clipboard-image.nvim"--, config=true
+        "ekickx/clipboard-image.nvim"--, config=true''
     },
 	-- {"ferrine/md-img-paste.vim"},     --"markdown快速粘贴图片
 
 
     -- NOTE:LSP,CMP,debug
 	-- "complete---------------------------
-	{"mfussenegger/nvim-dap"},		--"调试引擎
-	{"rcarriga/nvim-dap-ui"},		--"调试UI
 	{
-        "theHamsta/nvim-dap-virtual-text",
+        "mfussenegger/nvim-dap",
 		config = function() dofile(plug_config_path .. "dap.lua") end,
-    },	-- "调试虚拟文字
+    },		--"调试引擎
+	{"rcarriga/nvim-dap-ui"},		--"调试UI
+	{"theHamsta/nvim-dap-virtual-text"},	-- "调试虚拟文字
 	{"williamboman/mason.nvim", build = ":MasonUpdate", config=true},		--
 	{
         "neovim/nvim-lspconfig",
@@ -259,6 +283,12 @@ require("lazy").setup(
 
 
 -- 弃用
+	-- {"anuvyklack/middleclass"},		--"窗口管理
+	-- {"anuvyklack/windows.nvim"},		-- "窗口管理
+	-- {"mhinz/vim-grepper"},			--搜索
+	--{"junegunn/fzf"},			-- { 'do': { -> fzf#install() } }
+	-- {"inkch/vim-fcitx5-auto-toggle"},a --good
+	-- {"mhinz/vim-startify"},           	--"启动界面
 
 	--{"b0o/incline.nvim"},			--  "右上角悬浮窗"
 	--{"sunjon/shade.nvim"},			--"使非活动窗口变暗
@@ -299,6 +329,15 @@ require("lazy").setup(
 
 
 	-- {"kevinhwang91/rnvimr"},          	--"ranger
+    -- {
+    --     'echasnovski/mini.nvim',
+    --     version = true,
+    --     config=
+    --         function ()
+    --             require('mini.map').setup()
+    --         end
+    -- 
+    -- },
 
 
 -- " 'vim-scripts/fcitx.vim'		"普通模式和插入模式输入法记忆

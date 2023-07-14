@@ -1,7 +1,7 @@
-vim.g.mapleader = ";" -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = ";" -- Make sure to set `maplead,    er` before lazy so your mappings are correct
 
 local plugsmap = {
-    -- {mode='',  input='',  output='',                        opts={} },
+    -- {mod,    e='',  input='',  output='',                        opts={} },
     {mode='n', input='T', output='<cmd>SymbolsOutline<cr>', opts={silent=true}},
     {mode='v', input='Y', output='"+y',                     opts={silent=true} },
     ------------ termnal模式下 退出插入模式 ----------""
@@ -51,19 +51,21 @@ local plugsmap = {
     {mode='t', input='<c-k>', output='<C-\\><C-n><c-w>k',opts={silent=true}},
     {mode='t', input='<c-l>', output='<C-\\><C-n><c-w>l',opts={silent=true}},
     -- notify
-    {mode='n', input='<leader><space>', output='<cmd>lua require"notify".dismiss()<cr>',opts={silent=true}},
+    {mode='n', input='<space><space>', output='<cmd>lua require"notify".dismiss()<cr>',opts={silent=true}},
+    {mode='n', input='<space>n', output='<cmd>noh<cr>',opts={silent=true}},
     -- flash
     {mode={'n','x','o'}, input='<leader>w', output='<cmd>lua require"flash".jump()<cr>',opts={silent=true}},
 
-
+    -- telescope
     {mode='n',input='<leader>f',output='<cmd>Telescope find_files<cr>',opts={silent=true}},
     {mode='n',input='<leader>g',output='<cmd>Telescope live_grep<cr>' ,opts={silent=true}},
     {mode='n',input='<leader>B',output='<cmd>Telescope buffers<cr>  ' ,opts={silent=true}},
     {mode='n',input='<leader>H',output='<cmd>Telescope help_tags<cr>' ,opts={silent=true}},
-    {mode='n',input='<leader>p',output='<cmd>Telescope projects<cr> ' ,opts={silent=true}},
-    {mode='n',input='<leader>t',output='<cmd>Telescope file_browser<cr> ' ,opts={silent=true}},
-    -- buffer line
+    {mode='n',input='<leader>P',output='<cmd>Telescope projects<cr> ' ,opts={silent=true}},
+    {mode='n',input='<leader>F',output='<cmd>Telescope file_browser<cr>',opts={silent=true}},
+    {mode='n',input='<leader>p',output='<cmd>Telescope neoclip<cr>',opts={silent=true}},
 
+    -- buffer line
     {mode='n', input='<space>1',     output='<Cmd>BufferLineGoToBuffer 1<CR>' , opts={silent=true}},
     {mode='n', input='<space>2',     output='<Cmd>BufferLineGoToBuffer 2<CR>' , opts={silent=true}},
     {mode='n', input='<space>3',     output='<Cmd>BufferLineGoToBuffer 3<CR>' , opts={silent=true}},
@@ -83,13 +85,25 @@ local plugsmap = {
     {mode='n', input='<space>q',     output='<cmd>q<cr>',     opts={silent=false}},
     {mode='n', input='<space>e',     output='<cmd>edit $MYVIMRC<cr>',     opts={silent=false}},
     {mode='n', input='<space>r',     output='<cmd>source $MYVIMRC<cr>',     opts={silent=false}},
-    -- 切换工作目录
     {mode='n', input='tt',     output='<cmd>NvimTreeToggle<cr>',     opts={silent=true}},
+
+    -- 编译调试相关
+    {mode='n', input= '<leader>e', output='<Cmd>lua require("dapui").eval()<CR>'},
+    {mode='n', input= '<leader>c', output='<cmd>lua require"dap".continue()<cr>'},
+    {mode='n', input= '<leader>s', output='<cmd>lua require"dap".step_into()<cr>'},
+    {mode='n', input= '<leader>n', output='<cmd>lua require"dap".step_over()<cr>'},
+    {mode='n', input= '<leader>o', output='<cmd>lua require"dap".step_out()<cr>'},
+    {mode='n', input= '<leader>b', output='<cmd>lua require"dap".toggle_breakpoint()<cr>'},
+    {mode='n', input= '<leader>q', output='<cmd>lua require"dap".terminate()<cr>'} -- <cmd>cclose<cr>  <cmd>AsyncStop<cr>'}
+
+    --编译运行相关
+
+
+    -- 切换工作目录
     --markdown preview imagepaste
     -- sniprun
-    -- 编译调试相关
     -- ranger
-    -- telescope
+    --
 }
 
 
