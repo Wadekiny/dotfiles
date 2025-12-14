@@ -1,0 +1,12 @@
+[opener]
+play = [
+	{ run = 'open "$@"', orphan = true, for = "macos" },
+]
+edit = [
+	{ run = 'nvim "$@"', block = true, for = "unix" },
+	{ run = "%EDITOR% %*",  block = true, for = "windows" },
+]
+
+
+[open]
+

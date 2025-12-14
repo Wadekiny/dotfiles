@@ -1,0 +1,28 @@
+format = "$all"
+
+[git_branch]
+#format = ' [$symbol$branch(:$remote_branch)]($style)'
+
+[username]
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "@[$hostname]($style) "
+
+[directory]
+format = "[$read_only]($read_only_style)[$path]($style) "
+read_only = " "
+truncation_length = 10
+truncate_to_repo = true
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[✗](bold red)'
+
+[conda]
+#format = '[$symbol\[$environment\]]($style)'
+symbol = ' '# 
+ignore_base = false

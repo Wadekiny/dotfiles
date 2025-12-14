@@ -1,0 +1,14 @@
+-- vim.cmd([[
+--     let g:sonokai_style = 'shusia'
+--     let g:sonokai_better_performance = 1
+--     colorscheme sonokai
+-- ]])
+--
+-- vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]  -- 再覆盖
+-- vim.cmd [[hi NormalNC guibg=NONE ctermbg=NONE]]
+-- vim.cmd [[hi WinBar guibg=NONE]]
+--
+-- vim.cmd [[colorscheme catppuccin-mocha]]
+--
+vim.cmd [[colorscheme kanagawa-dragon]]
+-- vim.cmd [[hi cursorline guibg=#aaaaaa]]

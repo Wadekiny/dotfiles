@@ -1,0 +1,5 @@
+channels:
+  - defaults
+
+changeps1: false
+auto_activate: false

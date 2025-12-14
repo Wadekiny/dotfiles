@@ -1,0 +1,4 @@
+.*.un~
+.DS_Store
+nvim/plugin_packages
+nvim/tmp
